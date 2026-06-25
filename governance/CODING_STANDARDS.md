@@ -23,7 +23,7 @@
 - Usar placeholders claros.
 - No incluir configuraciones reales sensibles.
 
-## Documentacion tecnica
+## Documentación técnica
 
 - Separar hechos, interpretaciones y decisiones.
 - Incluir rollback si hay cambios operativos.

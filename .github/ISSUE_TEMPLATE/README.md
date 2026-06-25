@@ -6,5 +6,5 @@ Tipos previstos:
 
 - Incidencia.
 - Mejora.
-- Tarea tecnica.
+- Tarea técnica.
 - Decision de arquitectura.

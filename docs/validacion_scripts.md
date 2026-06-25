@@ -2,9 +2,9 @@
 
 ## Objetivo
 
-Definir un procedimiento seguro para revisar y validar los scripts de automatizacion del proyecto Frankie antes de permitir su ejecucion real sobre las VMs `srv-servicios` y `srv-recursos`.
+Definir un procedimiento seguro para revisar y validar los scripts de automatización del proyecto Frankie antes de permitir su ejecución real sobre las VMs `srv-servicios` y `srv-recursos`.
 
-Este documento no autoriza la ejecucion directa en produccion. Sirve para decidir si cada script esta listo, requiere revision o no debe ejecutarse.
+Este documento no autoriza la ejecución directa en producción. Sirve para decidir si cada script está listo, requiere revisión o no debe ejecutarse.
 
 ## Requisitos previos
 
@@ -20,11 +20,11 @@ Este documento no autoriza la ejecucion directa en produccion. Sirve para decidi
 
 No ejecutar scripts reales sin snapshot previo.
 
-Antes de una ejecucion real:
+Antes de una ejecución real:
 
 1. Crear snapshot Proxmox.
 2. Confirmar backup.
-3. Ejecutar auditoria de solo lectura.
+3. Ejecutar auditoría de solo lectura.
 4. Ejecutar `--dry-run`.
 5. Revisar salida.
 6. Ejecutar solo un script cada vez.
@@ -62,14 +62,14 @@ cd scripts/srv-recursos
 
 ## Auditoria previa de solo lectura
 
-Los scripts de auditoria no modifican el sistema.
+Los scripts de auditoría no modifican el sistema.
 
 ```bash
 ./scripts/auditoria/auditar_srv-servicios.sh
 ./scripts/auditoria/auditar_srv-recursos.sh
 ```
 
-## Comandos de validacion manual
+## Comandos de validación manual
 
 ### srv-servicios
 
@@ -106,13 +106,13 @@ ls -ld /srv/recursos /srv/recursos/02_ISOS /srv/recursos/99_PROFESORADO
 
 - El dry-run muestra solo acciones esperadas.
 - No aparecen rutas destructivas inesperadas.
-- No aparecen contrasenas, tokens ni secretos.
+- No aparecen contraseñas, tokens ni secretos.
 - El script comprueba prerrequisitos.
 - El script no duplica recursos existentes.
-- La validacion posterior es clara.
+- La validación posterior es clara.
 - Existe rollback documentado.
 
-## Criterios para detener la ejecucion
+## Criterios para detener la ejecución
 
 Detener si aparece cualquiera de estas condiciones:
 
@@ -125,7 +125,7 @@ Detener si aparece cualquiera de estas condiciones:
 - Falta backup.
 - Faltan `.env` reales requeridos.
 - La IP actual no coincide con la documentada.
-- La auditoria previa muestra servicios fallidos.
+- La auditoría previa muestra servicios fallidos.
 
 ## Estrategia de rollback
 
@@ -135,7 +135,7 @@ Revertir snapshot Proxmox de la VM afectada.
 
 ### Configuracion
 
-Restaurar backups de configuracion:
+Restaurar backups de configuración:
 
 - Samba: `/etc/samba/smb.conf.*.bak`.
 - Docker Compose: copia previa del stack.

@@ -2,7 +2,7 @@
 
 ## Proposito
 
-Recoger patrones, redes, volumenes y buenas practicas Docker.
+Recoger patrones, redes, volumenes y buenas prácticas Docker.
 
 ## Secciones
 

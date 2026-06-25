@@ -4,18 +4,18 @@ Este proyecto sigue Semantic Versioning.
 
 ## [0.5.0] - Foundation - 2026-06-25
 
-Primera release interna de fundacion del proyecto Frankie.
+Primera release interna de fundación del proyecto Frankie.
 
 ### Added
 
 - Estructura inicial de plataforma.
 - Carpetas de gobernanza y knowledge base.
-- Documentacion base del proyecto.
+- Documentación base del proyecto.
 - Plantillas Docker, Samba, backups y env.
 - Scripts idempotentes con dry-run.
-- Scripts de auditoria de solo lectura.
-- Checklists de validacion.
-- Evidencias iniciales de auditoria.
+- Scripts de auditoría de solo lectura.
+- Checklists de validación.
+- Evidencias iniciales de auditoría.
 - Roadmap por fases.
 - Plantilla de Pull Request.
 - Areas futuras `monitor/` y `ai/`.
@@ -30,12 +30,12 @@ Primera release interna de fundacion del proyecto Frankie.
 
 - Se establece regla de no versionar secretos reales.
 - `.gitignore` preparado para excluir `.env`, backups, dumps, claves privadas, logs y temporales.
-- Se mantiene separacion entre plantillas `.example` y configuraciones reales.
+- Se mantiene separación entre plantillas `.example` y configuraciones reales.
 
 ### Known Risks
 
 - Licencia definitiva pendiente.
-- Revision de secretos del historial Git pendiente antes de publicacion.
+- Revision de secretos del historial Git pendiente antes de publicación.
 - Evidencias reales pendientes de decidir si son publicables o privadas.
 - Validacion SMB desde cliente real pendiente.
 

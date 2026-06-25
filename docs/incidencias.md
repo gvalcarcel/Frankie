@@ -46,7 +46,7 @@ Pendiente de trasladar desde el informe operativo.
 
 ### Validacion
 
-Pendiente de validacion desde cliente SMB real.
+Pendiente de validación desde cliente SMB real.
 
 ### Estado
 

@@ -9,7 +9,7 @@ Documentar servicios desplegados o gestionados.
 ```markdown
 ## Servicio
 
-- Descripcion:
+- Descripción:
 - Servidor:
 - Puerto:
 - Dependencias:

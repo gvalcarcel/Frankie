@@ -7,7 +7,7 @@ Frankie busca ser una plataforma mantenible para administrar, desplegar, documen
 ## Principios
 
 - Producto antes que improvisacion.
-- Documentacion como fuente de verdad.
+- Documentación como fuente de verdad.
 - Seguridad por defecto.
 - Automatizacion revisable.
 - Evidencia antes de decision.
@@ -17,8 +17,8 @@ Frankie busca ser una plataforma mantenible para administrar, desplegar, documen
 
 - Profesorado de informatica.
 - Administradores de laboratorios docentes.
-- Equipos tecnicos de centros educativos.
+- Equipos técnicos de centros educativos.
 
 ## Resultado esperado
 
-Una plataforma que permita entender, replicar, auditar y evolucionar infraestructuras docentes sin perder contexto tecnico.
+Una plataforma que permita entender, replicar, auditar y evolucionar infraestructuras docentes sin perder contexto técnico.

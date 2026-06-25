@@ -19,7 +19,7 @@ Debe mostrar:
 No debe hacer:
 
 - Reiniciar la VM.
-- Cambiar configuracion Docker.
+- Cambiar configuración Docker.
 - Tocar servicios n8n/PostgreSQL.
 
 Validaciones posteriores:

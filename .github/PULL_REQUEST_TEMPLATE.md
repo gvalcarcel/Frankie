@@ -6,7 +6,7 @@ Describe el cambio.
 
 ## Tipo de cambio
 
-- [ ] Documentacion
+- [ ] Documentación
 - [ ] Plantilla
 - [ ] Script
 - [ ] Auditoria
@@ -15,12 +15,12 @@ Describe el cambio.
 
 ## Riesgos
 
-Describe riesgos tecnicos o de seguridad.
+Describe riesgos técnicos o de seguridad.
 
 ## Validacion
 
 - [ ] No contiene secretos.
-- [ ] Se ha revisado documentacion afectada.
+- [ ] Se ha revisado documentación afectada.
 - [ ] Se ha probado dry-run si aplica.
 - [ ] Se adjuntan evidencias si aplica.
 

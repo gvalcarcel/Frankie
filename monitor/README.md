@@ -1,6 +1,6 @@
 # Monitor
 
-Espacio reservado para la futura monitorizacion de Frankie.
+Espacio reservado para la futura monitorización de Frankie.
 
 ## Posibles contenidos futuros
 

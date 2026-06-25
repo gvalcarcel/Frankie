@@ -9,7 +9,7 @@
 
 ## 1. Objetivo
 
-Documentar la implantacion y operacion del servidor de aula con Proxmox, dos VMs, Docker, Portainer, PostgreSQL, n8n y Samba.
+Documentar la implantación y operación del servidor de aula con Proxmox, dos VMs, Docker, Portainer, PostgreSQL, n8n y Samba.
 
 ## 2. Alcance
 
@@ -45,5 +45,5 @@ Ver `procedimientos.md`.
 
 - Reserva DHCP.
 - Reinicio controlado de Proxmox.
-- Prueba de restauracion.
+- Prueba de restauración.
 - Estrategia HTTPS/OAuth para n8n.

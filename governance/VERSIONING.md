@@ -1,6 +1,6 @@
 # Versioning
 
-Frankie seguira Semantic Versioning:
+Frankie seguirá Semantic Versioning:
 
 ```text
 MAJOR.MINOR.PATCH
@@ -20,7 +20,7 @@ Incrementar `MAJOR` cuando haya cambios incompatibles:
 Incrementar `MINOR` cuando se agreguen capacidades compatibles:
 
 - nuevos scripts,
-- nuevas auditorias,
+- nuevas auditorías,
 - nuevas plantillas,
 - nuevas secciones de knowledge base,
 - nuevas integraciones.
@@ -29,13 +29,13 @@ Incrementar `MINOR` cuando se agreguen capacidades compatibles:
 
 Incrementar `PATCH` cuando haya correcciones compatibles:
 
-- errores de documentacion,
+- errores de documentación,
 - ajustes menores de scripts,
 - mejoras de mensajes,
 - correcciones de checklists,
 - pequeñas mejoras de seguridad sin cambio de contrato.
 
-## Version actual
+## Versión actual
 
 ```text
 v0.5.0 Foundation

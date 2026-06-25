@@ -1,8 +1,8 @@
-# Checklist de restauracion basica
+# Checklist de restauración basica
 
 ## Advertencia
 
-Las restauraciones deben probarse antes de necesitarlas. Un backup no validado no debe considerarse recuperable.
+Las restauraciónes deben probarse antes de necesitarlas. Un backup no validado no debe considerarse recuperable.
 
 ## Antes de restaurar
 
@@ -16,7 +16,7 @@ Las restauraciones deben probarse antes de necesitarlas. Un backup no validado n
 
 - [ ] Parar servicios si es necesario.
 - [ ] Confirmar dump PostgreSQL seleccionado.
-- [ ] Descomprimir dump si esta en `.sql.gz`.
+- [ ] Descomprimir dump si está en `.sql.gz`.
 - [ ] Restaurar PostgreSQL desde dump validado.
 - [ ] Confirmar tar.gz de `/srv/docker/n8n/data`.
 - [ ] Restaurar `/srv/docker/n8n/data` si procede.

@@ -3,7 +3,7 @@
 ## Vista general
 
 ```text
-Servidor fisico
+Servidor físico
 └── Proxmox VE - srv-aula113
     ├── VM 100 - srv-servicios / frankie
     │   ├── Docker
@@ -18,11 +18,11 @@ Servidor fisico
 
 - Nodo: `srv-aula113`.
 - Almacenamiento: ZFS mirror.
-- Estado: pendiente de documentacion completa.
+- Estado: pendiente de documentación completa.
 
 ## VM srv-servicios
 
-- Funcion: servicios de automatizacion.
+- Función: servicios de automatización.
 - Servicios principales:
   - Docker.
   - Portainer.
@@ -31,7 +31,7 @@ Servidor fisico
 
 ## VM srv-recursos
 
-- Funcion: recursos docentes compartidos.
+- Función: recursos docentes compartidos.
 - Servicio principal:
   - Samba.
 - Estructura prevista:

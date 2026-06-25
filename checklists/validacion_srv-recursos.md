@@ -1,4 +1,4 @@
-# Checklist de validacion - srv-recursos
+# Checklist de validación - srv-recursos
 
 ## Identificacion
 
@@ -10,9 +10,9 @@
 
 - [ ] `01_instalar_samba.sh --dry-run` muestra acciones esperadas.
 - [ ] `01_instalar_samba.sh` deja `smbd` activo.
-- [ ] `smbd` esta activo.
+- [ ] `smbd` está activo.
 - [ ] `testparm -s` no muestra errores.
-- [ ] Los puertos SMB estan accesibles desde la red permitida.
+- [ ] Los puertos SMB están accesibles desde la red permitida.
 - [ ] Las comparticiones esperadas aparecen configuradas.
 
 ## Recursos
@@ -26,7 +26,7 @@
 
 - [ ] `02_crear_usuarios_samba.sh --dry-run` muestra creacion esperada.
 - [ ] `02_crear_usuarios_samba.sh` no duplica usuarios ni grupos.
-- [ ] Las contrasenas Samba se configuran manualmente con `smbpasswd`.
+- [ ] Las contraseñas Samba se configuran manualmente con `smbpasswd`.
 - [ ] Existe usuario `alumno`.
 - [ ] Existe usuario `profesor`.
 - [ ] `alumno` pertenece a `alumnado`.
@@ -59,9 +59,9 @@
 - [ ] `05_configurar_smb_conf.sh` valida con `testparm`.
 - [ ] `06_configurar_firewall.sh --dry-run` muestra reglas esperadas.
 - [ ] `06_configurar_firewall.sh` no duplica reglas.
-- [ ] UFW esta activo.
-- [ ] SSH esta permitido.
-- [ ] Samba esta permitido solo si procede en la red del centro.
+- [ ] UFW está activo.
+- [ ] SSH está permitido.
+- [ ] Samba está permitido solo si procede en la red del centro.
 - [ ] No hay puertos innecesarios abiertos.
 
 ## Backups

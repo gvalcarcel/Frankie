@@ -20,8 +20,8 @@ Frankie
 
 ## Principios de arquitectura
 
-- Separar documentacion, conocimiento y automatizacion.
-- Evitar acoplar scripts a una unica instalacion.
+- Separar documentación, conocimiento y automatización.
+- Evitar acoplar scripts a una única instalación.
 - Mantener plantillas sin secretos.
 - Diseñar para multiples laboratorios futuros.
 

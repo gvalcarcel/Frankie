@@ -6,4 +6,4 @@ Plantillas Docker Compose para servicios de `srv-servicios`.
 
 Copiar la plantilla deseada, revisar variables de entorno y desplegar desde la VM correspondiente.
 
-No usar valores reales de contrasenas en archivos versionados.
+No usar valores reales de contraseñas en archivos versionados.

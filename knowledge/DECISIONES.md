@@ -2,7 +2,7 @@
 
 ## Proposito
 
-Registrar decisiones tecnicas reutilizables.
+Registrar decisiones técnicas reutilizables.
 
 ## Plantilla
 

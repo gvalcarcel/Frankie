@@ -1,4 +1,4 @@
-# Checklist de validacion - srv-servicios
+# Checklist de validación - srv-servicios
 
 ## Identificacion
 
@@ -13,12 +13,12 @@
 - [ ] `01_instalar_dependencias.sh` instala paquetes base sin errores.
 - [ ] `02_instalar_docker.sh --dry-run` no muestra duplicacion de repositorios.
 - [ ] `02_instalar_docker.sh` deja Docker operativo.
-- [ ] `docker --version` muestra version instalada.
-- [ ] `docker compose version` muestra version instalada.
+- [ ] `docker --version` muestra versión instalada.
+- [ ] `docker compose version` muestra versión instalada.
 - [ ] `docker ps` muestra `portainer`, `postgres` y `n8n`.
 - [ ] `03_crear_red_docker.sh` crea o detecta `aula-network`.
 - [ ] La red `aula-network` existe.
-- [ ] No hay contenedores inesperados en ejecucion.
+- [ ] No hay contenedores inesperados en ejecución.
 
 ## Portainer
 
@@ -33,8 +33,8 @@
 - [ ] Existe `.env` real fuera de Git.
 - [ ] `05_desplegar_postgres.sh --dry-run` es correcto.
 - [ ] `05_desplegar_postgres.sh` despliega sin publicar `5432`.
-- [ ] El contenedor `postgres` esta activo.
-- [ ] El puerto `5432` no esta publicado hacia la red del centro.
+- [ ] El contenedor `postgres` está activo.
+- [ ] El puerto `5432` no está publicado hacia la red del centro.
 - [ ] `docker ps` muestra solo `5432/tcp`, sin `0.0.0.0:5432`.
 - [ ] Los logs muestran que PostgreSQL acepta conexiones.
 
@@ -47,21 +47,21 @@
 - [ ] Se puede iniciar sesion.
 - [ ] El log muestra la URL correcta.
 - [ ] n8n conecta con PostgreSQL usando host `postgres`.
-- [ ] Las invitaciones por correo funcionan, si SMTP esta configurado.
+- [ ] Las invitaciones por correo funcionan, si SMTP está configurado.
 
 ## SMTP
 
-- [ ] Hay una cuenta tecnica definida o aprobada.
-- [ ] Las variables SMTP no estan versionadas con secretos reales.
+- [ ] Hay una cuenta técnica definida o aprobada.
+- [ ] Las variables SMTP no están versionadas con secretos reales.
 - [ ] Se recibe una invitacion de prueba.
 
 ## Seguridad
 
 - [ ] `08_configurar_seguridad.sh --dry-run` es correcto.
 - [ ] `08_configurar_seguridad.sh` configura UFW y Fail2ban.
-- [ ] UFW esta activo.
-- [ ] Solo estan permitidos los puertos necesarios.
-- [ ] Fail2ban esta activo.
+- [ ] UFW está activo.
+- [ ] Solo están permitidos los puertos necesarios.
+- [ ] Fail2ban está activo.
 - [ ] `fail2ban-client status sshd` no muestra errores.
 
 ## Backups

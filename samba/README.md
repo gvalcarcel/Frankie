@@ -1,10 +1,10 @@
 # Samba
 
-Plantillas de configuracion para `srv-recursos`.
+Plantillas de configuración para `srv-recursos`.
 
 ## Archivos
 
-- `smb.conf.example`: configuracion base orientativa.
+- `smb.conf.example`: configuración base orientativa.
 - `estructura-recursos.example.txt`: estructura de carpetas prevista.
 
 ## Seguridad

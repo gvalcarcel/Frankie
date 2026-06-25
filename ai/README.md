@@ -4,7 +4,7 @@ Espacio reservado para capacidades futuras de asistencia con IA.
 
 ## Objetivos futuros
 
-- consultar documentacion,
+- consultar documentación,
 - analizar evidencias,
 - proponer diagnosticos,
 - preparar runbooks,

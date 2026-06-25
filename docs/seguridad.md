@@ -36,5 +36,5 @@ Nunca incluir en Git:
 
 - Reservas DHCP.
 - Estrategia HTTPS para n8n.
-- Validacion de restauracion.
+- Validacion de restauración.
 - Politica de rotacion de credenciales.

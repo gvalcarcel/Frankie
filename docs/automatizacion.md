@@ -1,12 +1,12 @@
-# Estrategia de automatizacion
+# Estrategia de automatización
 
 ## Objetivo
 
-Preparar la implantacion del proyecto Frankie para que pueda repetirse y mantenerse con scripts controlados, revisables y seguros.
+Preparar la implantación del proyecto Frankie para que pueda repetirse y mantenerse con scripts controlados, revisables y seguros.
 
 ## Principios
 
-- No ejecutar cambios sin revision previa.
+- No ejecutar cambios sin revisión previa.
 - Usar `--dry-run` antes de ejecutar en real.
 - Mantener scripts idempotentes.
 - No versionar secretos.
@@ -21,7 +21,7 @@ Todos los scripts aceptan:
 ./script.sh --dry-run
 ```
 
-Este modo debe mostrar los comandos previstos sin ejecutarlos. Es obligatorio revisarlo antes de una ejecucion real.
+Este modo debe mostrar los comandos previstos sin ejecutarlos. Es obligatorio revisarlo antes de una ejecución real.
 
 ## Ejecucion real
 
@@ -57,7 +57,7 @@ Los secretos deben venir de variables de entorno, ficheros `.env` no versionados
 
 ## Revision manual
 
-Antes de produccion revisar:
+Antes de producción revisar:
 
 - IPs actuales o reservas DHCP.
 - Rutas de datos.
@@ -69,4 +69,4 @@ Antes de produccion revisar:
 
 ## Paso siguiente
 
-En el Paso 4 conviene probar los scripts en modo `--dry-run`, crear un entorno de prueba o snapshot, y ejecutar una validacion completa por VM.
+En el Paso 4 conviene probar los scripts en modo `--dry-run`, crear un entorno de prueba o snapshot, y ejecutar una validación completa por VM.

@@ -1,6 +1,6 @@
 # Roadmap
 
-Version base actual: `v0.5.0 Foundation`.
+Versión base actual: `v0.5.0 Foundation`.
 
 ## Fase 1 - Infraestructura Base
 
@@ -17,20 +17,20 @@ En curso.
 ### Dependencias
 
 - Inventario real.
-- Evidencias de auditoria.
+- Evidencias de auditoría.
 - Reglas de seguridad documental.
 
 ### Hitos
 
 - Estructura base del repositorio.
-- Documentacion inicial.
+- Documentación inicial.
 - Auditoria inicial de VMs.
 
 ## Fase 2 - Automatizacion
 
 ### Objetivos
 
-- Convertir operaciones repetibles en scripts idempotentes.
+- Convertir operaciónes repetibles en scripts idempotentes.
 - Mantener dry-run y validaciones.
 - Evitar secretos en automatizaciones.
 
@@ -53,9 +53,9 @@ Iniciada.
 
 ### Objetivos
 
-- Crear auditorias de solo lectura.
+- Crear auditorías de solo lectura.
 - Guardar evidencias.
-- Comparar estado real contra documentacion.
+- Comparar estado real contra documentación.
 
 ### Estado
 
@@ -63,7 +63,7 @@ Iniciada.
 
 ### Dependencias
 
-- Scripts de auditoria.
+- Scripts de auditoría.
 - Checklists.
 
 ### Hitos
@@ -77,7 +77,7 @@ Iniciada.
 ### Objetivos
 
 - Definir metricas de salud.
-- Preparar monitorizacion de servicios, backups y espacio.
+- Preparar monitorización de servicios, backups y espacio.
 - Registrar alertas.
 
 ### Estado
@@ -144,7 +144,7 @@ Pendiente.
 
 ### Objetivos
 
-- Incorporar asistencia IA sobre documentacion y evidencias.
+- Incorporar asistencia IA sobre documentación y evidencias.
 - Ayudar en diagnostico, propuestas y revisiones.
 
 ### Estado
@@ -154,13 +154,13 @@ Pendiente.
 ### Dependencias
 
 - Knowledge base limpia.
-- Politicas de seguridad de datos.
+- Políticas de seguridad de datos.
 
 ### Hitos
 
 - Casos de uso.
 - Prompting operativo.
-- Politicas de no exposicion de secretos.
+- Políticas de no exposición de secretos.
 
 ## Fase 8 - Autocuracion
 
@@ -178,7 +178,7 @@ Pendiente.
 - Monitorizacion.
 - Auditoria.
 - Runbooks.
-- Politicas de aprobacion.
+- Políticas de aprobacion.
 
 ### Hitos
 

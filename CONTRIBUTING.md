@@ -2,11 +2,11 @@
 
 ## Estado actual del proyecto
 
-Frankie es un repositorio publico, pero no es actualmente un proyecto comunitario abierto.
+Frankie es un repositorio público, pero no es actualmente un proyecto comunitario abierto.
 
-El repositorio se publica con finalidad documental, educativa y de portfolio tecnico. El codigo, la documentacion y las decisiones tecnicas son visibles publicamente, pero la gestion del proyecto corresponde exclusivamente al propietario del repositorio.
+El repositorio se publica con finalidad documental, educativa y de portfolio técnico. El código, la documentación y las decisiones técnicas son visibles públicamente, pero la gestión del proyecto corresponde exclusivamente al propietario del repositorio.
 
-No se aceptan contribuciones externas no solicitadas por defecto. Las issues, pull requests, propuestas de cambios o solicitudes externas podran cerrarse sin revision si no han sido solicitadas expresamente por el propietario.
+No se aceptan contribuciones externas no solicitadas por defecto. Las issues, pull requests, propuestas de cambios o solicitudes externas podrán cerrarse sin revisión si no han sido solicitadas expresamente por el propietario.
 
 ## Gobierno del repositorio
 
@@ -20,7 +20,7 @@ El propietario mantiene el control sobre:
 - Publicacion de evidencias.
 - Criterios de seguridad.
 
-Las contribuciones futuras podran valorarse si el propietario decide abrir esa posibilidad para un caso concreto.
+Las contribuciones futuras podrán valorarse si el propietario decide abrir esa posibilidad para un caso concreto.
 
 ## Forks
 
@@ -30,11 +30,11 @@ Un fork no representa necesariamente el estado, las decisiones, la seguridad ni 
 
 ## Propuestas externas
 
-Si en el futuro se solicita una colaboracion concreta, cualquier propuesta debera:
+Si en el futuro se solicita una colaboración concreta, cualquier propuesta deberá:
 
 1. Estar alineada con el roadmap aprobado por el propietario.
 2. Respetar la arquitectura y las reglas de gobierno del proyecto.
-3. Mantener la documentacion actualizada.
+3. Mantener la documentación actualizada.
 4. Evitar cambios innecesarios sobre servidores, scripts o configuraciones.
 5. Ser revisable, trazable y limitada en alcance.
 
@@ -47,7 +47,7 @@ En ese caso, deben:
 - indicar que han sido generadas o asistidas por IA,
 - no inventar estado de servidores,
 - no incluir secretos,
-- mantener lenguaje tecnico claro,
+- mantener lenguaje técnico claro,
 - respetar estructura del repositorio,
 - incluir evidencias cuando se hable de estado real.
 
@@ -56,7 +56,7 @@ En ese caso, deben:
 No subir:
 
 - `.env` reales,
-- contrasenas,
+- contraseñas,
 - tokens,
 - claves privadas,
 - dumps reales,
@@ -86,4 +86,4 @@ Si el propietario solicita expresamente un Pull Request, este debe explicar:
 - alcance,
 - riesgos,
 - pruebas realizadas,
-- impacto en documentacion.
+- impacto en documentación.

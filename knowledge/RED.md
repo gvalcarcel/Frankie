@@ -19,4 +19,4 @@ Documentar redes, IPs, DNS, rutas y restricciones.
 
 ## Nota
 
-No publicar informacion sensible de red si no es necesaria.
+No publicar información sensible de red si no es necesaria.

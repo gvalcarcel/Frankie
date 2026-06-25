@@ -1,12 +1,12 @@
 # Scripts
 
-Scripts preparatorios para automatizar tareas de implantacion del proyecto Frankie.
+Scripts preparatorios para automatizar tareas de implantación del proyecto Frankie.
 
 ## Aviso
 
-Revisar siempre antes de ejecutar en produccion. Los scripts estan preparados para ejecucion controlada, pero siguen siendo automatizaciones sensibles.
+Revisar siempre antes de ejecutar en producción. Los scripts están preparados para ejecución controlada, pero siguen siendo automatizaciones sensibles.
 
-No deben contener contrasenas, tokens ni secretos reales.
+No deben contener contraseñas, tokens ni secretos reales.
 
 ## Uso de dry-run
 
@@ -58,13 +58,13 @@ sudo ./script.sh
 - Validacion al final.
 - Sin secretos reales.
 
-## Paso 4: validacion previa
+## Paso 4: validación previa
 
 Antes de ejecutar scripts reales en una VM:
 
 1. Crear snapshot.
 2. Confirmar backup.
-3. Ejecutar auditoria de solo lectura.
+3. Ejecutar auditoría de solo lectura.
 4. Ejecutar `--dry-run`.
 5. Revisar salida.
 6. Ejecutar un solo script.
@@ -80,9 +80,9 @@ Los scripts de `scripts/auditoria/` son de solo lectura:
 ./scripts/auditoria/auditar_srv-recursos.sh
 ```
 
-No instalan paquetes, no reinician servicios y no modifican configuracion.
+No instalan paquetes, no reinician servicios y no modifican configuración.
 
-## Reglas antes de ejecucion real
+## Reglas antes de ejecución real
 
 - No ejecutar sin snapshot.
 - No ejecutar sin leer el script.

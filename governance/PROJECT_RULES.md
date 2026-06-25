@@ -2,19 +2,19 @@
 
 ## Reglas generales
 
-- El repositorio es la fuente unica de verdad.
-- No se ejecutan cambios en produccion sin snapshot.
+- El repositorio es la fuente única de verdad.
+- No se ejecutan cambios en producción sin snapshot.
 - No se documentan secretos.
 - No se inventan estados.
-- Toda automatizacion debe poder revisarse antes de ejecutarse.
+- Toda automatización debe poder revisarse antes de ejecutarse.
 
-## Modelo publico y no comunitario
+## Modelo público y no comunitario
 
-- Frankie es un repositorio publico con finalidad documental, educativa y de portfolio tecnico.
+- Frankie es un repositorio público con finalidad documental, educativa y de portfolio técnico.
 - Frankie no es actualmente un proyecto comunitario abierto.
 - No se aceptan issues, pull requests ni propuestas externas no solicitadas por defecto.
-- Las propuestas externas podran cerrarse sin revision si no han sido solicitadas por el propietario.
-- La gestion del roadmap, cambios, versiones y releases corresponde exclusivamente al propietario del repositorio.
+- Las propuestas externas podrán cerrarse sin revisión si no han sido solicitadas por el propietario.
+- La gestión del roadmap, cambios, versiones y releases corresponde exclusivamente al propietario del repositorio.
 - Cualquier fork es responsabilidad de quien lo mantenga.
 
 ## Reglas para IA
@@ -24,7 +24,7 @@
 - No mezclar diagnostico y correccion.
 - Mantener trazabilidad.
 
-## Reglas de produccion
+## Reglas de producción
 
 Antes de tocar servidores:
 
@@ -34,4 +34,4 @@ Antes de tocar servidores:
 4. Dry-run.
 5. Ejecucion controlada.
 6. Validacion.
-7. Documentacion.
+7. Documentación.

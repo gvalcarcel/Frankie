@@ -2,7 +2,7 @@
 
 ## Proposito
 
-Documentar estrategias de copia y restauracion.
+Documentar estrategias de copia y restauración.
 
 ## Estructura sugerida
 

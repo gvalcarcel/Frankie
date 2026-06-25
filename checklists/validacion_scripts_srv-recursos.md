@@ -47,9 +47,9 @@ Debe mostrar:
 
 No debe hacer:
 
-- Escribir contrasenas reales.
+- Escribir contraseñas reales.
 - Duplicar usuarios o grupos.
-- Cambiar usuarios existentes sin revision.
+- Cambiar usuarios existentes sin revisión.
 
 Validaciones posteriores:
 
@@ -139,7 +139,7 @@ Debe mostrar:
 No debe hacer:
 
 - Duplicar bloques.
-- Borrar configuracion global.
+- Borrar configuración global.
 - Reiniciar Samba si no hay cambios.
 
 Validaciones posteriores:

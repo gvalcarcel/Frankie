@@ -1,6 +1,6 @@
-# Informe de auditoria - Paso 5
+# Informe de auditoría - Paso 5
 
-## Fecha de auditoria
+## Fecha de auditoría
 
 2026-06-25 13:17:15 +02:00
 
@@ -9,7 +9,7 @@
 - `docs/evidencias/paso-5-auditorias/auditoria_srv-servicios.txt`
 - `docs/evidencias/paso-5-auditorias/auditoria_srv-recursos.txt`
 
-Las auditorias fueron ejecutadas con privilegios suficientes para evitar falsos negativos en Docker, UFW, Fail2ban, Samba y permisos restringidos.
+Las auditorías fueron ejecutadas con privilegios suficientes para evitar falsos negativos en Docker, UFW, Fail2ban, Samba y permisos restringidos.
 
 ## Fuentes comparadas
 
@@ -26,7 +26,7 @@ Las auditorias fueron ejecutadas con privilegios suficientes para evitar falsos 
 
 ## Resumen ejecutivo
 
-Las dos VMs principales estan operativas y alineadas en lo esencial con la documentacion del proyecto.
+Las dos VMs principales están operativas y alineadas en lo esencial con la documentación del proyecto.
 
 `srv-servicios` confirma:
 
@@ -51,7 +51,7 @@ Las dos VMs principales estan operativas y alineadas en lo esencial con la docum
 - Usuarios Samba `alumno` y `profesor` registrados.
 - Carpeta `02_ISOS` con escritura de grupo y setgid.
 - Carpeta `99_PROFESORADO` restringida.
-- `testparm` valida la configuracion Samba.
+- `testparm` valida la configuración Samba.
 - UFW activo con SSH y puertos Samba.
 
 Decision final:
@@ -73,11 +73,11 @@ Condicion:
 | Docker | Docker `29.6.0`, servicio activo | OK |
 | Contenedores | `n8n`, `postgres`, `portainer` activos | OK |
 | Red Docker | `aula-network` existe | OK |
-| Portainer | Contenedor activo, puertos `8000` y `9443` publicados | OK con observacion |
+| Portainer | Contenedor activo, puertos `8000` y `9443` publicados | OK con observación |
 | PostgreSQL | Contenedor activo, `5432/tcp` interno | OK |
 | PostgreSQL no expuesto | `5432 no escucha en el host` | OK |
 | n8n | Contenedor activo, `5678` publicado | OK |
-| Puertos abiertos | `22`, `5678`, `9443`, tambien `8000` | OK con observacion |
+| Puertos abiertos | `22`, `5678`, `9443`, también `8000` | OK con observación |
 | UFW | Activo, permite `22`, `5678`, `9443` | OK |
 | Fail2ban | Jail `sshd` activo, 0 baneados | OK |
 | Backups | Directorio y ficheros recientes presentes | OK |
@@ -127,7 +127,7 @@ Condicion:
 
 ## Desviaciones detectadas
 
-### D-001 - Portainer publica el puerto 8000 aunque UFW no lo permite
+### D-001 - Portainer pública el puerto 8000 aunque UFW no lo permite
 
 Clasificacion: menor.
 
@@ -138,13 +138,13 @@ Evidencia:
 
 Interpretacion:
 
-- La exposicion Docker existe, pero el firewall bloquea acceso externo salvo reglas adicionales.
-- La documentacion ya indicaba que `8000` no era prioritario.
+- La exposición Docker existe, pero el firewall bloquea acceso externo salvo reglas adicionales.
+- La documentación ya indicaba que `8000` no era prioritario.
 
 Accion recomendada:
 
 - Mantener documentado.
-- En una fase futura, valorar eliminar la publicacion `8000` del despliegue de Portainer si no se usa Edge/Agent.
+- En una fase futura, valorar eliminar la publicación `8000` del despliegue de Portainer si no se usa Edge/Agent.
 
 ### D-002 - Backups PostgreSQL reales siguen en `.sql`, plantilla propone `.sql.gz`
 
@@ -163,9 +163,9 @@ Interpretacion:
 Accion recomendada:
 
 - No cambiar ahora.
-- En Paso posterior, aplicar la mejora de compresion solo tras prueba de restauracion.
+- En Paso posterior, aplicar la mejora de compresión solo tras prueba de restauración.
 
-### D-003 - Validacion de acceso SMB desde cliente real no aparece en auditoria
+### D-003 - Validacion de acceso SMB desde cliente real no aparece en auditoría
 
 Clasificacion: importante.
 
@@ -186,14 +186,14 @@ Accion recomendada:
   - `profesor` escribe en `isos`.
   - `alumno` no accede a `profesorado`.
 
-### D-004 - Los scripts de auditoria requieren sudo para evitar falsos negativos
+### D-004 - Los scripts de auditoría requieren sudo para evitar falsos negativos
 
 Clasificacion: menor.
 
 Evidencia:
 
-- La primera ejecucion sin sudo produjo falsos avisos por permisos en Docker/UFW/Fail2ban y carpetas restringidas.
-- La ejecucion con sudo produjo evidencias completas.
+- La primera ejecución sin sudo produjo falsos avisos por permisos en Docker/UFW/Fail2ban y carpetas restringidas.
+- La ejecución con sudo produjo evidencias completas.
 
 Interpretacion:
 
@@ -201,14 +201,14 @@ Interpretacion:
 
 Accion recomendada:
 
-- Actualizar documentacion de auditoria para recomendar:
+- Actualizar documentación de auditoría para recomendar:
 
 ```bash
 sudo ./scripts/auditoria/auditar_srv-servicios.sh
 sudo ./scripts/auditoria/auditar_srv-recursos.sh
 ```
 
-## Coincidencias principales con la documentacion
+## Coincidencias principales con la documentación
 
 - La arquitectura de dos VMs queda confirmada funcionalmente.
 - `srv-servicios` aloja Docker, Portainer, PostgreSQL y n8n.
@@ -216,14 +216,14 @@ sudo ./scripts/auditoria/auditar_srv-recursos.sh
 - PostgreSQL no expone `5432`.
 - n8n expone `5678`.
 - Portainer expone `9443`.
-- UFW y Fail2ban estan activos en `srv-servicios`.
-- UFW y Samba estan activos en `srv-recursos`.
+- UFW y Fail2ban están activos en `srv-servicios`.
+- UFW y Samba están activos en `srv-recursos`.
 - El modelo `alumno`/`profesor` y `alumnado`/`profesorado` existe.
 - La carpeta `02_ISOS` queda preparada para escritura de profesorado.
 
 ## Acciones recomendadas
 
-1. Autorizar revision de `--dry-run` de scripts, empezando por los de menor riesgo.
+1. Autorizar revisión de `--dry-run` de scripts, empezando por los de menor riesgo.
 2. Ejecutar dry-run en este orden:
    - Auditoria.
    - Dependencias.
@@ -232,27 +232,27 @@ sudo ./scripts/auditoria/auditar_srv-recursos.sh
    - Seguridad.
    - Despliegues Docker.
    - Samba.
-3. Actualizar documentacion para indicar que auditorias completas requieren `sudo`.
+3. Actualizar documentación para indicar que auditorías completas requieren `sudo`.
 4. Validar Samba desde un cliente Windows real.
 5. Decidir si Portainer debe seguir publicando `8000`.
 6. No aplicar cambios reales hasta tener snapshot vigente.
 
 ## Propuestas de correccion en repositorio
 
-### Documentacion
+### Documentación
 
-- Actualizar `docs/validacion_scripts.md` y `scripts/README.md` para recomendar auditorias con `sudo`.
-- Registrar esta auditoria como evidencia base de Paso 5.
+- Actualizar `docs/validacion_scripts.md` y `scripts/README.md` para recomendar auditorías con `sudo`.
+- Registrar esta auditoría como evidencia base de Paso 5.
 
 ### Scripts
 
-- Mantener scripts de auditoria como solo lectura.
-- Opcional: anadir aviso al inicio si no se ejecutan como root, indicando que algunas comprobaciones pueden ser parciales.
+- Mantener scripts de auditoría como solo lectura.
+- Opcional: añadir aviso al inicio si no se ejecutan como root, indicando que algunas comprobaciones pueden ser parciales.
 
 ### Checklists
 
-- Anadir punto explicito: auditoria ejecutada con `sudo`.
-- Anadir punto manual para validacion SMB desde cliente real.
+- Añadir punto explicito: auditoría ejecutada con `sudo`.
+- Añadir punto manual para validación SMB desde cliente real.
 
 ## Decision final
 
@@ -262,8 +262,8 @@ apto para dry-run
 
 Condiciones:
 
-- Solo dry-run, no ejecucion real todavia.
+- Solo dry-run, no ejecución real todavía.
 - Ejecutar de uno en uno.
 - Mantener snapshots disponibles.
 - Revisar salida de cada dry-run antes de pasar al siguiente.
-- No pasar a ejecucion real hasta cerrar la validacion SMB desde cliente o aceptar formalmente ese riesgo.
+- No pasar a ejecución real hasta cerrar la validación SMB desde cliente o aceptar formalmente ese riesgo.

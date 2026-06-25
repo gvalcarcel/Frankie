@@ -6,4 +6,4 @@ Plantillas para copias de seguridad.
 
 No versionar backups reales en este repositorio.
 
-Usar esta carpeta solo para scripts `.example`, instrucciones y documentacion.
+Usar esta carpeta solo para scripts `.example`, instrucciones y documentación.
