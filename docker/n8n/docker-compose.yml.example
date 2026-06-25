@@ -1,0 +1,33 @@
+services:
+  n8n:
+    # Plataforma de automatizacion del aula.
+    # Acceso actual previsto por IP local y HTTP.
+    #
+    # Importante sobre OAuth:
+    # Las integraciones OAuth con Google Drive, Gmail, Sheets u otros servicios
+    # normalmente requieren una URL publica HTTPS o un tunel/dominio valido para
+    # callback. Con IP privada y HTTP pueden fallar los callbacks OAuth.
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n
+    restart: unless-stopped
+    env_file:
+      - ../../env/n8n.env.example
+      - ../../env/smtp.env.example
+    environment:
+      DB_TYPE: postgresdb
+      DB_POSTGRESDB_HOST: postgres
+      DB_POSTGRESDB_PORT: 5432
+      N8N_PROTOCOL: http
+      N8N_SECURE_COOKIE: "false"
+    ports:
+      - "5678:5678"
+    volumes:
+      - /srv/docker/n8n/data:/home/node/.n8n
+    networks:
+      - aula-network
+    # PostgreSQL debe estar desplegado previamente en la misma red externa
+    # aula-network y ser resoluble con el nombre de contenedor postgres.
+
+networks:
+  aula-network:
+    external: true

@@ -1,0 +1,19 @@
+/srv/recursos
+├── 00_LEEME
+│   └── Avisos, normas de uso y explicacion de la estructura.
+├── 01_INSTALABLES
+│   └── Instaladores de software usados en clase.
+├── 02_ISOS
+│   └── Imagenes ISO. Lectura para alumnado, escritura para profesor.
+├── 03_DRIVERS
+│   └── Drivers y utilidades de hardware.
+├── 04_MATERIAL_CLASE
+│   └── Documentos, guias y recursos publicados por el profesor.
+├── 05_PLANTILLAS
+│   └── Plantillas reutilizables para practicas o entregas.
+├── 06_PRACTICAS
+│   └── Enunciados y material de practicas.
+├── 07_ENTREGAS
+│   └── Zona prevista para entregas si se habilita en una fase futura.
+└── 99_PROFESORADO
+    └── Carpeta privada del profesorado.

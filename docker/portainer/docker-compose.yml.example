@@ -1,0 +1,17 @@
+services:
+  portainer:
+    # Portainer CE para administracion visual de Docker.
+    # Acceso previsto por HTTPS en el puerto 9443.
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - "9443:9443"
+      # Puerto edge/agent opcional. Mantener cerrado en firewall si no se usa.
+      # - "8000:8000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+volumes:
+  portainer_data:

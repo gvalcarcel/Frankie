@@ -1,0 +1,44 @@
+#!/bin/bash
+set -e
+
+# Plantilla de backup para srv-servicios.
+# Revisar antes de ejecutar en produccion.
+# No incluir secretos reales en este archivo.
+#
+# Refleja el esquema real:
+# - dump de PostgreSQL con pg_dump desde el contenedor postgres
+# - copia comprimida de /srv/docker/n8n/data
+# - copia comprimida de /srv/docker/stacks
+# - log en /srv/docker/backups/logs/backup.log
+# - retencion de 30 dias
+#
+# Mejora incluida frente al script inicial:
+# - el dump SQL de PostgreSQL se comprime con gzip.
+
+FECHA="$(date +%Y%m%d_%H%M%S)"
+BASE="/srv/docker/backups"
+RETENCION_DIAS=30
+POSTGRES_CONTAINER="postgres"
+POSTGRES_USER="n8n"
+POSTGRES_DB="n8n"
+
+mkdir -p "$BASE/postgres" "$BASE/n8n" "$BASE/stacks" "$BASE/logs"
+
+echo "==== INICIO $FECHA ====" >> "$BASE/logs/backup.log"
+
+echo "[INFO] Backup PostgreSQL" >> "$BASE/logs/backup.log"
+docker exec "$POSTGRES_CONTAINER" pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB" \
+  | gzip > "$BASE/postgres/postgres_$FECHA.sql.gz"
+
+echo "[INFO] Backup n8n data" >> "$BASE/logs/backup.log"
+tar -czf "$BASE/n8n/n8n_$FECHA.tar.gz" /srv/docker/n8n/data
+
+echo "[INFO] Backup stacks" >> "$BASE/logs/backup.log"
+tar -czf "$BASE/stacks/stacks_$FECHA.tar.gz" /srv/docker/stacks
+
+echo "[INFO] Retencion $RETENCION_DIAS dias" >> "$BASE/logs/backup.log"
+find "$BASE/postgres" -name "*.sql.gz" -mtime +"$RETENCION_DIAS" -delete
+find "$BASE/n8n" -name "*.tar.gz" -mtime +"$RETENCION_DIAS" -delete
+find "$BASE/stacks" -name "*.tar.gz" -mtime +"$RETENCION_DIAS" -delete
+
+echo "==== FIN $FECHA ====" >> "$BASE/logs/backup.log"

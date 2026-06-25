@@ -1,0 +1,62 @@
+[global]
+	# Configuracion base para srv-recursos.
+	# Revisar con testparm antes de usar en produccion.
+	server role = standalone server
+	server string = %h server (Samba, Ubuntu)
+	map to guest = Bad User
+	log file = /var/log/samba/log.%m
+	max log size = 1000
+	disable netbios = Yes
+
+[recursos]
+	# Vista general de recursos docentes. Solo lectura.
+	path = /srv/recursos
+	valid users = alumno profesor
+	read only = Yes
+
+[instalables]
+	# Instaladores comunes. Lectura para alumnado y profesorado.
+	path = /srv/recursos/01_INSTALABLES
+	valid users = alumno profesor
+	read only = Yes
+
+[isos]
+	# ISOs y medios de instalacion.
+	# Alumnado: lectura.
+	# Profesorado: escritura mediante usuario profesor.
+	path = /srv/recursos/02_ISOS
+	valid users = alumno profesor
+	read only = Yes
+	write list = profesor
+	force group = profesorado
+	create mask = 0664
+	directory mask = 02775
+
+[material]
+	# Material de clase publicado para consulta.
+	path = /srv/recursos/04_MATERIAL_CLASE
+	valid users = alumno profesor
+	read only = Yes
+
+[plantillas]
+	# Plantillas para ejercicios y practicas.
+	path = /srv/recursos/05_PLANTILLAS
+	valid users = alumno profesor
+	read only = Yes
+
+[practicas]
+	# Practicas publicadas. Lectura para alumnado.
+	path = /srv/recursos/06_PRACTICAS
+	valid users = alumno profesor
+	read only = Yes
+
+[profesorado]
+	# Area privada de profesorado.
+	# No visible para alumnado.
+	path = /srv/recursos/99_PROFESORADO
+	valid users = profesor
+	read only = No
+	browseable = No
+	force group = profesorado
+	create mask = 0660
+	directory mask = 0770

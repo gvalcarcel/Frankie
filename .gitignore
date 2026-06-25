@@ -1,0 +1,55 @@
+# Entornos reales
+.env
+*.env
+!.env.example
+!*.env.example
+
+# Configuracion local no versionable
+config.local
+*.local
+
+# Backups reales
+backups/real/
+backups/**/*.sql
+backups/**/*.dump
+backups/**/*.tar
+backups/**/*.tar.gz
+backups/**/*.tgz
+backups/**/*.zip
+backups/**/*.7z
+backups/**/*.bak
+backups/**/*.backup
+
+# Dumps y exportaciones
+*.sql
+*.dump
+*.sqlite
+*.db
+
+# Claves y certificados privados
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+*_rsa
+*_ed25519
+
+# Logs y temporales
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.swp
+*~
+
+# Sistemas operativos y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Permitir plantillas
+!*.example

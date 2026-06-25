@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+# Plantilla de backup para srv-recursos.
+# Revisar antes de ejecutar en produccion.
+# No incluir secretos reales en este archivo.
+
+FECHA="$(date +%Y%m%d_%H%M%S)"
+BASE="/srv/backups/recursos"
+
+mkdir -p "$BASE/logs"
+
+echo "==== INICIO $FECHA ====" >> "$BASE/logs/backup.log"
+
+# Ejemplo:
+# tar -czf "$BASE/recursos_$FECHA.tar.gz" /srv/recursos
+# cp -a /etc/samba/smb.conf "$BASE/smb.conf_$FECHA"
+
+echo "==== FIN $FECHA ====" >> "$BASE/logs/backup.log"
