@@ -1,26 +1,48 @@
 # Contributing
 
-## Principios
+## Estado actual del proyecto
 
-- Frankie es un producto software, no una carpeta de scripts.
-- El repositorio es la fuente unica de verdad.
-- Todo cambio debe ser revisable, trazable y documentado.
-- No se deben subir secretos reales.
+Frankie es un repositorio publico, pero no es actualmente un proyecto comunitario abierto.
 
-## Contribuciones humanas
+El repositorio se publica con finalidad documental, educativa y de portfolio tecnico. El codigo, la documentacion y las decisiones tecnicas son visibles publicamente, pero la gestion del proyecto corresponde exclusivamente al propietario del repositorio.
 
-Antes de proponer cambios:
+No se aceptan contribuciones externas no solicitadas por defecto. Las issues, pull requests, propuestas de cambios o solicitudes externas podran cerrarse sin revision si no han sido solicitadas expresamente por el propietario.
 
-1. Leer `README.md`.
-2. Revisar `governance/PROJECT_RULES.md`.
-3. Crear una rama descriptiva.
-4. Hacer cambios pequenos y revisables.
-5. Actualizar documentacion si cambia comportamiento.
-6. Abrir Pull Request.
+## Gobierno del repositorio
+
+El propietario mantiene el control sobre:
+
+- Roadmap.
+- Prioridades.
+- Cambios aceptados.
+- Versiones.
+- Releases.
+- Publicacion de evidencias.
+- Criterios de seguridad.
+
+Las contribuciones futuras podran valorarse si el propietario decide abrir esa posibilidad para un caso concreto.
+
+## Forks
+
+Cualquier fork de Frankie es responsabilidad de quien lo mantenga.
+
+Un fork no representa necesariamente el estado, las decisiones, la seguridad ni la direccion oficial del proyecto original.
+
+## Propuestas externas
+
+Si en el futuro se solicita una colaboracion concreta, cualquier propuesta debera:
+
+1. Estar alineada con el roadmap aprobado por el propietario.
+2. Respetar la arquitectura y las reglas de gobierno del proyecto.
+3. Mantener la documentacion actualizada.
+4. Evitar cambios innecesarios sobre servidores, scripts o configuraciones.
+5. Ser revisable, trazable y limitada en alcance.
 
 ## Contribuciones con IA
 
-Las contribuciones asistidas por IA deben:
+Las contribuciones asistidas por IA solo se consideraran cuando hayan sido solicitadas por el propietario.
+
+En ese caso, deben:
 
 - indicar que han sido generadas o asistidas por IA,
 - no inventar estado de servidores,
@@ -39,6 +61,9 @@ No subir:
 - claves privadas,
 - dumps reales,
 - backups reales,
+- IPs reales o internas no autorizadas,
+- evidencias internas,
+- configuraciones privadas,
 - datos personales innecesarios.
 
 ## Cambios sobre scripts
@@ -53,7 +78,9 @@ Los scripts deben:
 
 ## Pull Requests
 
-Todo PR debe explicar:
+Actualmente los Pull Requests externos no solicitados no se aceptan por defecto.
+
+Si el propietario solicita expresamente un Pull Request, este debe explicar:
 
 - objetivo,
 - alcance,

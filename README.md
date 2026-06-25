@@ -4,6 +4,20 @@ Frankie es una plataforma para administrar, desplegar, documentar, auditar y mon
 
 El proyecto no es solo un servidor ni una coleccion de scripts. Frankie debe funcionar como una plataforma mantenible, versionada y preparada para crecer durante anos como producto software.
 
+## Origin and Purpose
+
+> "No eras el más bonito y te tuvimos que hacer con un megamix de piezas, pero naciste siendo leyenda".
+
+Frankie nace como servidor educativo dentro del Grado Básico en Informática y Comunicaciones del Centro de Formación Somorrostro.
+
+Su origen es humilde y muy real: una máquina construida con recursos hardware limitados, reutilizando componentes tomados de distintos equipos y aprovechando lo que estaba disponible en el centro. Esa limitación no es una debilidad; forma parte de su valor didáctico. Frankie representa una idea muy importante en informática: con criterio técnico, documentación, orden y ganas de aprender, incluso una infraestructura modesta puede convertirse en una plataforma poderosa.
+
+El propósito de Frankie es ambicioso: convertirse en una plataforma real de aprendizaje, automatización, documentación, auditoría y servicios de aula. No se trata únicamente de levantar servicios, sino de construir un entorno donde el alumnado pueda experimentar con redes, servidores, automatización, recursos compartidos, buenas prácticas DevOps y administración de sistemas.
+
+El objetivo principal es ofrecer al alumnado de Grado Básico una infraestructura potente, realista y motivadora. Frankie busca que estos alumnos adquieran competencias técnicas sólidas, ganen confianza y se sientan capaces de trabajar de tú a tú con alumnado de Grado Medio y Grado Superior.
+
+Frankie es, por tanto, una herramienta técnica y también una declaración educativa: aprender haciendo, documentar lo aprendido y demostrar que la calidad profesional no depende solo del hardware disponible, sino de cómo se piensa, se cuida y se evoluciona un proyecto.
+
 ## Descripcion del proyecto
 
 Frankie centraliza conocimiento, procedimientos, plantillas, auditorias, checklists y automatizaciones controladas para infraestructuras Linux de aula.
@@ -131,16 +145,11 @@ Frankie/
 
 ## Como colaborar
 
-Ver [CONTRIBUTING.md](CONTRIBUTING.md).
+Frankie se publica como repositorio publico con finalidad documental, educativa y de portfolio tecnico. Su contenido puede consultarse publicamente, pero el proyecto no funciona actualmente como una comunidad abierta de desarrollo.
 
-Principios basicos:
+No se aceptan contribuciones externas no solicitadas por defecto. Las issues, pull requests, propuestas de cambios o solicitudes externas podran cerrarse sin revision si no han sido solicitadas expresamente por el propietario del repositorio.
 
-- No subir secretos.
-- Trabajar con ramas y Pull Requests.
-- Documentar decisiones.
-- Validar antes de ejecutar.
-- No modificar produccion sin snapshot y rollback.
-- Usar lenguaje tecnico claro.
+La gestion del roadmap, cambios, versiones, releases y prioridades corresponde exclusivamente al propietario del repositorio. Las normas completas estan descritas en [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licencia
 
