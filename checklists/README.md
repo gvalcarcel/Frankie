@@ -2,4 +2,13 @@
 
 Listas de validación para revisar la implantación paso a paso.
 
-Estan pensadas para uso técnico y docente.
+Están pensadas para uso técnico y docente.
+
+## Listas disponibles
+
+- `validacion_srv-servicios.md`
+- `validacion_srv-recursos.md`
+- `validacion_scripts_srv-servicios.md`
+- `validacion_scripts_srv-recursos.md`
+- `restauracion.md`
+- `mantenimiento_servidor.md`

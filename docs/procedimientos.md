@@ -41,3 +41,15 @@ El ultimo comando debe fallar.
 4. Reiniciar una VM cada vez.
 5. Validar servicios.
 6. Documentar IPs nuevas si DHCP cambia.
+
+## Mantenimiento y actualización
+
+El procedimiento completo de mantenimiento, actualización y optimización está documentado en:
+
+- `docs/mantenimiento_servidor.md`
+
+Checklist asociada:
+
+- `checklists/mantenimiento_servidor.md`
+
+Regla operativa: no actualizar ambas VMs a la vez y no ejecutar cambios reales sin snapshot previo.

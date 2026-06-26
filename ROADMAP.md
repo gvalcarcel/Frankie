@@ -71,6 +71,7 @@ Iniciada.
 - Auditoria de `srv-servicios`.
 - Auditoria de `srv-recursos`.
 - Informe de desviaciones.
+- Procedimiento de mantenimiento, actualización y optimización.
 
 ## Fase 4 - Monitorizacion
 

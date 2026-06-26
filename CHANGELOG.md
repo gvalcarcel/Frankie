@@ -2,6 +2,14 @@
 
 Este proyecto sigue Semantic Versioning.
 
+## [Unreleased]
+
+### Added
+
+- Procedimiento de mantenimiento, actualización y optimización del servidor.
+- Checklist operativa para mantenimiento controlado de `srv-servicios` y `srv-recursos`.
+- Informe de mantenimiento real del Paso 6.
+
 ## [0.5.0] - Foundation - 2026-06-25
 
 Primera release interna de fundación del proyecto Frankie.

@@ -9,6 +9,8 @@ Esta carpeta contiene la documentación técnica y operativa del servidor de aul
 - `seguridad.md`: medidas de seguridad aplicadas y pendientes.
 - `incidencias.md`: registro de incidencias.
 - `procedimientos.md`: procedimientos de operación.
+- `mantenimiento_servidor.md`: procedimiento de actualización, optimización y validación posterior.
+- `evidencias/`: resultados de auditorías, mantenimientos y validaciones publicables.
 
 ## Norma
 
