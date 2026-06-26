@@ -45,6 +45,16 @@ temp/
 *.swp
 *~
 
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
 # Sistemas operativos y editores
 .DS_Store
 Thumbs.db

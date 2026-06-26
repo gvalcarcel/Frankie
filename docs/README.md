@@ -11,6 +11,7 @@ Esta carpeta contiene la documentación técnica y operativa del servidor de aul
 - `procedimientos.md`: procedimientos de operación.
 - `mantenimiento_servidor.md`: procedimiento de actualización, optimización y validación posterior.
 - `evidencias/`: resultados de auditorías, mantenimientos y validaciones publicables.
+- `frankie-cli/design.md`: diseño técnico de Frankie CLI.
 
 ## Norma
 

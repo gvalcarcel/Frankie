@@ -186,3 +186,32 @@ Pendiente.
 - Runbooks validados.
 - Acciones sugeridas.
 - Acciones con aprobacion humana.
+
+## v0.6.0 - Frankie CLI Foundation
+
+### Objetivos
+
+- Diseñar e iniciar `Frankie CLI` como interfaz de línea de comandos.
+- Mantener la primera versión en modo solo lectura.
+- Consultar estado, inventario y auditorías sin modificar servidores.
+- Reutilizar los scripts de auditoría existentes cuando sea razonable.
+- Integrar la CLI con `docs/`, `knowledge/` y `checklists/`.
+
+### Estado
+
+Diseño técnico iniciado. No implementado todavía.
+
+### Dependencias
+
+- Documentación actualizada.
+- Evidencias publicables disponibles.
+- Scripts de auditoría estables.
+- Reglas de seguridad y no exposición de secretos.
+
+### Hitos
+
+- Documento de diseño en `docs/frankie-cli/design.md`.
+- Estructura propuesta para `cli/`.
+- Definición de comandos iniciales.
+- Definición de formatos de salida.
+- Criterios de finalización de `v0.6.0`.

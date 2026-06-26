@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "frankie-cli"
+version = "0.6.0"
+description = "Read-only CLI for the Frankie educational infrastructure platform"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Gotzon Valcarcel" }
+]
+dependencies = []
+
+[project.scripts]
+frankie = "frankie.app:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["frankie*"]

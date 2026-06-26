@@ -12,3 +12,4 @@ Están pensadas para uso técnico y docente.
 - `validacion_scripts_srv-recursos.md`
 - `restauracion.md`
 - `mantenimiento_servidor.md`
+- `validacion_frankie_cli.md`

@@ -9,6 +9,8 @@ Este proyecto sigue Semantic Versioning.
 - Procedimiento de mantenimiento, actualización y optimización del servidor.
 - Checklist operativa para mantenimiento controlado de `srv-servicios` y `srv-recursos`.
 - Informe de mantenimiento real del Paso 6.
+- Diseño técnico inicial de `v0.6.0 - Frankie CLI Foundation`.
+- Implementación inicial de Frankie CLI en Python, en modo solo lectura.
 
 ## [0.5.0] - Foundation - 2026-06-25
 
