@@ -66,3 +66,21 @@ INVENTORY_SOURCE_PATHS = (
     "samba/smb.conf.example",
     "samba/estructura-recursos.example.txt",
 )
+
+AUDIT_SOURCE_PATHS = (
+    EVIDENCE_SRV_SERVICIOS,
+    EVIDENCE_SRV_RECURSOS,
+    EVIDENCE_AUDIT_REPORT,
+    "docs/evidencias/frankie-core-v0.6.0/status_mvp_audit.md",
+    "docs/evidencias/frankie-core-v0.6.0/status_mvp_architecture_review.md",
+    "docs/evidencias/frankie-core-v0.6.0/inventory_mvp_audit.md",
+    "docs/evidencias/frankie-core-v0.6.0/inventory_mvp_architecture_review.md",
+    "docs/frankie-core/status.md",
+    "docs/frankie-core/inventory.md",
+    "knowledge/SERVIDORES.md",
+    "knowledge/SERVICIOS.md",
+    "knowledge/DOCKER.md",
+    "knowledge/SAMBA.md",
+    "knowledge/BACKUPS.md",
+    "knowledge/RED.md",
+)

@@ -21,7 +21,7 @@ def run_frankie(*args: str) -> subprocess.CompletedProcess[str]:
 
 class NotImplementedCommandTests(unittest.TestCase):
     def test_future_commands_report_not_implemented(self) -> None:
-        for command in ("audit", "doctor"):
+        for command in ("doctor",):
             with self.subTest(command=command):
                 result = run_frankie(command)
                 self.assertEqual(result.returncode, 0, result.stderr)

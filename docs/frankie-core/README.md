@@ -54,6 +54,7 @@ python -m frankie version
 python -m frankie help
 python -m frankie status
 python -m frankie inventory
+python -m frankie audit
 ```
 
 ### `status`
@@ -76,19 +77,28 @@ Documento específico:
 
 - `docs/frankie-core/inventory.md`
 
+### `audit`
+
+El comando `audit` es el tercer MVP funcional de Frankie Core.
+
+Lee evidencias locales del repositorio y ejecuta checks documentales para generar hallazgos con estado, severidad, evidencias y recomendaciones.
+
+Documento específico:
+
+- `docs/frankie-core/audit.md`
+
 ## Comandos planificados
 
 Estos comandos existen como placeholder, pero no están implementados todavía:
 
 ```bash
-python -m frankie audit
 python -m frankie doctor
 ```
 
 Salida esperada:
 
 ```text
-Command 'audit' is not implemented yet in v0.6.0 foundation.
+Command 'doctor' is not implemented yet in v0.6.0 foundation.
 This command is planned for a future iteration.
 ```
 
@@ -116,6 +126,7 @@ python -m frankie version
 python -m frankie help
 python -m frankie status
 python -m frankie inventory
+python -m frankie audit
 ```
 
 ## Tests

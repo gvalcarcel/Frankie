@@ -10,5 +10,6 @@ def build_parser() -> argparse.ArgumentParser:
         add_help=False,
     )
     parser.add_argument("command", nargs="?")
+    parser.add_argument("--verbose", action="store_true")
     parser.add_argument("-h", "--help", action="store_const", const="help", dest="command")
     return parser
