@@ -223,4 +223,5 @@ Foundation en construcción. No declarar release completada todavía.
 - Frankie Inventory MVP basado en documentación, knowledge base y evidencias locales.
 - Frankie Audit Engine v1 basado en checks, hallazgos, estados y severidades.
 - Frankie Doctor MVP basado en interpretación segura de hallazgos del Audit Engine.
+- Sincronización de evidencia pre-release para diferenciar pendientes históricos de estado actual validado.
 - Criterios de finalización de `v0.6.0`.

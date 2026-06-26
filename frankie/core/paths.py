@@ -39,12 +39,14 @@ EVIDENCE_SRV_SERVICIOS = "docs/evidencias/paso-5-auditorias/auditoria_srv-servic
 EVIDENCE_SRV_RECURSOS = "docs/evidencias/paso-5-auditorias/auditoria_srv-recursos.txt"
 EVIDENCE_AUDIT_REPORT = "docs/evidencias/paso-5-auditorias/informe_auditoria.md"
 EVIDENCE_MAINTENANCE_REPORT = "docs/evidencias/paso-7-mantenimiento/informe_mantenimiento_2026-06-26.md"
+EVIDENCE_PRE_RELEASE_LIVE_CHECK = "docs/evidencias/frankie-core-v0.6.0/pre_release_live_evidence_check.md"
 
 STATUS_SOURCE_PATHS = (
     EVIDENCE_SRV_SERVICIOS,
     EVIDENCE_SRV_RECURSOS,
     EVIDENCE_AUDIT_REPORT,
     EVIDENCE_MAINTENANCE_REPORT,
+    EVIDENCE_PRE_RELEASE_LIVE_CHECK,
     "knowledge/SERVIDORES.md",
     "knowledge/SERVICIOS.md",
     "knowledge/DOCKER.md",
@@ -66,6 +68,7 @@ INVENTORY_SOURCE_PATHS = (
     EVIDENCE_SRV_RECURSOS,
     EVIDENCE_AUDIT_REPORT,
     EVIDENCE_MAINTENANCE_REPORT,
+    EVIDENCE_PRE_RELEASE_LIVE_CHECK,
     "samba/smb.conf.example",
     "samba/estructura-recursos.example.txt",
 )
@@ -75,6 +78,7 @@ AUDIT_SOURCE_PATHS = (
     EVIDENCE_SRV_RECURSOS,
     EVIDENCE_AUDIT_REPORT,
     EVIDENCE_MAINTENANCE_REPORT,
+    EVIDENCE_PRE_RELEASE_LIVE_CHECK,
     "docs/evidencias/frankie-core-v0.6.0/status_mvp_audit.md",
     "docs/evidencias/frankie-core-v0.6.0/status_mvp_architecture_review.md",
     "docs/evidencias/frankie-core-v0.6.0/inventory_mvp_audit.md",

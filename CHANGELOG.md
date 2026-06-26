@@ -36,6 +36,9 @@ Este proyecto sigue Semantic Versioning.
 - Interpretación de hallazgos del Audit Engine en forma de diagnostico asistido.
 - Explicación de problemas, impacto probable y pasos seguros.
 - Mantenimiento de modo solo lectura y sin reparación en el comando `doctor`.
+- Sincronización de Frankie Core con evidencia pre-release de SMB validado.
+- Priorización de evidencia actual sobre pendiente histórico en `status`, `audit` y `doctor`.
+- Auditoría documental de sincronización de evidencia SMB previa a `v0.6.0`.
 
 ## [0.5.0] - Foundation - 2026-06-25
 

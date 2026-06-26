@@ -84,6 +84,8 @@ El comando `audit` es el tercer MVP funcional de Frankie Core.
 
 Lee evidencias locales del repositorio y ejecuta checks documentales para generar hallazgos con estado, severidad, evidencias y recomendaciones.
 
+Cuando existe evidencia posterior que resuelve un pendiente historico, como la validacion SMB pre-release, el motor conserva la trazabilidad y usa la evidencia mas reciente como estado actual.
+
 Documento específico:
 
 - `docs/frankie-core/audit.md`
@@ -93,6 +95,8 @@ Documento específico:
 El comando `doctor` es el cuarto MVP funcional de Frankie Core.
 
 Interpreta hallazgos del Audit Engine y los convierte en diagnostico inicial, impacto probable, pasos seguros y cosas que todavia no deben hacerse.
+
+Doctor se centra en hallazgos no satisfactorios; si Audit Engine marca SMB como validado, no lo presenta como accion pendiente.
 
 Documento específico:
 

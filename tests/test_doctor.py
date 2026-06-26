@@ -53,6 +53,13 @@ class DoctorCommandTests(unittest.TestCase):
         self.assertIn("Do not", result.stdout)
         self.assertIn("Overall doctor result: ACTIONS_RECOMMENDED", result.stdout)
 
+    def test_doctor_does_not_present_validated_smb_as_pending_action(self) -> None:
+        result = run_frankie("doctor")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("AUD-SERVICES-PORTAINER-001", result.stdout)
+        self.assertNotIn("AUD-SAMBA-001", result.stdout)
+        self.assertNotIn("SMB validation from a Windows client is still pending", result.stdout)
+
     def test_doctor_verbose_shows_extra_context(self) -> None:
         result = run_frankie("doctor", "--verbose")
         self.assertEqual(result.returncode, 0, result.stderr)

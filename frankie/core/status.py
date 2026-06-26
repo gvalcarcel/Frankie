@@ -5,6 +5,7 @@ from frankie.core.models import StatusItem, StatusReport, StatusSection
 from frankie.core.paths import (
     EVIDENCE_AUDIT_REPORT,
     EVIDENCE_MAINTENANCE_REPORT,
+    EVIDENCE_PRE_RELEASE_LIVE_CHECK,
     EVIDENCE_SRV_RECURSOS,
     EVIDENCE_SRV_SERVICIOS,
     FrankiePaths,
@@ -15,7 +16,8 @@ def build_status_report(paths: FrankiePaths | None = None) -> StatusReport:
     repo_paths = paths or FrankiePaths.discover()
     audit_report = repo_paths.read_text(EVIDENCE_AUDIT_REPORT)
     maintenance_report = repo_paths.read_text(EVIDENCE_MAINTENANCE_REPORT)
-    evidence_text = _normalize("\n".join(filter(None, (audit_report, maintenance_report))))
+    pre_release_report = repo_paths.read_text(EVIDENCE_PRE_RELEASE_LIVE_CHECK)
+    evidence_text = _normalize("\n".join(filter(None, (audit_report, maintenance_report, pre_release_report))))
 
     servicios_evidence = _evidence_state(repo_paths, EVIDENCE_SRV_SERVICIOS)
     recursos_evidence = _evidence_state(repo_paths, EVIDENCE_SRV_RECURSOS)
@@ -116,12 +118,16 @@ def _portainer_state(report: str) -> str:
 
 
 def _samba_state(report: str, recursos_evidence_state: str) -> str:
+    if _has_validated_pre_release_smb(report):
+        return _ok_if_evidence(recursos_evidence_state)
     if _has_pending_windows_smb_validation(report):
         return "WARNING"
     return _ok_if_evidence(recursos_evidence_state)
 
 
 def _windows_smb_validation_state(report: str) -> str:
+    if _has_validated_pre_release_smb(report):
+        return "OK"
     if _has_pending_windows_smb_validation(report):
         return "PENDING"
     return "UNKNOWN"
@@ -134,6 +140,16 @@ def _has_pending_windows_smb_validation(report: str) -> bool:
         or ("validacion smb" in report and "pendiente" in report)
         or ("validación smb" in report and "pendiente" in report)
     )
+
+
+def _has_validated_pre_release_smb(report: str) -> bool:
+    validation_terms = (
+        "smb validation: ok",
+        "samba/smb validation: validated",
+        "conexion smb correcta",
+        "conexiÃ³n smb correcta",
+    )
+    return any(term in report for term in validation_terms)
 
 
 def _postgres_exposure_state(report: str) -> str:

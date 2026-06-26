@@ -15,6 +15,7 @@ docs/evidencias/paso-5-auditorias/auditoria_srv-servicios.txt
 docs/evidencias/paso-5-auditorias/auditoria_srv-recursos.txt
 docs/evidencias/paso-5-auditorias/informe_auditoria.md
 docs/evidencias/paso-7-mantenimiento/informe_mantenimiento_2026-06-26.md
+docs/evidencias/frankie-core-v0.6.0/pre_release_live_evidence_check.md
 knowledge/SERVIDORES.md
 knowledge/SERVICIOS.md
 knowledge/DOCKER.md
@@ -24,6 +25,8 @@ docs/arquitectura.md
 ```
 
 Si alguna fuente falta, el comando no debe fallar. Debe informar `UNKNOWN` o `MISSING EVIDENCE`.
+
+Si una evidencia historica documenta una validacion pendiente y una evidencia posterior la valida correctamente, Frankie Core conserva el historial pero usa la evidencia mas reciente como estado actual documentado.
 
 ## Qué no hace
 
@@ -65,14 +68,14 @@ Physical server:
 
 Virtual machines:
   srv-servicios................. OK
-  srv-recursos.................. WARNING
+  srv-recursos.................. OK
 
 Core services:
   Docker........................ OK
   Portainer..................... WARNING
   PostgreSQL.................... OK
   n8n........................... OK
-  Samba......................... WARNING
+  Samba......................... OK
 
 Security:
   UFW........................... OK
@@ -87,7 +90,7 @@ Evidence:
   srv-servicios audit........... OK
   srv-recursos audit............ OK
   Audit report.................. OK
-  Windows/SMB validation........ PENDING
+  Windows/SMB validation........ OK
 
 Overall status: WARNING
 ```
@@ -96,7 +99,7 @@ Overall status: WARNING
 
 - No realiza parsing avanzado.
 - No consulta estado en vivo.
-- No valida acceso SMB real desde Windows.
+- No valida acceso SMB real desde Windows por si mismo; solo interpreta evidencias documentadas.
 - No calcula antigüedad de evidencias.
 - No emite JSON ni Markdown.
 - No diferencia todavía entre warning operativo y warning documental.

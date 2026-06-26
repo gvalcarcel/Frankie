@@ -8,7 +8,13 @@ import unittest
 from pathlib import Path
 
 from frankie.audit.audit_engine import run_audit
-from frankie.core.paths import EVIDENCE_AUDIT_REPORT, EVIDENCE_SRV_RECURSOS, EVIDENCE_SRV_SERVICIOS, FrankiePaths
+from frankie.core.paths import (
+    EVIDENCE_AUDIT_REPORT,
+    EVIDENCE_PRE_RELEASE_LIVE_CHECK,
+    EVIDENCE_SRV_RECURSOS,
+    EVIDENCE_SRV_SERVICIOS,
+    FrankiePaths,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -97,6 +103,46 @@ class AuditCommandTests(unittest.TestCase):
             self.assertIn("PASS", statuses)
             self.assertIn("WARN", statuses)
             self.assertIn("PENDING", statuses)
+            self.assertEqual(report.overall_result, "WARN")
+
+    def test_smb_pre_release_evidence_resolves_historical_pending_status(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write(root, EVIDENCE_SRV_SERVICIOS, "5432 no escucha en el host")
+            self._write(root, EVIDENCE_SRV_RECURSOS, "Samba activo")
+            self._write(
+                root,
+                EVIDENCE_AUDIT_REPORT,
+                "\n".join(
+                    [
+                        "apto para dry-run",
+                        "Portainer publica 8000",
+                        "falta validar Samba desde cliente Windows",
+                        "PostgreSQL no expone 5432",
+                    ]
+                ),
+            )
+            self._write(
+                root,
+                EVIDENCE_PRE_RELEASE_LIVE_CHECK,
+                "\n".join(
+                    [
+                        "SMB validation: OK",
+                        "Samba/SMB validation: validated",
+                        "No se modifico Samba durante la validacion.",
+                    ]
+                ),
+            )
+            self._write(root, "docs/frankie-core/status.md", "read-only no ejecuta comandos externos")
+            self._write(root, "docs/frankie-core/inventory.md", "Frankie Core servidor fÃ­sico repositorio Frankie")
+
+            report = run_audit(FrankiePaths(root))
+            findings = {finding.id: finding for finding in report.findings}
+
+            self.assertEqual(findings["AUD-SAMBA-001"].status, "PASS")
+            self.assertEqual(findings["AUD-SAMBA-001"].severity, "INFO")
+            self.assertIn(EVIDENCE_PRE_RELEASE_LIVE_CHECK, findings["AUD-SAMBA-001"].evidence)
+            self.assertEqual(findings["AUD-SERVICES-PORTAINER-001"].status, "WARN")
             self.assertEqual(report.overall_result, "WARN")
 
     def test_audit_flow_has_no_subprocess_or_write_operations(self) -> None:

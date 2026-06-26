@@ -61,6 +61,8 @@ En esta version se apoya en:
 - `docs/frankie-core/inventory.md`
 - knowledge base del repositorio
 
+Si Audit Engine marca un check como `PASS` gracias a evidencia posterior, Doctor no lo presenta como accion pendiente. Esto ocurre con SMB: historicamente estaba pendiente, pero la evidencia pre-release valida la conexion desde cliente real, por lo que Doctor se centra en el hallazgo activo de Portainer puerto `8000`.
+
 ## Que no hace
 
 `doctor` no realiza ninguna de estas acciones:
@@ -119,7 +121,7 @@ Scope:
 
 Diagnosis summary:
   Audit result.................. WARN
-  Issues reviewed............... 2
+  Issues reviewed............... 1
   Critical issues............... 0
   Safe to continue.............. yes
 

@@ -2,7 +2,13 @@ from __future__ import annotations
 
 from frankie.audit.rules import AUDIT_CHECKS
 from frankie.core.models import AuditFinding
-from frankie.core.paths import EVIDENCE_AUDIT_REPORT, EVIDENCE_SRV_RECURSOS, EVIDENCE_SRV_SERVICIOS, FrankiePaths
+from frankie.core.paths import (
+    EVIDENCE_AUDIT_REPORT,
+    EVIDENCE_PRE_RELEASE_LIVE_CHECK,
+    EVIDENCE_SRV_RECURSOS,
+    EVIDENCE_SRV_SERVICIOS,
+    FrankiePaths,
+)
 
 
 REQUIRED_STEP_5_EVIDENCE = (
@@ -16,12 +22,14 @@ def run_checks(paths: FrankiePaths, sources_text: str) -> tuple[AuditFinding, ..
     checks = {check.id: check for check in AUDIT_CHECKS}
     report_text = paths.read_text(EVIDENCE_AUDIT_REPORT)
     report_normalized = (report_text or "").lower()
+    pre_release_text = paths.read_text(EVIDENCE_PRE_RELEASE_LIVE_CHECK)
+    pre_release_normalized = (pre_release_text or "").lower()
 
     return (
         _evidence_files_available(checks["AUD-EVIDENCE-001"], paths),
         _audit_report_dry_run(checks["AUD-REPORT-001"], report_text),
         _portainer_deviation(checks["AUD-SERVICES-PORTAINER-001"], report_normalized),
-        _smb_validation_pending(checks["AUD-SAMBA-001"], report_normalized),
+        _smb_validation_state(checks["AUD-SAMBA-001"], report_normalized, pre_release_normalized),
         _postgres_not_exposed(checks["AUD-POSTGRES-001"], sources_text),
         _core_read_only(checks["AUD-CORE-READONLY-001"], sources_text),
         _concepts_distinction(checks["AUD-CONCEPTS-001"], sources_text),
@@ -123,7 +131,20 @@ def _portainer_deviation(check, report_text: str) -> AuditFinding:
     )
 
 
-def _smb_validation_pending(check, report_text: str) -> AuditFinding:
+def _smb_validation_state(check, report_text: str, pre_release_text: str) -> AuditFinding:
+    if _has_validated_pre_release_smb(pre_release_text):
+        return AuditFinding(
+            id=check.id,
+            name=check.name,
+            description=check.description,
+            category=check.category,
+            status="PASS",
+            severity="INFO",
+            evidence=(EVIDENCE_AUDIT_REPORT, EVIDENCE_PRE_RELEASE_LIVE_CHECK),
+            message="Historical SMB validation was pending, but pre-release evidence validates SMB from a real client.",
+            recommendation="Keep the historical pending evidence for traceability and use the pre-release validation as the current documented state.",
+        )
+
     windows_terms = ("windows", "smb")
     pending_terms = ("pendiente", "falta validar", "validacion smb desde cliente real pendiente")
     if any(term in report_text for term in windows_terms) and any(term in report_text for term in pending_terms):
@@ -148,7 +169,17 @@ def _smb_validation_pending(check, report_text: str) -> AuditFinding:
         evidence=(EVIDENCE_AUDIT_REPORT,),
         message="No explicit SMB Windows validation decision was found.",
         recommendation="Document whether Windows/SMB client validation is complete or still pending.",
+        )
+
+
+def _has_validated_pre_release_smb(pre_release_text: str) -> bool:
+    validation_terms = (
+        "smb validation: ok",
+        "samba/smb validation: validated",
+        "conexion smb correcta",
+        "conexiÃ³n smb correcta",
     )
+    return any(term in pre_release_text for term in validation_terms)
 
 
 def _postgres_not_exposed(check, sources_text: str) -> AuditFinding:

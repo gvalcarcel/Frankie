@@ -41,6 +41,7 @@ El comando usa fuentes locales de solo lectura:
 - `docs/evidencias/paso-5-auditorias/auditoria_srv-servicios.txt`
 - `docs/evidencias/paso-5-auditorias/auditoria_srv-recursos.txt`
 - `docs/evidencias/paso-5-auditorias/informe_auditoria.md`
+- `docs/evidencias/frankie-core-v0.6.0/pre_release_live_evidence_check.md`
 - `docs/evidencias/frankie-core-v0.6.0/status_mvp_audit.md`
 - `docs/evidencias/frankie-core-v0.6.0/status_mvp_architecture_review.md`
 - `docs/evidencias/frankie-core-v0.6.0/inventory_mvp_audit.md`
@@ -55,6 +56,8 @@ El comando usa fuentes locales de solo lectura:
 - `knowledge/RED.md`
 
 Si alguna fuente falta, el comando no debe fallar. La comprobación afectada se marcará como `UNKNOWN` o `MISSING_EVIDENCE`.
+
+El motor conserva la evidencia histórica y prioriza evidencias posteriores cuando resuelven un pendiente anterior. Por ejemplo, la validación SMB aparecía como pendiente en el Paso 5, pero la revisión pre-release documentó `SMB validation: OK`, por lo que el estado actual de `AUD-SAMBA-001` pasa a `PASS`.
 
 ## Qué no hace
 
@@ -102,7 +105,7 @@ El MVP incluye estas comprobaciones:
 - `AUD-EVIDENCE-001`: evidencias de auditoría disponibles.
 - `AUD-REPORT-001`: informe apto para dry-run.
 - `AUD-SERVICES-PORTAINER-001`: desviación conocida de Portainer en puerto 8000.
-- `AUD-SAMBA-001`: validación SMB desde Windows pendiente.
+- `AUD-SAMBA-001`: validación SMB desde cliente real; históricamente pendiente, validada por evidencia pre-release.
 - `AUD-POSTGRES-001`: PostgreSQL sin exposición externa en 5432.
 - `AUD-CORE-READONLY-001`: modo solo lectura de Frankie Core.
 - `AUD-CONCEPTS-001`: distinción Frankie / Frankie Core / Repositorio.
@@ -130,9 +133,9 @@ Scope:
 
 Summary:
   Checks total.................. 7
-  PASS.......................... 5
+  PASS.......................... 6
   WARN.......................... 1
-  PENDING....................... 1
+  PENDING....................... 0
   UNKNOWN....................... 0
   MISSING_EVIDENCE.............. 0
   FAIL.......................... 0
@@ -148,6 +151,15 @@ Findings:
     docs/evidencias/paso-5-auditorias/informe_auditoria.md
   Recommendation:
     Revisar si el puerto 8000 debe mantenerse publicado o eliminarse del compose si no es necesario.
+
+[PASS] AUD-SAMBA-001
+  SMB Windows client validation
+  Severity: INFO
+  Message:
+    Historical SMB validation was pending, but pre-release evidence validates SMB from a real client.
+  Evidence:
+    docs/evidencias/paso-5-auditorias/informe_auditoria.md
+    docs/evidencias/frankie-core-v0.6.0/pre_release_live_evidence_check.md
 
 Overall audit result: WARN
 ```
@@ -184,7 +196,7 @@ Si existe al menos un `WARN` y ningún `FAIL`, el resultado global será `WARN`.
 - No valida el estado actual de Proxmox.
 - No consulta servicios reales.
 - No comprueba puertos en tiempo real.
-- No valida permisos Samba desde Windows.
+- No valida permisos Samba desde Windows por sí mismo; interpreta la evidencia documentada por revisiones reales.
 - No repara hallazgos.
 - No genera ficheros de salida.
 - La evaluación se basa en evidencias documentadas.

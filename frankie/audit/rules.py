@@ -25,7 +25,7 @@ AUDIT_CHECKS = (
     AuditCheck(
         id="AUD-SAMBA-001",
         name="SMB Windows client validation",
-        description="Check whether Samba validation from a real Windows or SMB client is still pending.",
+        description="Check whether Samba validation from a real Windows or SMB client is pending or resolved by newer evidence.",
         category="Samba",
     ),
     AuditCheck(

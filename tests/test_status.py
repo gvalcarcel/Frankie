@@ -9,6 +9,7 @@ from pathlib import Path
 from frankie.core.paths import (
     EVIDENCE_AUDIT_REPORT,
     EVIDENCE_MAINTENANCE_REPORT,
+    EVIDENCE_PRE_RELEASE_LIVE_CHECK,
     EVIDENCE_SRV_RECURSOS,
     EVIDENCE_SRV_SERVICIOS,
     FrankiePaths,
@@ -83,6 +84,43 @@ class StatusCommandTests(unittest.TestCase):
             self.assertEqual(flattened["Windows/SMB validation"], "PENDING")
             self.assertEqual(flattened["PostgreSQL exposure"], "OK")
             self.assertEqual(flattened["srv-recursos backups"], "OK")
+            self.assertEqual(report.overall_status, "WARNING")
+
+    def test_pre_release_smb_validation_overrides_historical_pending_state(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write(root, EVIDENCE_SRV_SERVICIOS, "OK: Docker activo\n5432 no escucha en el host\n")
+            self._write(root, EVIDENCE_SRV_RECURSOS, "OK: Samba activo\n")
+            self._write(
+                root,
+                EVIDENCE_AUDIT_REPORT,
+                "\n".join(
+                    [
+                        "apto para dry-run",
+                        "Portainer publica 8000",
+                        "falta validar Samba desde un cliente Windows",
+                        "PostgreSQL no expone 5432",
+                    ]
+                ),
+            )
+            self._write(
+                root,
+                EVIDENCE_PRE_RELEASE_LIVE_CHECK,
+                "\n".join(
+                    [
+                        "SMB validation: OK",
+                        "Samba/SMB validation: validated",
+                    ]
+                ),
+            )
+            self._write(root, "docs/arquitectura.md", "Frankie architecture")
+
+            report = build_status_report(FrankiePaths(root))
+            flattened = {item.name: item.state for section in report.sections for item in section.items}
+
+            self.assertEqual(flattened["Portainer"], "WARNING")
+            self.assertEqual(flattened["Samba"], "OK")
+            self.assertEqual(flattened["Windows/SMB validation"], "OK")
             self.assertEqual(report.overall_status, "WARNING")
 
     def _write(self, root: Path, relative_path: str, content: str) -> None:
