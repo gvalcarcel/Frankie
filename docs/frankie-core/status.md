@@ -14,6 +14,7 @@ El comando usa fuentes locales de solo lectura:
 docs/evidencias/paso-5-auditorias/auditoria_srv-servicios.txt
 docs/evidencias/paso-5-auditorias/auditoria_srv-recursos.txt
 docs/evidencias/paso-5-auditorias/informe_auditoria.md
+docs/evidencias/paso-7-mantenimiento/informe_mantenimiento_2026-06-26.md
 knowledge/SERVIDORES.md
 knowledge/SERVICIOS.md
 knowledge/DOCKER.md
@@ -80,7 +81,7 @@ Security:
 
 Backups:
   srv-servicios backups......... OK
-  srv-recursos backups.......... UNKNOWN
+  srv-recursos backups.......... OK
 
 Evidence:
   srv-servicios audit........... OK

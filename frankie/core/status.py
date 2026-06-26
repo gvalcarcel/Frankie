@@ -4,6 +4,7 @@ from frankie.core.constants import MODE, VERSION
 from frankie.core.models import StatusItem, StatusReport, StatusSection
 from frankie.core.paths import (
     EVIDENCE_AUDIT_REPORT,
+    EVIDENCE_MAINTENANCE_REPORT,
     EVIDENCE_SRV_RECURSOS,
     EVIDENCE_SRV_SERVICIOS,
     FrankiePaths,
@@ -13,17 +14,18 @@ from frankie.core.paths import (
 def build_status_report(paths: FrankiePaths | None = None) -> StatusReport:
     repo_paths = paths or FrankiePaths.discover()
     audit_report = repo_paths.read_text(EVIDENCE_AUDIT_REPORT)
-    audit_report_normalized = _normalize(audit_report or "")
+    maintenance_report = repo_paths.read_text(EVIDENCE_MAINTENANCE_REPORT)
+    evidence_text = _normalize("\n".join(filter(None, (audit_report, maintenance_report))))
 
     servicios_evidence = _evidence_state(repo_paths, EVIDENCE_SRV_SERVICIOS)
     recursos_evidence = _evidence_state(repo_paths, EVIDENCE_SRV_RECURSOS)
     report_evidence = _evidence_state(repo_paths, EVIDENCE_AUDIT_REPORT)
 
-    audit_report_state = _audit_report_state(audit_report_normalized, report_evidence.state)
-    portainer_state = _portainer_state(audit_report_normalized)
-    samba_state = _samba_state(audit_report_normalized, recursos_evidence.state)
-    smb_validation_state = _windows_smb_validation_state(audit_report_normalized)
-    postgres_exposure_state = _postgres_exposure_state(audit_report_normalized)
+    audit_report_state = _audit_report_state(evidence_text, report_evidence.state)
+    portainer_state = _portainer_state(evidence_text)
+    samba_state = _samba_state(evidence_text, recursos_evidence.state)
+    smb_validation_state = _windows_smb_validation_state(evidence_text)
+    postgres_exposure_state = _postgres_exposure_state(evidence_text)
 
     sections = (
         StatusSection(
@@ -60,8 +62,8 @@ def build_status_report(paths: FrankiePaths | None = None) -> StatusReport:
         StatusSection(
             "Backups",
             (
-                StatusItem("srv-servicios backups", _services_backup_state(audit_report_normalized)),
-                StatusItem("srv-recursos backups", "UNKNOWN"),
+                StatusItem("srv-servicios backups", _services_backup_state(evidence_text)),
+                StatusItem("srv-recursos backups", _resources_backup_state(evidence_text)),
             ),
         ),
         StatusSection(
@@ -144,6 +146,18 @@ def _postgres_exposure_state(report: str) -> str:
 
 def _services_backup_state(report: str) -> str:
     if "backups existentes" in report or "cron diario" in report or "cron 02:00" in report:
+        return "OK"
+    return "UNKNOWN"
+
+
+def _resources_backup_state(report: str) -> str:
+    evidence_terms = (
+        "/srv/scripts/backup-recursos.sh",
+        "/srv/backups/recursos",
+        "backup de srv-recursos instalado",
+        "cron diario de backup de recursos",
+    )
+    if any(term in report for term in evidence_terms):
         return "OK"
     return "UNKNOWN"
 

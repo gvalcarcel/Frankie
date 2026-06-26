@@ -8,6 +8,7 @@ from pathlib import Path
 
 from frankie.core.paths import (
     EVIDENCE_AUDIT_REPORT,
+    EVIDENCE_MAINTENANCE_REPORT,
     EVIDENCE_SRV_RECURSOS,
     EVIDENCE_SRV_SERVICIOS,
     FrankiePaths,
@@ -65,6 +66,11 @@ class StatusCommandTests(unittest.TestCase):
                 ),
             )
             self._write(root, "docs/arquitectura.md", "Frankie architecture")
+            self._write(
+                root,
+                EVIDENCE_MAINTENANCE_REPORT,
+                "Backup de srv-recursos instalado en /srv/scripts/backup-recursos.sh y /srv/backups/recursos",
+            )
 
             report = build_status_report(FrankiePaths(root))
             flattened = {item.name: item.state for section in report.sections for item in section.items}
@@ -76,6 +82,7 @@ class StatusCommandTests(unittest.TestCase):
             self.assertEqual(flattened["Samba"], "WARNING")
             self.assertEqual(flattened["Windows/SMB validation"], "PENDING")
             self.assertEqual(flattened["PostgreSQL exposure"], "OK")
+            self.assertEqual(flattened["srv-recursos backups"], "OK")
             self.assertEqual(report.overall_status, "WARNING")
 
     def _write(self, root: Path, relative_path: str, content: str) -> None:

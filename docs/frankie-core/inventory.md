@@ -52,6 +52,7 @@ El comando usa como fuentes de solo lectura:
 - `docs/evidencias/paso-5-auditorias/auditoria_srv-servicios.txt`
 - `docs/evidencias/paso-5-auditorias/auditoria_srv-recursos.txt`
 - `docs/evidencias/paso-5-auditorias/informe_auditoria.md`
+- `docs/evidencias/paso-7-mantenimiento/informe_mantenimiento_2026-06-26.md`
 - `samba/smb.conf.example`
 - `samba/estructura-recursos.example.txt`
 
@@ -71,6 +72,7 @@ El inventario mínimo incluye:
 - Ruta `/srv/recursos`.
 - Comparticiones documentadas.
 - Elementos de seguridad.
+- Evidencia de backups de `srv-servicios` y `srv-recursos`.
 - Evidencias disponibles.
 
 ## Qué no hace

@@ -58,6 +58,7 @@ class InventoryCommandTests(unittest.TestCase):
             "Samba",
             "aula-network",
             "/srv/recursos",
+            "srv-recursos backup evidence",
             "PostgreSQL",
             "not exposed on host port 5432",
         ):

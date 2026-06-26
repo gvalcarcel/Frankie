@@ -94,7 +94,11 @@ def build_inventory_report(paths: FrankiePaths | None = None) -> InventoryReport
                         "known",
                         _state_for_any(("backup", "backups"), sources),
                     ),
-                    InventoryItem("srv-recursos backup evidence", "unknown or pending", "UNKNOWN"),
+                    InventoryItem(
+                        "srv-recursos backup evidence",
+                        "known",
+                        _state_for_any(("/srv/backups/recursos", "/srv/scripts/backup-recursos.sh"), sources),
+                    ),
                 ),
             ),
             InventorySection(
