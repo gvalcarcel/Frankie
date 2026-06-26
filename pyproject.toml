@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "frankie-core"
+version = "0.6.0.dev0"
+description = "Frankie Core foundation and read-only CLI interface"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Gotzon Valcarcel" }
+]
+dependencies = []
+
+[project.scripts]
+frankie = "frankie.app:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["frankie*"]

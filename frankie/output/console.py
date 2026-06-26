@@ -1,0 +1,1 @@
+"""Future console output adapter."""

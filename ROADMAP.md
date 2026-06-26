@@ -187,19 +187,20 @@ Pendiente.
 - Acciones sugeridas.
 - Acciones con aprobacion humana.
 
-## v0.6.0 - Frankie CLI Foundation
+## v0.6.0 - Frankie Core / CLI Foundation
 
 ### Objetivos
 
-- Diseñar e iniciar `Frankie CLI` como interfaz de línea de comandos.
+- Diseñar e iniciar `Frankie Core` como paquete raíz de la plataforma.
+- Mantener `Frankie CLI` como una interfaz dentro del núcleo.
 - Mantener la primera versión en modo solo lectura.
-- Consultar estado, inventario y auditorías sin modificar servidores.
-- Reutilizar los scripts de auditoría existentes cuando sea razonable.
+- Implementar únicamente `version` y `help`.
+- Preparar `status`, `inventory`, `audit` y `doctor` sin implementarlos todavía.
 - Integrar la CLI con `docs/`, `knowledge/` y `checklists/`.
 
 ### Estado
 
-Diseño técnico iniciado. No implementado todavía.
+Foundation en construcción. No declarar release completada todavía.
 
 ### Dependencias
 
@@ -211,7 +212,8 @@ Diseño técnico iniciado. No implementado todavía.
 ### Hitos
 
 - Documento de diseño en `docs/frankie-cli/design.md`.
-- Estructura propuesta para `cli/`.
+- Documento de Frankie Core en `docs/frankie-core/README.md`.
+- Estructura base del paquete raíz `frankie/`.
 - Definición de comandos iniciales.
-- Definición de formatos de salida.
+- Tests básicos de foundation.
 - Criterios de finalización de `v0.6.0`.

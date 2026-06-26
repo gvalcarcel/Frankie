@@ -11,6 +11,11 @@ Este proyecto sigue Semantic Versioning.
 - Informe de mantenimiento real del Paso 6.
 - Diseño técnico inicial de `v0.6.0 - Frankie CLI Foundation`.
 - Implementación inicial de Frankie CLI en Python, en modo solo lectura.
+- Creación de Frankie Core como paquete raíz `frankie/`.
+- Esqueleto CLI inicial dentro de Frankie Core.
+- Comandos `version` y `help` funcionales.
+- Comandos futuros `status`, `inventory`, `audit` y `doctor` definidos como no implementados.
+- Garantía de solo lectura para la foundation `0.6.0-dev`.
 
 ## [0.5.0] - Foundation - 2026-06-25
 

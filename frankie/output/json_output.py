@@ -1,0 +1,1 @@
+"""Future JSON output adapter."""

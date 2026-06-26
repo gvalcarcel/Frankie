@@ -1,5 +1,29 @@
 # Frankie CLI - Diseño técnico
 
+## Nota de decisión arquitectónica
+
+Después del diseño inicial de Frankie CLI se toma una decisión arquitectónica posterior: Frankie no debe estructurarse como una herramienta compuesta únicamente por una CLI.
+
+La estructura principal pasa a basarse en un paquete raíz:
+
+```text
+frankie/
+```
+
+La CLI será una interfaz dentro de Frankie Core, no el proyecto completo.
+
+Esta decisión prepara el crecimiento futuro hacia varias interfaces y capacidades:
+
+- CLI.
+- Dashboard.
+- API.
+- Monitorización.
+- Inventario.
+- Knowledge base.
+- Asistencia IA.
+
+La estructura inicial `cli/` queda como antecedente de diseño, pero la dirección arquitectónica para `v0.6.0 - Frankie Core / CLI Foundation` es el paquete raíz `frankie/`.
+
 ## Versión objetivo
 
 `v0.6.0 - Frankie CLI Foundation`

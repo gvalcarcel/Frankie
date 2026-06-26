@@ -1,0 +1,1 @@
+"""Future Markdown output adapter."""
