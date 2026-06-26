@@ -61,7 +61,7 @@ class AuditCommandTests(unittest.TestCase):
         result = run_frankie("help")
         self.assertIn("frankie audit", result.stdout)
         self.assertIn("Planned commands:", result.stdout)
-        self.assertNotIn("  frankie audit\n  frankie doctor", result.stdout)
+        self.assertIn("  none", result.stdout)
 
     def test_missing_evidence_does_not_break_audit(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

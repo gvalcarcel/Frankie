@@ -20,16 +20,17 @@ def run_frankie(*args: str) -> subprocess.CompletedProcess[str]:
 
 
 class NotImplementedCommandTests(unittest.TestCase):
-    def test_future_commands_report_not_implemented(self) -> None:
-        for command in ("doctor",):
+    def test_no_foundation_commands_remain_as_placeholders(self) -> None:
+        result = run_frankie("help")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("Planned commands:", result.stdout)
+        self.assertIn("  none", result.stdout)
+
+        for command in ("status", "inventory", "audit", "doctor"):
             with self.subTest(command=command):
-                result = run_frankie(command)
-                self.assertEqual(result.returncode, 0, result.stderr)
-                self.assertIn(
-                    f"Command '{command}' is not implemented yet in v0.6.0 foundation.",
-                    result.stdout,
-                )
-                self.assertIn("planned for a future iteration", result.stdout)
+                command_result = run_frankie(command)
+                self.assertEqual(command_result.returncode, 0, command_result.stderr)
+                self.assertNotIn("is not implemented yet", command_result.stdout)
 
     def test_unknown_command_returns_clear_error(self) -> None:
         result = run_frankie("unknown")

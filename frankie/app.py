@@ -28,7 +28,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         print("Run 'frankie help' to see available commands.", file=sys.stderr)
         return 2
 
-    if command == "audit":
+    if command in {"audit", "doctor"}:
         print(handler(verbose=args.verbose))
     else:
         print(handler())

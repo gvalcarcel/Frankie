@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from frankie.core.models import AuditReport, InventoryReport, StatusReport
+from frankie.core.models import AuditReport, DoctorReport, InventoryReport, StatusReport
 
 
 def render_status(report: StatusReport) -> str:
@@ -85,6 +85,85 @@ def render_audit(report: AuditReport, verbose: bool = False) -> str:
                 lines.append(f"    {finding.limitation}")
 
     lines.extend(["", f"Overall audit result: {report.overall_result}"])
+    return "\n".join(lines).rstrip()
+
+
+def render_doctor(report: DoctorReport, verbose: bool = False) -> str:
+    lines = [
+        "Frankie Doctor",
+        f"Version: {report.version}",
+        f"Mode: {report.mode}",
+        "",
+        "Scope:",
+    ]
+
+    for item in report.scope:
+        lines.append(f"  {_format_item(item.name, item.value)}")
+
+    lines.extend(
+        [
+            "",
+            "Diagnosis summary:",
+            f"  {_format_item('Audit result', report.audit_result)}",
+            f"  {_format_item('Issues reviewed', str(len(report.findings)))}",
+            f"  {_format_item('Critical issues', str(sum(1 for f in report.findings if f.severity in {'HIGH', 'CRITICAL'} and f.status == 'FAIL')))}",
+            f"  {_format_item('Safe to continue', 'yes' if report.overall_result != 'CRITICAL' else 'no')}",
+            "",
+            "Findings explained:",
+        ]
+    )
+
+    if not report.findings:
+        lines.extend(
+            [
+                "",
+                "No non-pass findings require explanation.",
+                "",
+                f"Overall doctor result: {report.overall_result}",
+            ]
+        )
+        return "\n".join(lines).rstrip()
+
+    for finding in report.findings:
+        advice = finding.advice
+        lines.append("")
+        lines.append(f"[{finding.status}] {finding.source_check_id}")
+        lines.append("  Problem:")
+        lines.append(f"    {advice.problem}")
+        lines.append("")
+        lines.append("  What it means:")
+        lines.append(f"    {advice.meaning}")
+        lines.append("")
+        lines.append("  Possible impact:")
+        lines.append(f"    {advice.possible_impact}")
+        lines.append("")
+        lines.append("  Evidence:")
+        for evidence in advice.evidence:
+            lines.append(f"    {evidence}")
+        lines.append("")
+        lines.append("  Safe next steps:")
+        for idx, step in enumerate(advice.safe_next_steps, start=1):
+            lines.append(f"    {idx}. {step.text}")
+        lines.append("")
+        lines.append("  Do not:")
+        for step in advice.do_not:
+            lines.append(f"    - {step.text}")
+
+        if verbose:
+            lines.append("")
+            lines.append("  Audit check:")
+            lines.append(f"    {advice.source_check_id}")
+            lines.append("  Status and severity:")
+            lines.append(f"    {finding.status} / {finding.severity}")
+            lines.append("  Result:")
+            lines.append(f"    {advice.result}")
+            lines.append("  Why no automatic repair:")
+            lines.append("    Frankie Doctor MVP is diagnostic only and does not modify systems.")
+            if advice.limitation:
+                lines.append("  Limitation:")
+                lines.append(f"    {advice.limitation}")
+
+    lines.extend(["", f"Overall doctor result: {report.overall_result}"])
     return "\n".join(lines).rstrip()
 
 

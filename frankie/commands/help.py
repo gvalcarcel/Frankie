@@ -20,9 +20,10 @@ def run() -> str:
             "  frankie status",
             "  frankie inventory",
             "  frankie audit",
+            "  frankie doctor",
             "",
             "Planned commands:",
-            "  frankie doctor",
+            "  none",
             "",
             "This foundation version does not modify servers, services, files, or configurations.",
         ]

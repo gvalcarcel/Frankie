@@ -55,6 +55,7 @@ python -m frankie help
 python -m frankie status
 python -m frankie inventory
 python -m frankie audit
+python -m frankie doctor
 ```
 
 ### `status`
@@ -87,20 +88,21 @@ Documento específico:
 
 - `docs/frankie-core/audit.md`
 
+### `doctor`
+
+El comando `doctor` es el cuarto MVP funcional de Frankie Core.
+
+Interpreta hallazgos del Audit Engine y los convierte en diagnostico inicial, impacto probable, pasos seguros y cosas que todavia no deben hacerse.
+
+Documento específico:
+
+- `docs/frankie-core/doctor.md`
+
 ## Comandos planificados
 
-Estos comandos existen como placeholder, pero no están implementados todavía:
+No quedan comandos foundation como placeholder en el estado actual de `v0.6.0-dev`.
 
-```bash
-python -m frankie doctor
-```
-
-Salida esperada:
-
-```text
-Command 'doctor' is not implemented yet in v0.6.0 foundation.
-This command is planned for a future iteration.
-```
+La CLI mantiene esta sección para que futuras Work Orders puedan añadir nuevos comandos planificados de forma explícita.
 
 ## Garantías de solo lectura
 
@@ -127,6 +129,7 @@ python -m frankie help
 python -m frankie status
 python -m frankie inventory
 python -m frankie audit
+python -m frankie doctor
 ```
 
 ## Tests

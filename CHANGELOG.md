@@ -14,7 +14,7 @@ Este proyecto sigue Semantic Versioning.
 - Creación de Frankie Core como paquete raíz `frankie/`.
 - Esqueleto CLI inicial dentro de Frankie Core.
 - Comandos `version` y `help` funcionales.
-- Comando futuro `doctor` definido como no implementado.
+- Comandos foundation iniciales completados hasta `doctor` en modo solo lectura.
 - Garantía de solo lectura para la foundation `0.6.0-dev`.
 - Implementación inicial de `python -m frankie status`.
 - Lectura de evidencias documentadas para construir un resumen de estado.
@@ -31,6 +31,11 @@ Este proyecto sigue Semantic Versioning.
 - Hallazgos de auditoría con estados, severidades, evidencias y recomendaciones.
 - Soporte de salida detallada mediante `python -m frankie audit --verbose`.
 - Mantenimiento del modo solo lectura en el comando `audit`.
+- Implementación inicial de `python -m frankie doctor`.
+- Creación de Doctor Engine MVP apoyado en Audit Engine.
+- Interpretación de hallazgos del Audit Engine en forma de diagnostico asistido.
+- Explicación de problemas, impacto probable y pasos seguros.
+- Mantenimiento de modo solo lectura y sin reparación en el comando `doctor`.
 
 ## [0.5.0] - Foundation - 2026-06-25
 

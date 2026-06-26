@@ -198,7 +198,7 @@ Pendiente.
 - Implementar `status` como primer MVP funcional basado en evidencias locales.
 - Implementar `inventory` como segundo MVP funcional basado en documentación y knowledge base.
 - Implementar `audit` como primer motor reutilizable de auditoría basado en evidencias.
-- Preparar `doctor` sin implementarlo todavía.
+- Implementar `doctor` como MVP de diagnóstico asistido basado en Audit Engine.
 - Integrar la CLI con `docs/`, `knowledge/` y `checklists/`.
 
 ### Estado
@@ -222,4 +222,5 @@ Foundation en construcción. No declarar release completada todavía.
 - Frankie Status MVP basado en evidencias documentadas.
 - Frankie Inventory MVP basado en documentación, knowledge base y evidencias locales.
 - Frankie Audit Engine v1 basado en checks, hallazgos, estados y severidades.
+- Frankie Doctor MVP basado en interpretación segura de hallazgos del Audit Engine.
 - Criterios de finalización de `v0.6.0`.

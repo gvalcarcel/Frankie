@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from frankie.core.constants import FOUNDATION_NOT_IMPLEMENTED
+from frankie.doctor.doctor_engine import run_doctor
+from frankie.output.console import render_doctor
 
 
-def run() -> str:
-    return FOUNDATION_NOT_IMPLEMENTED.format(command="doctor")
+def run(verbose: bool = False) -> str:
+    return render_doctor(run_doctor(), verbose=verbose)
