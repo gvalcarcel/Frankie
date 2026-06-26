@@ -194,8 +194,10 @@ Pendiente.
 - Diseñar e iniciar `Frankie Core` como paquete raíz de la plataforma.
 - Mantener `Frankie CLI` como una interfaz dentro del núcleo.
 - Mantener la primera versión en modo solo lectura.
-- Implementar únicamente `version` y `help`.
-- Preparar `status`, `inventory`, `audit` y `doctor` sin implementarlos todavía.
+- Implementar `version` y `help` como comandos base.
+- Implementar `status` como primer MVP funcional basado en evidencias locales.
+- Implementar `inventory` como segundo MVP funcional basado en documentación y knowledge base.
+- Preparar `audit` y `doctor` sin implementarlos todavía.
 - Integrar la CLI con `docs/`, `knowledge/` y `checklists/`.
 
 ### Estado
@@ -216,4 +218,6 @@ Foundation en construcción. No declarar release completada todavía.
 - Estructura base del paquete raíz `frankie/`.
 - Definición de comandos iniciales.
 - Tests básicos de foundation.
+- Frankie Status MVP basado en evidencias documentadas.
+- Frankie Inventory MVP basado en documentación, knowledge base y evidencias locales.
 - Criterios de finalización de `v0.6.0`.

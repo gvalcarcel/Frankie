@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from frankie.core.constants import FOUNDATION_NOT_IMPLEMENTED
+from frankie.core.status import build_status_report
+from frankie.output.console import render_status
 
 
 def run() -> str:
-    return FOUNDATION_NOT_IMPLEMENTED.format(command="status")
+    return render_status(build_status_report())

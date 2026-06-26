@@ -52,15 +52,35 @@ Frankie CLI:
 python -m frankie
 python -m frankie version
 python -m frankie help
+python -m frankie status
+python -m frankie inventory
 ```
+
+### `status`
+
+El comando `status` es el primer MVP funcional de Frankie Core.
+
+Lee evidencias documentadas en el repositorio y muestra un resumen de estado en modo solo lectura.
+
+Documento específico:
+
+- `docs/frankie-core/status.md`
+
+### `inventory`
+
+El comando `inventory` es el segundo MVP funcional de Frankie Core.
+
+Lee documentación, knowledge base y evidencias locales para mostrar qué compone Frankie: servidor físico, VMs, servicios, recursos compartidos, seguridad, backups y fuentes disponibles.
+
+Documento específico:
+
+- `docs/frankie-core/inventory.md`
 
 ## Comandos planificados
 
 Estos comandos existen como placeholder, pero no están implementados todavía:
 
 ```bash
-python -m frankie status
-python -m frankie inventory
 python -m frankie audit
 python -m frankie doctor
 ```
@@ -68,7 +88,7 @@ python -m frankie doctor
 Salida esperada:
 
 ```text
-Command 'status' is not implemented yet in v0.6.0 foundation.
+Command 'audit' is not implemented yet in v0.6.0 foundation.
 This command is planned for a future iteration.
 ```
 
@@ -95,6 +115,7 @@ python -m frankie
 python -m frankie version
 python -m frankie help
 python -m frankie status
+python -m frankie inventory
 ```
 
 ## Tests

@@ -14,8 +14,17 @@ Este proyecto sigue Semantic Versioning.
 - Creación de Frankie Core como paquete raíz `frankie/`.
 - Esqueleto CLI inicial dentro de Frankie Core.
 - Comandos `version` y `help` funcionales.
-- Comandos futuros `status`, `inventory`, `audit` y `doctor` definidos como no implementados.
+- Comandos futuros `audit` y `doctor` definidos como no implementados.
 - Garantía de solo lectura para la foundation `0.6.0-dev`.
+- Implementación inicial de `python -m frankie status`.
+- Lectura de evidencias documentadas para construir un resumen de estado.
+- Resumen de estado de Frankie basado exclusivamente en el repositorio local.
+- Mantenimiento del modo solo lectura en el comando `status`.
+- Implementación inicial de `python -m frankie inventory`.
+- Lectura de documentación, knowledge base y evidencias locales para inventario.
+- Inventario conocido del servidor físico Frankie, VMs, servicios, recursos, seguridad y backups.
+- Diferenciación explícita entre Frankie físico, Frankie Core y repositorio Frankie.
+- Mantenimiento del modo solo lectura en el comando `inventory`.
 
 ## [0.5.0] - Foundation - 2026-06-25
 

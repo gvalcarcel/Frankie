@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from frankie.core.constants import FOUNDATION_NOT_IMPLEMENTED
+from frankie.inventory.inventory_reader import build_inventory_report
+from frankie.output.console import render_inventory
 
 
 def run() -> str:
-    return FOUNDATION_NOT_IMPLEMENTED.format(command="inventory")
+    return render_inventory(build_inventory_report())
