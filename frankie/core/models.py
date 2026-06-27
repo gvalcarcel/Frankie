@@ -8,6 +8,7 @@ ALLOWED_INVENTORY_STATES = ("KNOWN", "UNKNOWN", "PARTIAL", "PENDING", "MISSING E
 ALLOWED_AUDIT_STATUSES = ("PASS", "WARN", "FAIL", "UNKNOWN", "PENDING", "MISSING_EVIDENCE")
 ALLOWED_AUDIT_SEVERITIES = ("INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL")
 ALLOWED_DOCTOR_RESULTS = ("HEALTHY", "ACTIONS_RECOMMENDED", "ATTENTION_REQUIRED", "INSUFFICIENT_EVIDENCE", "CRITICAL")
+ALLOWED_DOCTOR_URGENCIES = ("INFO", "LOW", "MEDIUM", "HIGH", "IMMEDIATE")
 
 
 @dataclass(frozen=True)
@@ -110,15 +111,18 @@ class DiagnosticStep:
 
 @dataclass(frozen=True)
 class DoctorAdvice:
-    source_check_id: str
+    issue_id: str
+    title: str
     status: str
     severity: str
-    problem: str
-    meaning: str
-    possible_impact: str
+    urgency: str
+    impact: str
+    why_it_matters: str
+    recommended_action: str
     evidence: tuple[str, ...]
     safe_next_steps: tuple[DiagnosticStep, ...]
     do_not: tuple[DiagnosticStep, ...]
+    student_explanation: str
     result: str
     limitation: str = ""
 
@@ -129,6 +133,8 @@ class DoctorAdvice:
             raise ValueError(f"Unsupported doctor source status: {self.status}")
         if self.severity not in ALLOWED_AUDIT_SEVERITIES:
             raise ValueError(f"Unsupported doctor source severity: {self.severity}")
+        if self.urgency not in ALLOWED_DOCTOR_URGENCIES:
+            raise ValueError(f"Unsupported doctor urgency: {self.urgency}")
 
 
 @dataclass(frozen=True)
@@ -147,3 +153,4 @@ class DoctorReport:
     audit_result: str
     findings: tuple[DoctorFinding, ...]
     overall_result: str
+    resolved_checks: tuple[str, ...] = ()

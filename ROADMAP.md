@@ -260,6 +260,7 @@ Bloques implementados:
 
 - salida JSON para `status` y `audit`, incluida la variante `audit --verbose --json`;
 - modelo inicial y loader offline de evidencias estructuradas.
+- Doctor mejorado con orientación pedagógica y pasos seguros.
 
 ### Límites
 

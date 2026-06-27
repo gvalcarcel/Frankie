@@ -3,10 +3,12 @@ from __future__ import annotations
 from frankie.audit.audit_engine import run_audit
 from frankie.core.models import DoctorReport, InventoryItem
 from frankie.doctor.advice import build_doctor_findings
+from frankie.evidence.loader import load_structured_evidence
 
 
 def run_doctor() -> DoctorReport:
     audit_report = run_audit()
+    structured = load_structured_evidence()
     findings = build_doctor_findings(audit_report.findings)
     return DoctorReport(
         version=audit_report.version,
@@ -17,10 +19,13 @@ def run_doctor() -> DoctorReport:
             InventoryItem("Repairs", "no"),
             InventoryItem("Writes files", "no"),
             InventoryItem("Executes commands", "no"),
+            InventoryItem("Structured evidence", f"{len(structured.evidence)} loaded" if structured.available else "unavailable"),
+            InventoryItem("Evidence issues", str(len(structured.issues))),
         ),
         audit_result=audit_report.overall_result,
         findings=findings,
         overall_result=_overall_result(findings, audit_report.overall_result),
+        resolved_checks=tuple(f"{finding.id} (PASS; no active action)" for finding in audit_report.findings if finding.status == "PASS"),
     )
 
 

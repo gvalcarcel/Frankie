@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import ast
+import json
 import subprocess
 import sys
 import unittest
@@ -48,9 +49,18 @@ class DoctorCommandTests(unittest.TestCase):
 
     def test_doctor_output_contains_findings_steps_and_do_not_section(self) -> None:
         result = run_frankie("doctor")
-        self.assertIn("AUD-", result.stdout)
+        self.assertIn("Issue: AUD-SERVICES-PORTAINER-001", result.stdout)
+        self.assertIn("Title: Portainer port 8000 remains published", result.stdout)
+        self.assertIn("Severity: LOW", result.stdout)
+        self.assertIn("Urgency: LOW", result.stdout)
+        self.assertIn("Impact:", result.stdout)
+        self.assertIn("Why it matters:", result.stdout)
+        self.assertIn("Recommended action:", result.stdout)
         self.assertIn("Safe next steps", result.stdout)
         self.assertIn("Do not", result.stdout)
+        self.assertIn("Student explanation:", result.stdout)
+        self.assertIn("extra open door", result.stdout)
+        self.assertIn("port 8000", result.stdout)
         self.assertIn("Overall doctor result: ACTIONS_RECOMMENDED", result.stdout)
 
     def test_doctor_does_not_present_validated_smb_as_pending_action(self) -> None:
@@ -66,6 +76,11 @@ class DoctorCommandTests(unittest.TestCase):
         self.assertIn("Audit check:", result.stdout)
         self.assertIn("Why no automatic repair:", result.stdout)
         self.assertIn("Status and severity:", result.stdout)
+        self.assertIn("Structured evidence", result.stdout)
+        self.assertIn("6 loaded", result.stdout)
+        self.assertIn("Resolved checks not requiring action:", result.stdout)
+        self.assertIn("AUD-SAMBA-001 (PASS; no active action)", result.stdout)
+        self.assertNotIn("Issue: AUD-SAMBA-001", result.stdout)
 
     def test_help_shows_doctor_as_available_command(self) -> None:
         result = run_frankie("help")
@@ -77,6 +92,15 @@ class DoctorCommandTests(unittest.TestCase):
             with self.subTest(command=command):
                 result = run_frankie(command)
                 self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_status_and_audit_json_remain_valid(self) -> None:
+        status = run_frankie("status", "--json")
+        audit = run_frankie("audit", "--json")
+
+        self.assertEqual(status.returncode, 0, status.stderr)
+        self.assertEqual(audit.returncode, 0, audit.stderr)
+        self.assertEqual(json.loads(status.stdout)["overall_status"], "WARNING")
+        self.assertEqual(json.loads(audit.stdout)["overall_result"], "WARN")
 
     def test_doctor_handles_no_relevant_findings(self) -> None:
         report = DoctorReport(
@@ -121,10 +145,23 @@ class DoctorCommandTests(unittest.TestCase):
         doctor_findings = build_doctor_findings(findings)
         self.assertEqual(len(doctor_findings), 1)
         self.assertEqual(doctor_findings[0].source_check_id, "AUD-X-002")
+        self.assertEqual(doctor_findings[0].advice.issue_id, "AUD-X-002")
+        self.assertEqual(doctor_findings[0].advice.urgency, "LOW")
+        self.assertTrue(doctor_findings[0].advice.student_explanation)
 
     def test_doctor_flow_has_no_subprocess_or_write_operations(self) -> None:
         forbidden_names = {"open"}
-        forbidden_attrs = {"run", "Popen", "write_text", "write_bytes", "unlink", "remove"}
+        forbidden_attrs = {
+            "run",
+            "Popen",
+            "system",
+            "connect",
+            "create_connection",
+            "write_text",
+            "write_bytes",
+            "unlink",
+            "remove",
+        }
 
         for path in DOCTOR_FLOW_FILES:
             tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))

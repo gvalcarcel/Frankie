@@ -89,6 +89,23 @@ Las fichas conviven con Markdown y son complementarias: si faltan, Status y Audi
 
 Documentación técnica: [evidence.md](evidence.md).
 
+## Doctor pedagógico
+
+Doctor transforma los hallazgos no resueltos de Audit Engine en diagnósticos comprensibles y accionables.
+
+Cada consejo distingue:
+
+- incidencia y título;
+- severidad y urgencia;
+- impacto y motivo de importancia;
+- acción recomendada;
+- pasos seguros;
+- acciones que no deben realizarse;
+- explicación para alumnado;
+- evidencias.
+
+Doctor sigue siendo offline, no ejecuta Audit mediante subprocess y no implementa reparación automática. En modo verbose muestra los checks `PASS` como contexto resuelto, sin convertirlos en incidencias activas.
+
 ### `status`
 
 El comando `status` es el primer MVP funcional de Frankie Core.

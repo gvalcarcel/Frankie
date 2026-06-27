@@ -199,6 +199,8 @@ python -m frankie audit --verbose --json
 
 La salida JSON usa las mismas evidencias documentadas que la consola. No existe conexión live con Frankie físico ni modo repair.
 
+Doctor también incorpora un diagnóstico pedagógico: explica impacto, urgencia, por qué importa, siguiente acción segura y qué no debe hacerse. Continúa siendo offline y no repara sistemas.
+
 Ver [governance/VERSIONING.md](governance/VERSIONING.md).
 
 ## Autor

@@ -16,12 +16,14 @@ Ciclo de desarrollo `0.7.0-dev` iniciado tras la publicación de `v0.6.0`.
 - Modelo inicial de evidencias estructuradas con seis fichas JSON saneadas.
 - Loader offline y tolerante para evidencias estructuradas.
 - Esquema documental `frankie_evidence.schema.json`.
+- Doctor pedagógico con urgencia, impacto, motivo, acción recomendada y explicación para alumnado.
 
 ### Changed
 
 - Ayuda CLI actualizada con las opciones JSON soportadas.
 - Versión de desarrollo actualizada a `0.7.0-dev`.
 - `status --json` y `audit --json` informan de la disponibilidad de evidencias estructuradas.
+- Doctor verbose distingue checks activos de checks resueltos que no requieren acción.
 
 ### Security
 

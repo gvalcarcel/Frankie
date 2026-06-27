@@ -1,12 +1,30 @@
 # Frankie Doctor
 
-## Proposito
+## Propósito
 
-`python -m frankie doctor` ejecuta el primer MVP funcional de diagnostico asistido de Frankie Core.
+`python -m frankie doctor` ejecuta el diagnóstico asistido y pedagógico de Frankie Core.
 
-El comando interpreta hallazgos del Audit Engine y los transforma en explicaciones comprensibles, impacto probable y siguientes pasos seguros de diagnostico.
+El comando interpreta hallazgos del Audit Engine y los transforma en explicaciones comprensibles, urgencia, impacto y siguientes pasos seguros.
 
 No repara. No cambia configuraciones. No sustituye el criterio del administrador.
+
+## Campos del diagnóstico
+
+Cada incidencia activa incluye:
+
+- `Issue`: identificador del check de auditoría;
+- `Title`: nombre breve del problema;
+- `Severity`: gravedad técnica documentada;
+- `Urgency`: rapidez con la que conviene revisar el problema;
+- `Impact`: qué podría ocurrir;
+- `Why it matters`: por qué merece atención;
+- `Recommended action`: siguiente acción recomendada;
+- `Safe next steps`: comprobaciones seguras y ordenadas;
+- `Do not`: acciones que no deben improvisarse;
+- `Student explanation`: explicación cercana para alumnado;
+- `Evidence`: documentos que respaldan el diagnóstico.
+
+Severidad y urgencia no son lo mismo. Una severidad `LOW` puede tener urgencia `LOW`: conviene planificar su revisión, pero no detener una clase ni actuar sin autorización.
 
 ## Diferencia entre `status`, `inventory`, `audit` y `doctor`
 
@@ -127,12 +145,22 @@ Diagnosis summary:
 
 Findings explained:
 
-[WARN] AUD-SERVICES-PORTAINER-001
-  Problem:
-    Portainer publishes port 8000 although UFW does not allow it.
+Issue: AUD-SERVICES-PORTAINER-001
+  Title: Portainer port 8000 remains published
+  Severity: LOW
+  Urgency: LOW
 
-  What it means:
-    Docker is exposing a port that may be unnecessary or not reachable because the documented firewall policy does not allow it.
+  Impact:
+    Portainer is documented as exposing port 8000 in addition to its main access port.
+
+  Why it matters:
+    Published ports increase the surface that should be reviewed.
+
+  Recommended action:
+    Review the port exposure in a future explicitly authorized LIVE Work Order.
+
+  Student explanation:
+    It is like finding an extra open door in a computer room. It may be intentional, but we should check why it is open before changing it.
 ```
 
 ## Verbose
@@ -146,6 +174,10 @@ Amplia la salida con:
 - resultado diagnostico;
 - razon por la que no se propone reparacion automatica;
 - limitaciones si existen.
+- disponibilidad de evidencias estructuradas;
+- checks resueltos que no requieren acción, como `AUD-SAMBA-001 (PASS; no active action)`.
+
+SMB puede aparecer en esta lista resuelta, pero no como incidencia pendiente.
 
 ## Limitaciones del MVP
 

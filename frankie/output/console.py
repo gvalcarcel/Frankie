@@ -127,19 +127,19 @@ def render_doctor(report: DoctorReport, verbose: bool = False) -> str:
     for finding in report.findings:
         advice = finding.advice
         lines.append("")
-        lines.append(f"[{finding.status}] {finding.source_check_id}")
-        lines.append("  Problem:")
-        lines.append(f"    {advice.problem}")
+        lines.append(f"Issue: {advice.issue_id}")
+        lines.append(f"  Title: {advice.title}")
+        lines.append(f"  Severity: {advice.severity}")
+        lines.append(f"  Urgency: {advice.urgency}")
         lines.append("")
-        lines.append("  What it means:")
-        lines.append(f"    {advice.meaning}")
+        lines.append("  Impact:")
+        lines.append(f"    {advice.impact}")
         lines.append("")
-        lines.append("  Possible impact:")
-        lines.append(f"    {advice.possible_impact}")
+        lines.append("  Why it matters:")
+        lines.append(f"    {advice.why_it_matters}")
         lines.append("")
-        lines.append("  Evidence:")
-        for evidence in advice.evidence:
-            lines.append(f"    {evidence}")
+        lines.append("  Recommended action:")
+        lines.append(f"    {advice.recommended_action}")
         lines.append("")
         lines.append("  Safe next steps:")
         for idx, step in enumerate(advice.safe_next_steps, start=1):
@@ -148,11 +148,18 @@ def render_doctor(report: DoctorReport, verbose: bool = False) -> str:
         lines.append("  Do not:")
         for step in advice.do_not:
             lines.append(f"    - {step.text}")
+        lines.append("")
+        lines.append("  Student explanation:")
+        lines.append(f"    {advice.student_explanation}")
+        lines.append("")
+        lines.append("  Evidence:")
+        for evidence in advice.evidence:
+            lines.append(f"    {evidence}")
 
         if verbose:
             lines.append("")
             lines.append("  Audit check:")
-            lines.append(f"    {advice.source_check_id}")
+            lines.append(f"    {advice.issue_id}")
             lines.append("  Status and severity:")
             lines.append(f"    {finding.status} / {finding.severity}")
             lines.append("  Result:")
@@ -162,6 +169,11 @@ def render_doctor(report: DoctorReport, verbose: bool = False) -> str:
             if advice.limitation:
                 lines.append("  Limitation:")
                 lines.append(f"    {advice.limitation}")
+
+    if verbose and report.resolved_checks:
+        lines.extend(["", "Resolved checks not requiring action:"])
+        for check in report.resolved_checks:
+            lines.append(f"  - {check}")
 
     lines.extend(["", f"Overall doctor result: {report.overall_result}"])
     return "\n".join(lines).rstrip()
