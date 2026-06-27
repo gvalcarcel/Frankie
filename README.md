@@ -67,8 +67,8 @@ Infraestructura de referencia actualmente documentada:
 
 | Capa | Nombre | Función |
 |---|---|---|
-| Host físico | `srv-aula113` | Proxmox VE, almacenamiento ZFS y gestión de VMs |
-| VM 100 | `srv-servicios` / `frankie` | Docker, Portainer, PostgreSQL y n8n |
+| Host físico | Frankie (`srv-aula113`) | Proxmox VE, almacenamiento ZFS y gestión de VMs |
+| VM 100 | `srv-servicios` | Docker, Portainer, PostgreSQL y n8n |
 | VM 101 | `srv-recursos` | Samba y recursos docentes compartidos |
 
 ## Tecnologias utilizadas
@@ -89,7 +89,7 @@ Infraestructura de referencia actualmente documentada:
 
 ## Estado actual
 
-Estado de producto: `v0.5.0 Foundation`.
+Estado de producto: `v0.6.0 Frankie Core / CLI Foundation` preparada localmente para revisión final.
 
 El repositorio contiene:
 
@@ -103,7 +103,8 @@ El repositorio contiene:
 
 Pendientes destacados:
 
-- validación SMB desde cliente real,
+- publicación formal de `v0.6.0` mediante tag y release,
+- revisión del puerto `8000` de Portainer,
 - reservas DHCP o estrategia de nombres estable,
 - prueba formal de restauración,
 - definición de monitorización,
@@ -175,6 +176,14 @@ Versión inicial de fundación:
 ```text
 v0.5.0 Foundation
 ```
+
+Versión preparada localmente:
+
+```text
+v0.6.0 Frankie Core / CLI Foundation
+```
+
+Esta versión incorpora los comandos `version`, `help`, `status`, `inventory`, `audit` y `doctor` en modo solo lectura. No implementa conexión live con Frankie físico ni modo repair.
 
 Ver [governance/VERSIONING.md](governance/VERSIONING.md).
 

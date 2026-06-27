@@ -1,6 +1,6 @@
 # Roadmap
 
-Versión base actual: `v0.5.0 Foundation`.
+Versión base actual: `v0.6.0 Frankie Core / CLI Foundation` preparada localmente para publicación.
 
 ## Fase 1 - Infraestructura Base
 
@@ -203,7 +203,7 @@ Pendiente.
 
 ### Estado
 
-Foundation en construcción. No declarar release completada todavía.
+Release preparada localmente. Pendiente de auditoría final, tag y publicación en GitHub.
 
 ### Dependencias
 
@@ -225,3 +225,15 @@ Foundation en construcción. No declarar release completada todavía.
 - Frankie Doctor MVP basado en interpretación segura de hallazgos del Audit Engine.
 - Sincronización de evidencia pre-release para diferenciar pendientes históricos de estado actual validado.
 - Criterios de finalización de `v0.6.0`.
+- Preparación documental de release `v0.6.0`.
+
+### Próximos pasos sugeridos
+
+- Añadir salida `--json` para comandos principales.
+- Evolucionar hacia evidencias estructuradas.
+- Diseñar `live status` sin romper el modo seguro.
+- Diseñar `live audit` con permisos y alcance claramente controlados.
+- Revisar la publicación del puerto `8000` de Portainer.
+- Revisar si la carpeta histórica `cli/` debe mantenerse o documentarse.
+- Preparar dashboard futuro.
+- Preparar integración IA futura sobre documentación y evidencias.

@@ -1,5 +1,5 @@
 PROJECT_NAME = "Frankie"
-VERSION = "0.6.0-dev"
+VERSION = "0.6.0"
 MODE = "read-only foundation"
 READ_ONLY_MESSAGE = "This version does not modify servers or services."
 FOUNDATION_NOT_IMPLEMENTED = "\n".join(

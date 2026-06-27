@@ -3,9 +3,9 @@
 ## Vista general
 
 ```text
-Servidor físico
+Servidor físico - Frankie
 └── Proxmox VE - srv-aula113
-    ├── VM 100 - srv-servicios / frankie
+    ├── VM 100 - srv-servicios
     │   ├── Docker
     │   ├── Portainer
     │   ├── PostgreSQL
@@ -16,7 +16,8 @@ Servidor físico
 
 ## Host Proxmox
 
-- Nodo: `srv-aula113`.
+- Nombre del servidor físico: Frankie.
+- Hostname del nodo Proxmox: `srv-aula113`.
 - Almacenamiento: ZFS mirror.
 - Estado: pendiente de documentación completa.
 

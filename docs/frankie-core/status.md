@@ -60,7 +60,7 @@ Si una evidencia historica documenta una validacion pendiente y una evidencia po
 
 ```text
 Frankie Status
-Version: 0.6.0-dev
+Version: 0.6.0
 Mode: read-only foundation
 
 Physical server:

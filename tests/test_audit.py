@@ -45,7 +45,7 @@ class AuditCommandTests(unittest.TestCase):
     def test_audit_output_contains_required_header_and_scope(self) -> None:
         result = run_frankie("audit")
         self.assertIn("Frankie Audit", result.stdout)
-        self.assertIn("Version: 0.6.0-dev", result.stdout)
+        self.assertIn("Version: 0.6.0", result.stdout)
         self.assertIn("Mode: read-only foundation", result.stdout)
         self.assertIn("repository evidence", result.stdout)
         self.assertIn("Live connection", result.stdout)
@@ -134,7 +134,7 @@ class AuditCommandTests(unittest.TestCase):
                 ),
             )
             self._write(root, "docs/frankie-core/status.md", "read-only no ejecuta comandos externos")
-            self._write(root, "docs/frankie-core/inventory.md", "Frankie Core servidor fÃ­sico repositorio Frankie")
+            self._write(root, "docs/frankie-core/inventory.md", "Frankie Core servidor físico repositorio Frankie")
 
             report = run_audit(FrankiePaths(root))
             findings = {finding.id: finding for finding in report.findings}

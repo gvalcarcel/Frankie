@@ -104,13 +104,13 @@ Documento específico:
 
 ## Comandos planificados
 
-No quedan comandos foundation como placeholder en el estado actual de `v0.6.0-dev`.
+No quedan comandos foundation como placeholder en el estado actual de `v0.6.0`.
 
 La CLI mantiene esta sección para que futuras Work Orders puedan añadir nuevos comandos planificados de forma explícita.
 
 ## Garantías de solo lectura
 
-La versión `v0.6.0-dev`:
+La versión `v0.6.0`:
 
 - No modifica servidores.
 - No ejecuta scripts existentes.

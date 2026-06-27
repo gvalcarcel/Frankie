@@ -122,7 +122,7 @@ Salida orientativa:
 
 ```text
 Frankie Audit
-Version: 0.6.0-dev
+Version: 0.6.0
 Mode: read-only foundation
 
 Scope:

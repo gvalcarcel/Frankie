@@ -147,7 +147,7 @@ def _has_validated_pre_release_smb(report: str) -> bool:
         "smb validation: ok",
         "samba/smb validation: validated",
         "conexion smb correcta",
-        "conexiÃ³n smb correcta",
+        "conexión smb correcta",
     )
     return any(term in report for term in validation_terms)
 

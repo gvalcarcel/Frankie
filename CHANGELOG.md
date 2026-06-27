@@ -4,6 +4,12 @@ Este proyecto sigue Semantic Versioning.
 
 ## [Unreleased]
 
+Preparado para futuros cambios posteriores a `v0.6.0`.
+
+## [v0.6.0] - 2026-06-26
+
+Release preparada localmente. Pendiente de auditoria final, tag y publicacion en GitHub.
+
 ### Added
 
 - Procedimiento de mantenimiento, actualización y optimización del servidor.
@@ -15,7 +21,7 @@ Este proyecto sigue Semantic Versioning.
 - Esqueleto CLI inicial dentro de Frankie Core.
 - Comandos `version` y `help` funcionales.
 - Comandos foundation iniciales completados hasta `doctor` en modo solo lectura.
-- Garantía de solo lectura para la foundation `0.6.0-dev`.
+- Garantía de solo lectura para la foundation `0.6.0`.
 - Implementación inicial de `python -m frankie status`.
 - Lectura de evidencias documentadas para construir un resumen de estado.
 - Resumen de estado de Frankie basado exclusivamente en el repositorio local.
@@ -39,6 +45,22 @@ Este proyecto sigue Semantic Versioning.
 - Sincronización de Frankie Core con evidencia pre-release de SMB validado.
 - Priorización de evidencia actual sobre pendiente histórico en `status`, `audit` y `doctor`.
 - Auditoría documental de sincronización de evidencia SMB previa a `v0.6.0`.
+
+### Release readiness
+
+- Readiness review de Frankie Core `v0.6.0`.
+- Pre-release live evidence check con evidencias saneadas.
+- Sincronización SMB validada por evidencia pre-release.
+- Auditoría arquitectónica de sincronización SMB.
+- Tests automatizados de comandos foundation.
+- Confirmación de modo solo lectura.
+
+### Known Risks
+
+- Portainer puerto `8000` sigue documentado como `WARN`.
+- No existe conexión live con Frankie físico en esta release.
+- No existe modo repair ni autocorrección.
+- La interpretación de estado se basa en evidencias documentadas.
 
 ## [0.5.0] - Foundation - 2026-06-25
 
