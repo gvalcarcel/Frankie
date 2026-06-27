@@ -122,7 +122,7 @@ Salida orientativa:
 
 ```text
 Frankie Audit
-Version: 0.6.0
+Version: 0.7.0-dev
 Mode: read-only foundation
 
 Scope:
@@ -216,8 +216,38 @@ Este comando puede utilizarse en clase para explicar:
 
 ## Próximos pasos
 
-- Añadir salida JSON en una Work Order posterior.
+- Evolucionar el contrato JSON junto con evidencias estructuradas versionadas.
 - Definir evidencias estructuradas.
 - Ampliar checks por área: Docker, Samba, backups, seguridad y documentación.
 - Preparar un futuro modo live explícitamente separado y protegido.
 - Integrar resultados con dashboard o módulo IA sin cambiar el modo seguro por defecto.
+
+## Salida JSON
+
+Desde `0.7.0-dev`, Audit Engine puede devolver datos estructurados:
+
+```bash
+python -m frankie audit --json
+python -m frankie audit --verbose --json
+```
+
+Ejemplo reducido:
+
+```json
+{
+  "schema_version": "1.0",
+  "command": "audit",
+  "frankie_core_version": "0.7.0-dev",
+  "mode": "offline",
+  "overall_result": "WARN",
+  "counts": {"total": 7, "pass": 6, "warn": 1},
+  "checks": [
+    {"id": "AUD-SAMBA-001", "status": "PASS", "severity": "INFO"},
+    {"id": "AUD-SERVICES-PORTAINER-001", "status": "WARN", "severity": "LOW"}
+  ]
+}
+```
+
+`--verbose --json` conserva JSON puro y añade `category`, `description` y `limitation` a cada check. No mezcla encabezados ni mensajes de consola con el documento JSON.
+
+Ambas variantes serializan el mismo `AuditReport` que la salida humana. No ejecutan comandos live, no usan credenciales y no escriben ficheros.

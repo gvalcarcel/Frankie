@@ -39,7 +39,7 @@ class DoctorCommandTests(unittest.TestCase):
     def test_doctor_output_contains_required_header_and_scope(self) -> None:
         result = run_frankie("doctor")
         self.assertIn("Frankie Doctor", result.stdout)
-        self.assertIn("Version: 0.6.0", result.stdout)
+        self.assertIn("Version: 0.7.0-dev", result.stdout)
         self.assertIn("Mode: read-only foundation", result.stdout)
         self.assertIn("audit engine", result.stdout)
         self.assertIn("Live connection", result.stdout)
@@ -80,7 +80,7 @@ class DoctorCommandTests(unittest.TestCase):
 
     def test_doctor_handles_no_relevant_findings(self) -> None:
         report = DoctorReport(
-            version="0.6.0",
+            version="0.7.0-dev",
             mode="read-only foundation",
             scope=(InventoryItem("Source", "audit engine"),),
             audit_result="PASS",

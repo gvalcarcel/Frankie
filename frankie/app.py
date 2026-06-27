@@ -28,7 +28,16 @@ def main(argv: Sequence[str] | None = None) -> int:
         print("Run 'frankie help' to see available commands.", file=sys.stderr)
         return 2
 
-    if command in {"audit", "doctor"}:
+    if args.json_output and command not in {"status", "audit"}:
+        print(f"JSON output is not available for command: {command}", file=sys.stderr)
+        print("Use 'frankie status --json' or 'frankie audit --json'.", file=sys.stderr)
+        return 2
+
+    if command == "audit":
+        print(handler(verbose=args.verbose, json_output=args.json_output))
+    elif command == "status":
+        print(handler(json_output=args.json_output))
+    elif command == "doctor":
         print(handler(verbose=args.verbose))
     else:
         print(handler())

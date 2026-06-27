@@ -25,6 +25,9 @@ class HelpCommandTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("Available commands:", result.stdout)
         self.assertIn("Planned commands:", result.stdout)
+        self.assertIn("frankie status [--json]", result.stdout)
+        self.assertIn("frankie audit [--verbose] [--json]", result.stdout)
+        self.assertIn("structured data", result.stdout)
 
     def test_no_arguments_shows_help(self) -> None:
         result = run_frankie()

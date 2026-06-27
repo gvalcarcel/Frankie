@@ -37,7 +37,7 @@ class InventoryCommandTests(unittest.TestCase):
     def test_inventory_output_contains_required_header(self) -> None:
         result = run_frankie("inventory")
         self.assertIn("Frankie Inventory", result.stdout)
-        self.assertIn("Version: 0.6.0", result.stdout)
+        self.assertIn("Version: 0.7.0-dev", result.stdout)
         self.assertIn("Mode: read-only foundation", result.stdout)
 
     def test_inventory_distinguishes_physical_server_core_and_repository(self) -> None:

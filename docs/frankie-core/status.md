@@ -60,7 +60,7 @@ Si una evidencia historica documenta una validacion pendiente y una evidencia po
 
 ```text
 Frankie Status
-Version: 0.6.0
+Version: 0.7.0-dev
 Mode: read-only foundation
 
 Physical server:
@@ -101,14 +101,40 @@ Overall status: WARNING
 - No consulta estado en vivo.
 - No valida acceso SMB real desde Windows por si mismo; solo interpreta evidencias documentadas.
 - No calcula antigüedad de evidencias.
-- No emite JSON ni Markdown.
+- No emite Markdown; JSON está disponible mediante `--json`.
 - No diferencia todavía entre warning operativo y warning documental.
 
 ## Próximos pasos
 
-- Añadir salida JSON.
+- Evolucionar el contrato JSON junto con evidencias estructuradas versionadas.
 - Añadir antigüedad de evidencias.
 - Mejorar parsing semántico de informes.
 - Integrar `inventory` con knowledge base.
 - Implementar `doctor` como diagnóstico local de repositorio.
 - Añadir auditoría externa del comando `status`.
+
+## Salida JSON
+
+Desde `0.7.0-dev`, `status` puede devolver datos estructurados:
+
+```bash
+python -m frankie status --json
+```
+
+Ejemplo reducido:
+
+```json
+{
+  "schema_version": "1.0",
+  "command": "status",
+  "frankie_core_version": "0.7.0-dev",
+  "mode": "offline",
+  "overall_status": "WARNING",
+  "components": [
+    {"id": "samba", "status": "OK", "severity": "INFO"},
+    {"id": "portainer", "status": "WARNING", "severity": "LOW"}
+  ]
+}
+```
+
+La salida JSON se construye desde el mismo `StatusReport` que la consola. No consulta Frankie físico, no ejecuta comandos externos y no escribe ficheros.

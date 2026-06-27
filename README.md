@@ -89,7 +89,7 @@ Infraestructura de referencia actualmente documentada:
 
 ## Estado actual
 
-Estado de producto: `v0.6.0 Frankie Core / CLI Foundation` preparada localmente para revisión final.
+Estado de producto: `v0.7.0-dev`, ciclo de desarrollo iniciado sobre la release estable `v0.6.0`.
 
 El repositorio contiene:
 
@@ -103,7 +103,7 @@ El repositorio contiene:
 
 Pendientes destacados:
 
-- publicación formal de `v0.6.0` mediante tag y release,
+- completar el alcance planificado de `v0.7.0`,
 - revisión del puerto `8000` de Portainer,
 - reservas DHCP o estrategia de nombres estable,
 - prueba formal de restauración,
@@ -177,13 +177,27 @@ Versión inicial de fundación:
 v0.5.0 Foundation
 ```
 
-Versión preparada localmente:
+Primera release estable:
 
 ```text
 v0.6.0 Frankie Core / CLI Foundation
 ```
 
-Esta versión incorpora los comandos `version`, `help`, `status`, `inventory`, `audit` y `doctor` en modo solo lectura. No implementa conexión live con Frankie físico ni modo repair.
+Versión actual de desarrollo:
+
+```text
+v0.7.0-dev
+```
+
+El ciclo actual añade datos estructurados sin abandonar el modo seguro. Están disponibles:
+
+```bash
+python -m frankie status --json
+python -m frankie audit --json
+python -m frankie audit --verbose --json
+```
+
+La salida JSON usa las mismas evidencias documentadas que la consola. No existe conexión live con Frankie físico ni modo repair.
 
 Ver [governance/VERSIONING.md](governance/VERSIONING.md).
 

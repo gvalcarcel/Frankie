@@ -2,7 +2,11 @@ from __future__ import annotations
 
 from frankie.audit.audit_engine import run_audit
 from frankie.output.console import render_audit
+from frankie.output.json_output import render_audit_json
 
 
-def run(verbose: bool = False) -> str:
-    return render_audit(run_audit(), verbose=verbose)
+def run(verbose: bool = False, json_output: bool = False) -> str:
+    report = run_audit()
+    if json_output:
+        return render_audit_json(report, verbose=verbose)
+    return render_audit(report, verbose=verbose)

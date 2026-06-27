@@ -4,7 +4,24 @@ Este proyecto sigue Semantic Versioning.
 
 ## [Unreleased]
 
-Preparado para futuros cambios posteriores a `v0.6.0`.
+Ciclo de desarrollo `0.7.0-dev` iniciado tras la publicación de `v0.6.0`.
+
+### Added
+
+- Salida JSON determinista para `python -m frankie status --json`.
+- Salida JSON determinista para `python -m frankie audit --json`.
+- Salida JSON ampliada para `python -m frankie audit --verbose --json`.
+- Contrato JSON `1.0` basado en los mismos modelos internos que la salida de consola.
+- Documentación pedagógica inicial sobre JSON en Frankie Core.
+
+### Changed
+
+- Ayuda CLI actualizada con las opciones JSON soportadas.
+- Versión de desarrollo actualizada a `0.7.0-dev`.
+
+### Security
+
+- La salida JSON mantiene el modo offline, no ejecuta comandos externos, no usa credenciales y escribe únicamente en `stdout`.
 
 ## [v0.6.0] - 2026-06-26
 

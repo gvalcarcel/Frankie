@@ -254,7 +254,9 @@ Release preparada localmente. Pendiente de auditoría final, tag y publicación 
 
 ### Estado
 
-Planificación preparada para revisión. No se ha cambiado la versión ni se ha implementado funcionalidad.
+En desarrollo como `0.7.0-dev`.
+
+Primer bloque implementado: salida JSON para `status` y `audit`, incluida la variante `audit --verbose --json`.
 
 ### Límites
 

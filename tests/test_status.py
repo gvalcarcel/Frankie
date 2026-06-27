@@ -38,7 +38,7 @@ class StatusCommandTests(unittest.TestCase):
     def test_status_output_contains_required_header(self) -> None:
         result = run_frankie("status")
         self.assertIn("Frankie Status", result.stdout)
-        self.assertIn("Version: 0.6.0", result.stdout)
+        self.assertIn("Version: 0.7.0-dev", result.stdout)
         self.assertIn("Mode: read-only foundation", result.stdout)
 
     def test_missing_evidence_does_not_break_status(self) -> None:

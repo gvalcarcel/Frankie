@@ -11,5 +11,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("command", nargs="?")
     parser.add_argument("--verbose", action="store_true")
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        dest="json_output",
+        help="Return structured JSON for supported commands.",
+    )
     parser.add_argument("-h", "--help", action="store_const", const="help", dest="command")
     return parser

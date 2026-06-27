@@ -8,7 +8,7 @@ Su objetivo es proporcionar una base común para futuras capacidades de consulta
 
 Frankie Core no es todavía una herramienta de administración remota. En `v0.6.0 - Frankie Core / CLI Foundation` solo ofrece una base modular y una CLI mínima de solo lectura.
 
-`v0.6.0` está publicada oficialmente. La planificación de `v0.7.0` mantiene el modo OFFLINE y de solo lectura, y se centra en datos estructurados, evidencias verificables y valor pedagógico.
+`v0.6.0` está publicada oficialmente. El ciclo `0.7.0-dev` mantiene el modo OFFLINE y de solo lectura, y se centra en datos estructurados, evidencias verificables y valor pedagógico.
 
 Documentos de planificación:
 
@@ -64,6 +64,22 @@ python -m frankie inventory
 python -m frankie audit
 python -m frankie doctor
 ```
+
+## Salida JSON en 0.7.0-dev
+
+El primer bloque funcional de `0.7.0-dev` añade datos estructurados para `status` y `audit`:
+
+```bash
+python -m frankie status --json
+python -m frankie audit --json
+python -m frankie audit --verbose --json
+```
+
+La consola y JSON serializan los mismos informes internos. JSON no analiza texto de consola ni vuelve a calcular estados.
+
+`inventory --json` y `doctor --json` no forman parte de esta Work Order y se rechazan de forma explícita.
+
+JSON se escribe exclusivamente por `stdout`, usa el contrato `schema_version: "1.0"` y conserva el modo offline basado en evidencias documentadas.
 
 ### `status`
 

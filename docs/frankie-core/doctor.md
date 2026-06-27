@@ -109,7 +109,7 @@ Salida orientativa:
 
 ```text
 Frankie Doctor
-Version: 0.6.0
+Version: 0.7.0-dev
 Mode: read-only foundation
 
 Scope:

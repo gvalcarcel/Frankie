@@ -30,4 +30,4 @@ class VersionCommandTests(unittest.TestCase):
         self.assertIn("This version does not modify servers or services.", result.stdout)
 
     def test_version_comes_from_central_constant(self) -> None:
-        self.assertEqual(VERSION, "0.6.0")
+        self.assertEqual(VERSION, "0.7.0-dev")
