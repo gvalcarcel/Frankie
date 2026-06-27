@@ -8,7 +8,7 @@
   "mode": "offline",
   "data_source": "documented_evidence",
   "summary": "Frankie Core v0.6.0 is the latest published stable release.",
-  "details": {"release": "v0.6.0", "published": true, "current_development_version": "0.7.0-dev"},
+  "details": {"release": "v0.6.0", "published": true, "next_prepared_version": "0.7.0"},
   "references": ["docs/releases/v0.6.0.md", "docs/evidencias/frankie-core-v0.6.0/release_publication_report.md"],
   "server_impact": {
     "touches_physical_server": false,
@@ -20,5 +20,5 @@
     "contains_credentials": false,
     "contains_internal_ips": false
   },
-  "recommendation": "Keep v0.6.0 as the stable reference while v0.7.0 remains in development."
+  "recommendation": "Keep v0.6.0 as the published stable reference until v0.7.0 is tagged and released."
 }

@@ -8,7 +8,7 @@ Su objetivo es proporcionar una base común para futuras capacidades de consulta
 
 Frankie Core no es todavía una herramienta de administración remota. En `v0.6.0 - Frankie Core / CLI Foundation` solo ofrece una base modular y una CLI mínima de solo lectura.
 
-`v0.6.0` está publicada oficialmente. El ciclo `0.7.0-dev` mantiene el modo OFFLINE y de solo lectura, y se centra en datos estructurados, evidencias verificables y valor pedagógico.
+`v0.6.0` está publicada oficialmente. `v0.7.0` queda preparada y mantiene el modo OFFLINE y de solo lectura, con datos estructurados, evidencias verificables y valor pedagógico.
 
 Documentos de planificación:
 
@@ -56,7 +56,7 @@ Frankie CLI:
 - En `v0.6.0` solo implementa comandos mínimos.
 - No representa toda la plataforma.
 
-## Comandos disponibles en 0.7.0-dev
+## Comandos disponibles en v0.7.0
 
 ```bash
 python -m frankie
@@ -71,9 +71,9 @@ python -m frankie evidence validate
 python -m frankie evidence show samba-validation-current
 ```
 
-## Salida JSON en 0.7.0-dev
+## Salida JSON en v0.7.0
 
-El primer bloque funcional de `0.7.0-dev` añade datos estructurados para `status` y `audit`:
+`v0.7.0` añade datos estructurados para `status` y `audit`:
 
 ```bash
 python -m frankie status --json
@@ -112,7 +112,7 @@ Cada consejo distingue:
 
 Doctor sigue siendo offline, no ejecuta Audit mediante subprocess y no implementa reparación automática. En modo verbose muestra los checks `PASS` como contexto resuelto, sin convertirlos en incidencias activas.
 
-## CLI completa de 0.7.0-dev
+## CLI completa de v0.7.0
 
 El bloque CLI planificado está implementado: JSON para los cuatro comandos principales y consulta de evidencias estructuradas mediante `list`, `validate` y `show`.
 
@@ -170,7 +170,7 @@ La CLI mantiene esta sección para que futuras Work Orders puedan añadir nuevos
 
 ## Garantías de solo lectura
 
-El ciclo `0.7.0-dev`:
+La versión `v0.7.0`:
 
 - No modifica servidores.
 - No ejecuta scripts existentes.
@@ -206,6 +206,6 @@ python -m unittest discover -s tests
 
 ## Estado
 
-Frankie Core continúa en `0.7.0-dev`. El alcance CLI offline y la documentación didáctica están implementados, pero todavía requieren revisión de cierre antes de una release.
+Frankie Core queda preparado como `v0.7.0`. El alcance CLI offline y la documentación didáctica han superado la revisión de cierre; quedan pendientes el tag y la publicación de la release.
 
 Live Mode y Repair Mode no están implementados. Las tareas LIVE se ejecutarán únicamente cuando el usuario lo indique mediante una Work Order autorizada.

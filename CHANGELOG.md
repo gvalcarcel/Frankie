@@ -4,7 +4,11 @@ Este proyecto sigue Semantic Versioning.
 
 ## [Unreleased]
 
-Ciclo de desarrollo `0.7.0-dev` iniciado tras la publicación de `v0.6.0`.
+Cambios posteriores a la preparación de `v0.7.0`.
+
+## [v0.7.0] - 2026-06-28
+
+Release preparada y validada localmente. Pendiente de tag y publicación en GitHub.
 
 ### Added
 
@@ -19,7 +23,7 @@ Ciclo de desarrollo `0.7.0-dev` iniciado tras la publicación de `v0.6.0`.
 - Doctor pedagógico con urgencia, impacto, motivo, acción recomendada y explicación para alumnado.
 - Salida JSON para `inventory` y `doctor`, incluido `doctor --verbose --json`.
 - Comandos `evidence list`, `evidence validate` y `evidence show` con vista JSON opcional.
-- Referencia completa de Frankie CLI para `0.7.0-dev`.
+- Referencia completa de Frankie CLI para `v0.7.0`.
 - Itinerario didáctico para FP Básica con guías, glosario y ocho actividades evaluables.
 - Diseño seguro de Live Mode, sin implementación de conexión.
 - Roadmap de cinco Work Orders LIVE futuras y controladas.
@@ -27,7 +31,7 @@ Ciclo de desarrollo `0.7.0-dev` iniciado tras la publicación de `v0.6.0`.
 ### Changed
 
 - Ayuda CLI actualizada con las opciones JSON soportadas.
-- Versión de desarrollo actualizada a `0.7.0-dev`.
+- Versión de Frankie Core actualizada a `0.7.0`.
 - `status --json` y `audit --json` informan de la disponibilidad de evidencias estructuradas.
 - Doctor verbose distingue checks activos de checks resueltos que no requieren acción.
 - Ayuda general y validación de argumentos unificadas para el roadmap CLI completo.

@@ -2,7 +2,7 @@
 
 ## Alcance
 
-Frankie CLI `0.7.0-dev` consulta el conocimiento y las evidencias versionadas en el repositorio. Funciona offline, no se conecta al servidor físico Frankie ni a sus máquinas virtuales y no modifica el sistema.
+Frankie CLI `v0.7.0` consulta el conocimiento y las evidencias versionadas en el repositorio. Funciona offline, no se conecta al servidor físico Frankie ni a sus máquinas virtuales y no modifica el sistema.
 
 ## Comandos
 
@@ -39,7 +39,7 @@ Los errores se escriben en la salida de error y no generan trazas internas para 
 
 ## Modos futuros
 
-`live-status` y `live-audit` existen únicamente como propuesta de diseño. No son comandos disponibles en `0.7.0-dev`.
+`live-status` y `live-audit` existen únicamente como propuesta de diseño. No son comandos disponibles en `v0.7.0`.
 
 Una tarea LIVE futura necesitará autorización expresa del usuario, objetivos definidos y controles de solo lectura. Repair Mode permanece fuera de alcance.
 

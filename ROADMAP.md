@@ -254,7 +254,7 @@ Release preparada localmente. Pendiente de auditoría final, tag y publicación 
 
 ### Estado
 
-En desarrollo como `0.7.0-dev`.
+Preparada como `v0.7.0`, pendiente de tag y publicación en GitHub.
 
 Bloques implementados:
 

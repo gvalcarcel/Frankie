@@ -10,7 +10,7 @@ Frankie es el **servidor físico** del aula. Es la máquina real que ejecuta Pro
 
 Frankie Core es una herramienta escrita en Python. Consulta inventario, estados, auditorías y evidencias guardadas en el repositorio.
 
-En `0.7.0-dev` funciona offline y en modo de solo lectura.
+En `v0.7.0` funciona offline y en modo de solo lectura.
 
 ### Repositorio Frankie
 

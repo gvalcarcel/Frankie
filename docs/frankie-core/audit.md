@@ -122,7 +122,7 @@ Salida orientativa:
 
 ```text
 Frankie Audit
-Version: 0.7.0-dev
+Version: 0.7.0
 Mode: read-only foundation
 
 Scope:
@@ -224,7 +224,7 @@ Este comando puede utilizarse en clase para explicar:
 
 ## Salida JSON
 
-Desde `0.7.0-dev`, Audit Engine puede devolver datos estructurados:
+Desde `v0.7.0`, Audit Engine puede devolver datos estructurados:
 
 ```bash
 python -m frankie audit --json
@@ -237,7 +237,7 @@ Ejemplo reducido:
 {
   "schema_version": "1.0",
   "command": "audit",
-  "frankie_core_version": "0.7.0-dev",
+  "frankie_core_version": "0.7.0",
   "mode": "offline",
   "data_source": "structured_and_documented_evidence",
   "structured_evidence": {"available": true, "loaded": 6, "issues": 0},

@@ -2,7 +2,7 @@
 
 ## Estado del documento
 
-- Versión objetivo: posterior a `0.7.0-dev`.
+- Versión objetivo: posterior a `v0.7.0`.
 - Tipo: diseño OFFLINE.
 - Implementación: no disponible.
 - Conexiones realizadas para este diseño: ninguna.
@@ -22,7 +22,7 @@ python -m frankie live-audit --profile <perfil>
 
 Se proponen comandos separados, en lugar de añadir `--live` a los comandos offline. Así la intención es visible, los tests pueden aislar ambos modos y resulta más difícil activar una conexión por accidente.
 
-Estos comandos son solo diseño. Ejecutarlos en `0.7.0-dev` no inicia Live Mode porque no están implementados.
+Estos comandos son solo diseño. Ejecutarlos en `v0.7.0` no inicia Live Mode porque no están implementados.
 
 ## Diferencia entre OFFLINE y LIVE
 
@@ -160,7 +160,7 @@ El error debe explicar el motivo sin revelar datos internos ni credenciales.
 
 Faltan decisiones que deben probarse de forma controlada: transporte, perfiles, almacenamiento de credenciales, verificación de identidad, saneamiento y comportamiento ante fallos reales.
 
-`0.7.0-dev` cierra primero la experiencia offline. Live Mode se dividirá en Work Orders pequeñas y revisables antes de escribir código de conexión.
+`v0.7.0` cierra primero la experiencia offline. Live Mode se dividirá en Work Orders pequeñas y revisables antes de escribir código de conexión.
 
 ## Relación con Repair Mode
 

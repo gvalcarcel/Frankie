@@ -60,7 +60,7 @@ Si una evidencia historica documenta una validacion pendiente y una evidencia po
 
 ```text
 Frankie Status
-Version: 0.7.0-dev
+Version: 0.7.0
 Mode: read-only foundation
 
 Physical server:
@@ -115,7 +115,7 @@ Overall status: WARNING
 
 ## Salida JSON
 
-Desde `0.7.0-dev`, `status` puede devolver datos estructurados:
+Desde `v0.7.0`, `status` puede devolver datos estructurados:
 
 ```bash
 python -m frankie status --json
@@ -127,7 +127,7 @@ Ejemplo reducido:
 {
   "schema_version": "1.0",
   "command": "status",
-  "frankie_core_version": "0.7.0-dev",
+  "frankie_core_version": "0.7.0",
   "mode": "offline",
   "data_source": "structured_and_documented_evidence",
   "structured_evidence": {"available": true, "loaded": 6, "issues": 0},
