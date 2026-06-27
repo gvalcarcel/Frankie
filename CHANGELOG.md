@@ -20,6 +20,9 @@ Ciclo de desarrollo `0.7.0-dev` iniciado tras la publicación de `v0.6.0`.
 - Salida JSON para `inventory` y `doctor`, incluido `doctor --verbose --json`.
 - Comandos `evidence list`, `evidence validate` y `evidence show` con vista JSON opcional.
 - Referencia completa de Frankie CLI para `0.7.0-dev`.
+- Itinerario didáctico para FP Básica con guías, glosario y ocho actividades evaluables.
+- Diseño seguro de Live Mode, sin implementación de conexión.
+- Roadmap de cinco Work Orders LIVE futuras y controladas.
 
 ### Changed
 
@@ -28,10 +31,12 @@ Ciclo de desarrollo `0.7.0-dev` iniciado tras la publicación de `v0.6.0`.
 - `status --json` y `audit --json` informan de la disponibilidad de evidencias estructuradas.
 - Doctor verbose distingue checks activos de checks resueltos que no requieren acción.
 - Ayuda general y validación de argumentos unificadas para el roadmap CLI completo.
+- Índices y documentación general sincronizados con el alcance didáctico y la separación OFFLINE/LIVE.
 
 ### Security
 
 - La salida JSON mantiene el modo offline, no ejecuta comandos externos, no usa credenciales y escribe únicamente en `stdout`.
+- Live Mode permanece sin implementar; su diseño exige autorización expresa, mínimo privilegio, lista cerrada de consultas y saneamiento de evidencias.
 
 ## [v0.6.0] - 2026-06-26
 

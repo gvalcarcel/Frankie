@@ -37,6 +37,14 @@ Los errores se escriben en la salida de error y no generan trazas internas para 
 - Sin necesidad de credenciales.
 - Sin modos live o repair en esta versión.
 
+## Modos futuros
+
+`live-status` y `live-audit` existen únicamente como propuesta de diseño. No son comandos disponibles en `0.7.0-dev`.
+
+Una tarea LIVE futura necesitará autorización expresa del usuario, objetivos definidos y controles de solo lectura. Repair Mode permanece fuera de alcance.
+
+Consulta el [diseño seguro de Live Mode](live-mode-design.md).
+
 ## Documentación relacionada
 
 - [Status](status.md)
@@ -44,3 +52,4 @@ Los errores se escriben en la salida de error y no generan trazas internas para 
 - [Audit](audit.md)
 - [Doctor](doctor.md)
 - [Evidencias estructuradas](evidence.md)
+- [Material didáctico](../aula/README.md)

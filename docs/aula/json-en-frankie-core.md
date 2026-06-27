@@ -84,6 +84,10 @@ python -m frankie audit --verbose --json
 
 ## Mini actividad
 
+**Objetivo:** comparar información equivalente en texto y JSON.
+
+**Material necesario:** repositorio Frankie, Python y una terminal.
+
 1. Ejecuta `python -m frankie status`.
 2. Ejecuta `python -m frankie status --json`.
 3. Localiza Samba y Portainer en ambas salidas.
@@ -98,6 +102,10 @@ Evidencia a entregar:
 - el nombre de tres etiquetas JSON;
 - una frase que explique por qué JSON resulta útil para otro programa.
 
+**Resultado esperado:** los estados coinciden en ambos formatos y el alumno identifica al menos tres claves JSON.
+
+**Mini rúbrica:** localiza las claves (1 punto); compara correctamente los estados (1 punto); explica la utilidad de JSON (1 punto).
+
 ## Preguntas de repaso
 
 1. ¿JSON cambia el estado real de Frankie?
@@ -106,7 +114,7 @@ Evidencia a entregar:
 4. ¿Qué significa que Frankie Core funcione en modo offline?
 5. ¿Qué programa futuro podría aprovechar estos datos?
 
-## Actividad con una evidencia
+## Ejemplo guiado con una evidencia
 
 1. Abre `docs/evidencias/structured/samba_validation.json`.
 2. Localiza `component.name`.

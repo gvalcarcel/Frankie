@@ -104,3 +104,9 @@ python -m frankie evidence show samba-validation-current --json
 ```
 
 `list` enumera las fichas cargadas, `validate` resume su validez y estados, y `show` presenta una ficha concreta. Todos son comandos offline y de solo lectura.
+
+## Uso didáctico
+
+La guía [Evidencias estructuradas](../aula/evidencias-estructuradas.md) propone una práctica guiada para listar, validar e interpretar fichas sin conectarse a Frankie.
+
+Una futura captura LIVE deberá conservar la evidencia raw fuera del repositorio hasta completar su saneamiento. El diseño se describe en [Live Mode](live-mode-design.md).

@@ -71,6 +71,8 @@ SMB no aparece como problema activo porque su validación está documentada como
 
 Objetivo: aprender a leer un diagnóstico técnico sin tocar el servidor.
 
+Material necesario: repositorio Frankie, Python, una terminal y esta guía.
+
 1. Ejecuta `python -m frankie doctor`.
 2. Localiza el apartado `Issue`.
 3. Copia el valor de `Severity`.
@@ -82,6 +84,10 @@ Objetivo: aprender a leer un diagnóstico técnico sin tocar el servidor.
 9. Ejecuta `python -m frankie doctor --verbose`.
 10. Localiza el check de SMB entre los checks resueltos.
 11. Ejecuta `python -m frankie doctor --json` y localiza los mismos campos en formato estructurado.
+
+## Resultado esperado
+
+Una explicación clara del aviso de Portainer, una acción segura y una acción que no debe realizarse. SMB debe aparecer como resuelto, no como incidencia activa.
 
 ## Evidencia a entregar
 
@@ -99,3 +105,9 @@ Objetivo: aprender a leer un diagnóstico técnico sin tocar el servidor.
 3. ¿Por qué no debemos cerrar un puerto sin comprobar su propósito?
 4. ¿Por qué hace falta un plan de rollback?
 5. ¿Doctor modifica Frankie?
+
+## Mini rúbrica
+
+- Identifica severidad, urgencia e impacto: 1 punto.
+- Distingue acción segura y acción prohibida: 1 punto.
+- Explica por qué Doctor no repara: 1 punto.

@@ -259,9 +259,11 @@ En desarrollo como `0.7.0-dev`.
 Bloques implementados:
 
 - salida JSON para `status` y `audit`, incluida la variante `audit --verbose --json`;
-- modelo inicial y loader offline de evidencias estructuradas.
-- Doctor mejorado con orientación pedagógica y pasos seguros.
-- roadmap CLI completado con JSON para Inventory/Doctor y consulta de evidencias estructuradas.
+- modelo inicial y loader offline de evidencias estructuradas;
+- Doctor mejorado con orientación pedagógica y pasos seguros;
+- roadmap CLI completado con JSON para Inventory/Doctor y consulta de evidencias estructuradas;
+- documentación didáctica, glosario y ocho actividades guiadas para FP Básica;
+- diseño formal de Live Mode y propuesta de Work Orders LIVE, sin conexión real.
 
 ### Límites
 
@@ -273,3 +275,8 @@ Bloques implementados:
 ### Plan detallado
 
 Ver [docs/roadmap/v0.7.0-planning.md](docs/roadmap/v0.7.0-planning.md).
+
+Diseño y ejecución futura:
+
+- [Diseño seguro de Live Mode](docs/frankie-core/live-mode-design.md).
+- [Work Orders LIVE propuestas](docs/roadmap/live-workorders.md).

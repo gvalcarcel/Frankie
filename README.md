@@ -99,17 +99,24 @@ El repositorio contiene:
 - scripts idempotentes con dry-run,
 - scripts de auditoría de solo lectura,
 - evidencias de auditoría inicial,
-- checklists de validación.
+- checklists de validación,
+- CLI offline con salida JSON y consulta de evidencias estructuradas,
+- guías didácticas y actividades para FP Básica,
+- diseño seguro de Live Mode, sin implementación real.
 
 Pendientes destacados:
 
-- completar el alcance planificado de `v0.7.0`,
+- revisar y estabilizar el alcance offline completado de `v0.7.0-dev`,
 - revisión del puerto `8000` de Portainer,
 - reservas DHCP o estrategia de nombres estable,
 - prueba formal de restauración,
 - definición de monitorización,
 - preparación de dashboard,
 - consolidacion de knowledge base.
+
+Material docente: [docs/aula/README.md](docs/aula/README.md).
+
+Live Mode y Repair Mode no están implementados. Las futuras tareas LIVE solo se ejecutarán cuando el usuario lo indique y autorice mediante una Work Order específica.
 
 ## Roadmap
 

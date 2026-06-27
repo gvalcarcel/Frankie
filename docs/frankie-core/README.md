@@ -14,6 +14,9 @@ Documentos de planificación:
 
 - [Plan técnico y pedagógico de v0.7.0](../roadmap/v0.7.0-planning.md).
 - [Estrategia OFFLINE / LIVE](../roadmap/offline-live-strategy.md).
+- [Diseño seguro de Live Mode](live-mode-design.md).
+- [Work Orders LIVE futuras](../roadmap/live-workorders.md).
+- [Material didáctico de aula](../aula/README.md).
 
 ## Por qué existe el paquete raíz `frankie/`
 
@@ -53,7 +56,7 @@ Frankie CLI:
 - En `v0.6.0` solo implementa comandos mínimos.
 - No representa toda la plataforma.
 
-## Comandos disponibles en v0.6.0
+## Comandos disponibles en 0.7.0-dev
 
 ```bash
 python -m frankie
@@ -63,6 +66,9 @@ python -m frankie status
 python -m frankie inventory
 python -m frankie audit
 python -m frankie doctor
+python -m frankie evidence list
+python -m frankie evidence validate
+python -m frankie evidence show samba-validation-current
 ```
 
 ## Salida JSON en 0.7.0-dev
@@ -164,7 +170,7 @@ La CLI mantiene esta sección para que futuras Work Orders puedan añadir nuevos
 
 ## Garantías de solo lectura
 
-La versión `v0.6.0`:
+El ciclo `0.7.0-dev`:
 
 - No modifica servidores.
 - No ejecuta scripts existentes.
@@ -200,6 +206,6 @@ python -m unittest discover -s tests
 
 ## Estado
 
-Frankie Core está en fase foundation.
+Frankie Core continúa en `0.7.0-dev`. El alcance CLI offline y la documentación didáctica están implementados, pero todavía requieren revisión de cierre antes de una release.
 
-No debe considerarse todavía una release funcional completa de inventario, auditoría o monitorización.
+Live Mode y Repair Mode no están implementados. Las tareas LIVE se ejecutarán únicamente cuando el usuario lo indique mediante una Work Order autorizada.
