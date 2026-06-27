@@ -10,6 +10,8 @@ def build_parser() -> argparse.ArgumentParser:
         add_help=False,
     )
     parser.add_argument("command", nargs="?")
+    parser.add_argument("evidence_action", nargs="?")
+    parser.add_argument("evidence_id", nargs="?")
     parser.add_argument("--verbose", action="store_true")
     parser.add_argument(
         "--json",

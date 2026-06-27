@@ -195,11 +195,18 @@ El ciclo actual añade datos estructurados sin abandonar el modo seguro. Están 
 python -m frankie status --json
 python -m frankie audit --json
 python -m frankie audit --verbose --json
+python -m frankie inventory --json
+python -m frankie doctor --json
+python -m frankie evidence list
+python -m frankie evidence validate
+python -m frankie evidence show samba-validation-current --json
 ```
 
 La salida JSON usa las mismas evidencias documentadas que la consola. No existe conexión live con Frankie físico ni modo repair.
 
 Doctor también incorpora un diagnóstico pedagógico: explica impacto, urgencia, por qué importa, siguiente acción segura y qué no debe hacerse. Continúa siendo offline y no repara sistemas.
+
+La referencia completa de comandos está en [docs/frankie-core/cli.md](docs/frankie-core/cli.md).
 
 Ver [governance/VERSIONING.md](governance/VERSIONING.md).
 

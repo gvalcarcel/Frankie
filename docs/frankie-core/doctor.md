@@ -200,7 +200,11 @@ Este comando puede usarse en clase para explicar:
 
 ## Proximos pasos
 
-- Añadir salida JSON en una Work Order futura.
+- Mantener estable y versionado el contrato JSON.
 - Añadir diagnosticos para mas checks del Audit Engine.
 - Añadir modo live seguro y separado si el proyecto lo requiere.
 - Conectar Doctor con dashboard o modulo IA sin romper el modo seguro.
+
+## Salida JSON
+
+`python -m frankie doctor --json` expone el diagnóstico pedagógico en formato procesable. `python -m frankie doctor --verbose --json` añade el resultado técnico, las limitaciones y los checks resueltos, sin cambiar el carácter offline y de solo lectura del comando.

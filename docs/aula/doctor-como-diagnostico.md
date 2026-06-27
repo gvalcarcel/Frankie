@@ -81,6 +81,7 @@ Objetivo: aprender a leer un diagnóstico técnico sin tocar el servidor.
 8. Escribe cuál sería el siguiente paso seguro.
 9. Ejecuta `python -m frankie doctor --verbose`.
 10. Localiza el check de SMB entre los checks resueltos.
+11. Ejecuta `python -m frankie doctor --json` y localiza los mismos campos en formato estructurado.
 
 ## Evidencia a entregar
 

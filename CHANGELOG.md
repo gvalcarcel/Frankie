@@ -17,6 +17,9 @@ Ciclo de desarrollo `0.7.0-dev` iniciado tras la publicación de `v0.6.0`.
 - Loader offline y tolerante para evidencias estructuradas.
 - Esquema documental `frankie_evidence.schema.json`.
 - Doctor pedagógico con urgencia, impacto, motivo, acción recomendada y explicación para alumnado.
+- Salida JSON para `inventory` y `doctor`, incluido `doctor --verbose --json`.
+- Comandos `evidence list`, `evidence validate` y `evidence show` con vista JSON opcional.
+- Referencia completa de Frankie CLI para `0.7.0-dev`.
 
 ### Changed
 
@@ -24,6 +27,7 @@ Ciclo de desarrollo `0.7.0-dev` iniciado tras la publicación de `v0.6.0`.
 - Versión de desarrollo actualizada a `0.7.0-dev`.
 - `status --json` y `audit --json` informan de la disponibilidad de evidencias estructuradas.
 - Doctor verbose distingue checks activos de checks resueltos que no requieren acción.
+- Ayuda general y validación de argumentos unificadas para el roadmap CLI completo.
 
 ### Security
 

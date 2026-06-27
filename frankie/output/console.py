@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from frankie.core.models import AuditReport, DoctorReport, InventoryReport, StatusReport
+from frankie.evidence.models import EvidenceLoadResult, StructuredEvidence
 
 
 def render_status(report: StatusReport) -> str:
@@ -177,6 +178,54 @@ def render_doctor(report: DoctorReport, verbose: bool = False) -> str:
 
     lines.extend(["", f"Overall doctor result: {report.overall_result}"])
     return "\n".join(lines).rstrip()
+
+
+def render_evidence_list(result: EvidenceLoadResult) -> str:
+    if not result.evidence:
+        return "No structured evidences found."
+    lines = ["Structured evidences"]
+    for evidence in result.evidence:
+        lines.append(f"- {evidence.evidence_id} [{evidence.status} / {evidence.severity}]")
+    return "\n".join(lines)
+
+
+def render_evidence_validation(result: EvidenceLoadResult) -> str:
+    valid = len(result.evidence)
+    invalid = len(result.issues)
+    if not result.directory_available or (valid == 0 and invalid == 0):
+        validation_result = "WARN"
+    elif invalid:
+        validation_result = "FAIL"
+    else:
+        validation_result = "PASS"
+
+    lines = [
+        "Structured evidence validation",
+        f"Valid: {valid}",
+        f"Invalid: {invalid}",
+        f"Result: {validation_result}",
+    ]
+    for issue in result.issues:
+        lines.append(f"- {issue.path}: {issue.message}")
+    return "\n".join(lines)
+
+
+def render_evidence(evidence: StructuredEvidence) -> str:
+    lines = [
+        "Structured evidence",
+        f"Evidence id: {evidence.evidence_id}",
+        f"Type: {evidence.evidence_type}",
+        f"Component: {evidence.component_name} ({evidence.component_id})",
+        f"Status: {evidence.status}",
+        f"Severity: {evidence.severity}",
+        f"Mode: {evidence.mode}",
+        f"Summary: {evidence.summary}",
+        f"Recommendation: {evidence.recommendation}",
+        "References:",
+    ]
+    for reference in evidence.references:
+        lines.append(f"- {reference}")
+    return "\n".join(lines)
 
 
 def _audit_summary(report: AuditReport) -> dict[str, int]:

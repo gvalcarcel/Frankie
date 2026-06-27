@@ -77,7 +77,7 @@ python -m frankie audit --verbose --json
 
 La consola y JSON serializan los mismos informes internos. JSON no analiza texto de consola ni vuelve a calcular estados.
 
-`inventory --json` y `doctor --json` no forman parte de esta Work Order y se rechazan de forma explícita.
+`inventory --json` y `doctor --json` también están disponibles. Doctor admite la combinación `--verbose --json` para añadir contexto resuelto sin mezclar texto de consola.
 
 JSON se escribe exclusivamente por `stdout`, usa el contrato `schema_version: "1.0"` y conserva el modo offline basado en evidencias documentadas.
 
@@ -105,6 +105,12 @@ Cada consejo distingue:
 - evidencias.
 
 Doctor sigue siendo offline, no ejecuta Audit mediante subprocess y no implementa reparación automática. En modo verbose muestra los checks `PASS` como contexto resuelto, sin convertirlos en incidencias activas.
+
+## CLI completa de 0.7.0-dev
+
+El bloque CLI planificado está implementado: JSON para los cuatro comandos principales y consulta de evidencias estructuradas mediante `list`, `validate` y `show`.
+
+Referencia completa: [cli.md](cli.md).
 
 ### `status`
 

@@ -4,11 +4,12 @@ from frankie.audit.audit_engine import run_audit
 from frankie.core.models import DoctorReport, InventoryItem
 from frankie.doctor.advice import build_doctor_findings
 from frankie.evidence.loader import load_structured_evidence
+from frankie.evidence.models import EvidenceLoadResult
 
 
-def run_doctor() -> DoctorReport:
+def run_doctor(structured: EvidenceLoadResult | None = None) -> DoctorReport:
     audit_report = run_audit()
-    structured = load_structured_evidence()
+    evidence_result = structured or load_structured_evidence()
     findings = build_doctor_findings(audit_report.findings)
     return DoctorReport(
         version=audit_report.version,
@@ -19,8 +20,8 @@ def run_doctor() -> DoctorReport:
             InventoryItem("Repairs", "no"),
             InventoryItem("Writes files", "no"),
             InventoryItem("Executes commands", "no"),
-            InventoryItem("Structured evidence", f"{len(structured.evidence)} loaded" if structured.available else "unavailable"),
-            InventoryItem("Evidence issues", str(len(structured.issues))),
+            InventoryItem("Structured evidence", f"{len(evidence_result.evidence)} loaded" if evidence_result.available else "unavailable"),
+            InventoryItem("Evidence issues", str(len(evidence_result.issues))),
         ),
         audit_result=audit_report.overall_result,
         findings=findings,

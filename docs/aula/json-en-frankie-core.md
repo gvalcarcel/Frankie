@@ -89,6 +89,8 @@ python -m frankie audit --verbose --json
 3. Localiza Samba y Portainer en ambas salidas.
 4. Explica qué datos son iguales y qué cambia en la presentación.
 5. Repite la comparación con `audit`.
+6. Ejecuta `python -m frankie inventory --json` e identifica las máquinas virtuales documentadas.
+7. Ejecuta `python -m frankie doctor --verbose --json` y localiza la explicación pedagógica y los checks resueltos.
 
 Evidencia a entregar:
 

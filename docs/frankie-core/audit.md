@@ -255,3 +255,6 @@ Ejemplo reducido:
 Ambas variantes serializan el mismo `AuditReport` que la salida humana. No ejecutan comandos live, no usan credenciales y no escriben ficheros.
 
 Las fichas estructuradas son complementarias. Audit Engine conserva sus checks Markdown actuales y no depende exclusivamente de JSON.
+## Referencia relacionada
+
+Consulta la [referencia completa de Frankie CLI](cli.md) para opciones, formatos y códigos de salida.

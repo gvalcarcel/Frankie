@@ -158,10 +158,14 @@ Este comando puede utilizarse en clase para explicar:
 - Cómo una herramienta puede convertir documentación técnica en información consultable.
 - Por qué una fuente de verdad documental ayuda a administrar sistemas con orden.
 
+## Salida JSON
+
+`python -m frankie inventory --json` entrega el mismo inventario mediante un contrato estable y procesable. La salida incluye metadatos sobre el modo offline, la fuente de datos y la disponibilidad de evidencias estructuradas.
+
 ## Próximos pasos
 
-- Añadir salida JSON cuando sea necesario integrarlo con otras herramientas.
-- Normalizar evidencias en un formato estructurado.
+- Mantener estable y versionado el contrato JSON.
+- Ampliar las evidencias estructuradas sin perder trazabilidad documental.
 - Separar reglas de detección en una capa declarativa.
 - Preparar inventario detallado por componente.
 - Conectar el inventario con futuras vistas de dashboard, manteniendo el modo seguro.

@@ -89,7 +89,18 @@ JSON aporta contrato, disponibilidad y datos reutilizables.
 ## Limitaciones
 
 - La validación del loader es mínima y no sustituye todavía una validación completa contra JSON Schema.
-- No existe comando `frankie evidence`.
+- No existen comandos para crear, editar o borrar evidencias.
 - No se generan fichas automáticamente.
 - No se capturan datos live.
 - No hay política automática de expiración o precedencia.
+
+## Consulta desde Frankie CLI
+
+```bash
+python -m frankie evidence list
+python -m frankie evidence validate
+python -m frankie evidence show samba-validation-current
+python -m frankie evidence show samba-validation-current --json
+```
+
+`list` enumera las fichas cargadas, `validate` resume su validez y estados, y `show` presenta una ficha concreta. Todos son comandos offline y de solo lectura.

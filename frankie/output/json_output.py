@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 import re
 
-from frankie.core.models import AuditReport, StatusReport
-from frankie.evidence.models import EvidenceLoadResult
+from frankie.core.models import AuditReport, DoctorReport, InventoryReport, StatusReport
+from frankie.evidence.models import EvidenceLoadResult, StructuredEvidence
 
 
 SCHEMA_VERSION = "1.0"
@@ -21,6 +21,22 @@ def render_audit_json(
     verbose: bool = False,
 ) -> str:
     return _render_json(audit_payload(report, structured, verbose=verbose))
+
+
+def render_inventory_json(report: InventoryReport, structured: EvidenceLoadResult | None = None) -> str:
+    return _render_json(inventory_payload(report, structured))
+
+
+def render_doctor_json(
+    report: DoctorReport,
+    structured: EvidenceLoadResult | None = None,
+    verbose: bool = False,
+) -> str:
+    return _render_json(doctor_payload(report, structured, verbose=verbose))
+
+
+def render_evidence_json(evidence: StructuredEvidence) -> str:
+    return _render_json(evidence_payload(evidence))
 
 
 def status_payload(
@@ -91,6 +107,100 @@ def audit_payload(
         "overall_result": report.overall_result,
         "counts": {"total": len(report.findings), **counts},
         "checks": checks,
+    }
+
+
+def inventory_payload(
+    report: InventoryReport, structured: EvidenceLoadResult | None = None
+) -> dict[str, object]:
+    items: list[dict[str, object]] = []
+    for section in report.sections:
+        for item in section.items:
+            items.append(
+                {
+                    "id": _identifier(f"{section.title}_{item.name}"),
+                    "section": _identifier(section.title),
+                    "name": item.name,
+                    "value": item.value,
+                    "state": item.state,
+                }
+            )
+
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "command": "inventory",
+        "frankie_core_version": report.version,
+        "mode": "offline",
+        "data_source": _data_source(structured),
+        "structured_evidence": _structured_metadata(structured),
+        "items": items,
+    }
+
+
+def doctor_payload(
+    report: DoctorReport,
+    structured: EvidenceLoadResult | None = None,
+    verbose: bool = False,
+) -> dict[str, object]:
+    issues: list[dict[str, object]] = []
+    for finding in report.findings:
+        advice = finding.advice
+        issue: dict[str, object] = {
+            "issue_id": advice.issue_id,
+            "title": advice.title,
+            "status": finding.status,
+            "severity": advice.severity,
+            "urgency": advice.urgency,
+            "impact": advice.impact,
+            "why_it_matters": advice.why_it_matters,
+            "recommended_action": advice.recommended_action,
+            "safe_next_steps": [step.text for step in advice.safe_next_steps],
+            "do_not": [step.text for step in advice.do_not],
+            "student_explanation": advice.student_explanation,
+            "evidence": list(advice.evidence),
+        }
+        if verbose:
+            issue.update(
+                {
+                    "result": advice.result,
+                    "limitation": advice.limitation or None,
+                }
+            )
+        issues.append(issue)
+
+    payload: dict[str, object] = {
+        "schema_version": SCHEMA_VERSION,
+        "command": "doctor",
+        "frankie_core_version": report.version,
+        "mode": "offline",
+        "data_source": _data_source(structured),
+        "structured_evidence": _structured_metadata(structured),
+        "overall_diagnosis": report.overall_result,
+        "audit_result": report.audit_result,
+        "issues_reviewed": len(report.findings),
+        "issues": issues,
+    }
+    if verbose:
+        payload["resolved_checks"] = list(report.resolved_checks)
+    return payload
+
+
+def evidence_payload(evidence: StructuredEvidence) -> dict[str, object]:
+    return {
+        "schema_version": evidence.schema_version,
+        "evidence_id": evidence.evidence_id,
+        "evidence_type": evidence.evidence_type,
+        "component": {"id": evidence.component_id, "name": evidence.component_name},
+        "status": evidence.status,
+        "severity": evidence.severity,
+        "mode": evidence.mode,
+        "data_source": evidence.data_source,
+        "summary": evidence.summary,
+        "details": evidence.details,
+        "references": list(evidence.references),
+        "server_impact": evidence.server_impact,
+        "security": evidence.security,
+        "recommendation": evidence.recommendation,
     }
 
 

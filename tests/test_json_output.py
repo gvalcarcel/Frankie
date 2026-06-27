@@ -107,9 +107,52 @@ class AuditJsonTests(unittest.TestCase):
 
 class JsonAvailabilityTests(unittest.TestCase):
     def test_json_is_rejected_for_commands_not_in_scope(self) -> None:
-        for command in ("version", "help", "inventory", "doctor"):
+        for command in ("version", "help"):
             with self.subTest(command=command):
                 result = run_frankie(command, "--json")
                 self.assertEqual(result.returncode, 2)
                 self.assertEqual(result.stdout, "")
                 self.assertIn("JSON output is not available", result.stderr)
+
+
+class InventoryJsonTests(unittest.TestCase):
+    def test_inventory_json_contract(self) -> None:
+        result = run_frankie("inventory", "--json")
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertEqual(payload["schema_version"], "1.0")
+        self.assertEqual(payload["command"], "inventory")
+        self.assertEqual(payload["frankie_core_version"], "0.7.0-dev")
+        self.assertEqual(payload["mode"], "offline")
+        self.assertIsInstance(payload["items"], list)
+        values = {item["value"] for item in payload["items"]}
+        self.assertIn("Frankie", values)
+        self.assertIn("srv-servicios", values)
+        self.assertIn("srv-recursos", values)
+
+
+class DoctorJsonTests(unittest.TestCase):
+    def test_doctor_json_contract(self) -> None:
+        result = run_frankie("doctor", "--json")
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertEqual(payload["schema_version"], "1.0")
+        self.assertEqual(payload["command"], "doctor")
+        self.assertEqual(payload["frankie_core_version"], "0.7.0-dev")
+        self.assertEqual(payload["mode"], "offline")
+        self.assertEqual(payload["overall_diagnosis"], "ACTIONS_RECOMMENDED")
+        self.assertEqual(payload["issues_reviewed"], 1)
+        self.assertEqual(payload["issues"][0]["issue_id"], "AUD-SERVICES-PORTAINER-001")
+        self.assertNotIn("AUD-SAMBA-001", {item["issue_id"] for item in payload["issues"]})
+
+    def test_verbose_doctor_json_adds_resolved_context(self) -> None:
+        regular = json.loads(run_frankie("doctor", "--json").stdout)
+        result = run_frankie("doctor", "--verbose", "--json")
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        verbose = json.loads(result.stdout)
+        self.assertNotIn("resolved_checks", regular)
+        self.assertIn("AUD-SAMBA-001 (PASS; no active action)", verbose["resolved_checks"])
+        self.assertIn("result", verbose["issues"][0])
