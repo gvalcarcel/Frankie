@@ -38,6 +38,17 @@ python -m frankie status --json
 
 Los dos modos usan el mismo informe. Solo cambia la forma de presentarlo.
 
+## De informe a ficha estructurada
+
+Antes, Frankie Core consultaba principalmente informes escritos en Markdown. Ahora también puede cargar fichas JSON que un programa entiende campo por campo.
+
+```text
+Antes: leemos un informe escrito.
+Ahora: también tenemos fichas JSON que puede leer Frankie Core.
+```
+
+Las fichas no borran los informes. Los complementan y apuntan a ellos mediante `references`.
+
 ## Status en JSON
 
 ```bash
@@ -92,6 +103,15 @@ Evidencia a entregar:
 3. ¿Por qué no conviene construir JSON analizando texto de consola?
 4. ¿Qué significa que Frankie Core funcione en modo offline?
 5. ¿Qué programa futuro podría aprovechar estos datos?
+
+## Actividad con una evidencia
+
+1. Abre `docs/evidencias/structured/samba_validation.json`.
+2. Localiza `component.name`.
+3. Localiza `status` y `severity`.
+4. Localiza `recommendation`.
+5. Explica con tus palabras por qué la ficha está `OK`.
+6. Repite el ejercicio con `portainer_warning.json` y explica por qué está en `WARNING`.
 
 ## Seguridad
 

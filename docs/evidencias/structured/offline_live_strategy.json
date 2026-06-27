@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "offline-live-strategy-current",
+  "evidence_type": "operating_policy",
+  "component": {"id": "operating_mode", "name": "OFFLINE / LIVE Strategy"},
+  "status": "ACTIVE",
+  "severity": "INFO",
+  "mode": "offline",
+  "data_source": "documented_evidence",
+  "summary": "Frankie work is OFFLINE by default. LIVE work requires explicit user confirmation of access.",
+  "details": {"default_mode": "OFFLINE", "live_requires_explicit_access": true, "live_tasks_are_small_and_controlled": true, "offline_tasks_may_be_broader": true, "live_mode_implemented": false, "repair_mode_implemented": false},
+  "references": ["docs/roadmap/offline-live-strategy.md", "docs/roadmap/v0.7.0-planning.md"],
+  "server_impact": {
+    "touches_physical_server": false,
+    "requires_live_connection": false,
+    "changes_configuration": false
+  },
+  "security": {
+    "contains_secrets": false,
+    "contains_credentials": false,
+    "contains_internal_ips": false
+  },
+  "recommendation": "Keep LIVE work in separate, explicitly authorized Work Orders."
+}

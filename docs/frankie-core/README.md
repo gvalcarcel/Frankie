@@ -81,6 +81,14 @@ La consola y JSON serializan los mismos informes internos. JSON no analiza texto
 
 JSON se escribe exclusivamente por `stdout`, usa el contrato `schema_version: "1.0"` y conserva el modo offline basado en evidencias documentadas.
 
+## Evidencias estructuradas
+
+Frankie Core puede localizar y validar fichas JSON de `docs/evidencias/structured/` mediante un loader de solo lectura.
+
+Las fichas conviven con Markdown y son complementarias: si faltan, Status y Audit continúan funcionando con las fuentes documentales anteriores.
+
+Documentación técnica: [evidence.md](evidence.md).
+
 ### `status`
 
 El comando `status` es el primer MVP funcional de Frankie Core.

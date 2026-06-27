@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "frankie-core-current",
+  "evidence_type": "software_status",
+  "component": {"id": "frankie_core", "name": "Frankie Core"},
+  "status": "OK",
+  "severity": "INFO",
+  "mode": "offline",
+  "data_source": "documented_evidence",
+  "summary": "Frankie Core is in the 0.7.0-dev development cycle.",
+  "details": {"current_version": "0.7.0-dev", "stable_release": "v0.6.0", "read_only": true},
+  "references": ["CHANGELOG.md", "ROADMAP.md", "docs/frankie-core/README.md"],
+  "server_impact": {
+    "touches_physical_server": false,
+    "requires_live_connection": false,
+    "changes_configuration": false
+  },
+  "security": {
+    "contains_secrets": false,
+    "contains_credentials": false,
+    "contains_internal_ips": false
+  },
+  "recommendation": "Continue the planned offline development work for v0.7.0."
+}

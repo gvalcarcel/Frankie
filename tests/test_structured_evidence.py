@@ -1,0 +1,144 @@
+from __future__ import annotations
+
+import json
+import tempfile
+import unittest
+from pathlib import Path
+
+from frankie.core.paths import FrankiePaths
+from frankie.evidence.loader import STRUCTURED_EVIDENCE_DIRECTORY, load_structured_evidence
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+STRUCTURED_ROOT = REPO_ROOT / STRUCTURED_EVIDENCE_DIRECTORY
+
+
+def valid_payload(evidence_id: str = "test-evidence") -> dict[str, object]:
+    return {
+        "schema_version": "1.0",
+        "evidence_id": evidence_id,
+        "evidence_type": "test",
+        "component": {"id": "test", "name": "Test component"},
+        "status": "OK",
+        "severity": "INFO",
+        "mode": "offline",
+        "data_source": "documented_evidence",
+        "summary": "Safe test evidence.",
+        "details": {},
+        "references": ["docs/example.md"],
+        "server_impact": {
+            "touches_physical_server": False,
+            "requires_live_connection": False,
+            "changes_configuration": False,
+        },
+        "security": {
+            "contains_secrets": False,
+            "contains_credentials": False,
+            "contains_internal_ips": False,
+        },
+        "recommendation": "No action required.",
+    }
+
+
+class StructuredEvidenceLoaderTests(unittest.TestCase):
+    def test_loader_reads_repository_evidence(self) -> None:
+        result = load_structured_evidence(FrankiePaths(REPO_ROOT))
+
+        self.assertTrue(result.available)
+        self.assertEqual(len(result.evidence), 6)
+        self.assertEqual(result.issues, ())
+        self.assertEqual(
+            {item.evidence_id for item in result.evidence},
+            {
+                "frankie-core-current",
+                "samba-validation-current",
+                "portainer-port-8000-warning",
+                "audit-summary-current",
+                "release-v0.6.0-published",
+                "offline-live-strategy-current",
+            },
+        )
+
+    def test_missing_directory_returns_controlled_empty_result(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            result = load_structured_evidence(FrankiePaths(Path(tmp)))
+
+        self.assertFalse(result.directory_available)
+        self.assertFalse(result.available)
+        self.assertEqual(result.evidence, ())
+        self.assertEqual(result.issues, ())
+
+    def test_invalid_json_is_reported_without_breaking_valid_files(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            directory = root / STRUCTURED_EVIDENCE_DIRECTORY
+            directory.mkdir(parents=True)
+            (directory / "valid.json").write_text(json.dumps(valid_payload()), encoding="utf-8")
+            (directory / "invalid.json").write_text("{invalid", encoding="utf-8")
+
+            result = load_structured_evidence(FrankiePaths(root))
+
+        self.assertTrue(result.available)
+        self.assertEqual(len(result.evidence), 1)
+        self.assertEqual(len(result.issues), 1)
+        self.assertTrue(result.issues[0].path.endswith("invalid.json"))
+
+    def test_missing_required_field_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            directory = root / STRUCTURED_EVIDENCE_DIRECTORY
+            directory.mkdir(parents=True)
+            payload = valid_payload()
+            del payload["status"]
+            (directory / "missing.json").write_text(json.dumps(payload), encoding="utf-8")
+
+            result = load_structured_evidence(FrankiePaths(root))
+
+        self.assertFalse(result.available)
+        self.assertEqual(len(result.issues), 1)
+        self.assertIn("status", result.issues[0].message)
+
+    def test_sensitive_evidence_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            directory = root / STRUCTURED_EVIDENCE_DIRECTORY
+            directory.mkdir(parents=True)
+            payload = valid_payload()
+            payload["security"]["contains_secrets"] = True  # type: ignore[index]
+            (directory / "unsafe.json").write_text(json.dumps(payload), encoding="utf-8")
+
+            result = load_structured_evidence(FrankiePaths(root))
+
+        self.assertFalse(result.available)
+        self.assertEqual(len(result.issues), 1)
+        self.assertIn("sensitive data", result.issues[0].message)
+
+
+class StructuredEvidenceDocumentTests(unittest.TestCase):
+    def test_all_evidence_files_are_valid_public_json(self) -> None:
+        for path in sorted(STRUCTURED_ROOT.glob("*.json")):
+            with self.subTest(path=path.name):
+                payload = json.loads(path.read_text(encoding="utf-8"))
+                self.assertEqual(payload["schema_version"], "1.0")
+                self.assertTrue(payload["evidence_id"])
+                self.assertTrue(payload["status"])
+                self.assertFalse(payload["security"]["contains_secrets"])
+                self.assertFalse(payload["security"]["contains_credentials"])
+                self.assertFalse(payload["security"]["contains_internal_ips"])
+
+    def test_samba_and_portainer_states_match_known_evidence(self) -> None:
+        samba = json.loads((STRUCTURED_ROOT / "samba_validation.json").read_text(encoding="utf-8"))
+        portainer = json.loads((STRUCTURED_ROOT / "portainer_warning.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(samba["status"], "OK")
+        self.assertEqual(samba["severity"], "INFO")
+        self.assertEqual(portainer["status"], "WARNING")
+        self.assertEqual(portainer["severity"], "LOW")
+        self.assertFalse(portainer["details"]["resolved"])
+
+    def test_live_strategy_requires_explicit_access(self) -> None:
+        strategy = json.loads((STRUCTURED_ROOT / "offline_live_strategy.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(strategy["details"]["default_mode"], "OFFLINE")
+        self.assertTrue(strategy["details"]["live_requires_explicit_access"])
+        self.assertFalse(strategy["details"]["live_mode_implemented"])

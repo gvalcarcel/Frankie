@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "portainer-port-8000-warning",
+  "evidence_type": "known_warning",
+  "component": {"id": "portainer", "name": "Portainer"},
+  "status": "WARNING",
+  "severity": "LOW",
+  "mode": "offline",
+  "data_source": "documented_evidence",
+  "summary": "Portainer port 8000 remains documented as a known warning.",
+  "details": {"audit_status": "WARN", "port": 8000, "resolved": false, "requires_future_live_review": true},
+  "references": ["docs/evidencias/paso-5-auditorias/informe_auditoria.md", "docs/evidencias/frankie-core-v0.6.0/release_publication_report.md"],
+  "server_impact": {
+    "touches_physical_server": false,
+    "requires_live_connection": false,
+    "changes_configuration": false
+  },
+  "security": {
+    "contains_secrets": false,
+    "contains_credentials": false,
+    "contains_internal_ips": false
+  },
+  "recommendation": "Review port 8000 in a future explicitly authorized LIVE Work Order."
+}

@@ -256,7 +256,10 @@ Release preparada localmente. Pendiente de auditoría final, tag y publicación 
 
 En desarrollo como `0.7.0-dev`.
 
-Primer bloque implementado: salida JSON para `status` y `audit`, incluida la variante `audit --verbose --json`.
+Bloques implementados:
+
+- salida JSON para `status` y `audit`, incluida la variante `audit --verbose --json`;
+- modelo inicial y loader offline de evidencias estructuradas.
 
 ### Límites
 

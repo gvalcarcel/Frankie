@@ -129,6 +129,8 @@ Ejemplo reducido:
   "command": "status",
   "frankie_core_version": "0.7.0-dev",
   "mode": "offline",
+  "data_source": "structured_and_documented_evidence",
+  "structured_evidence": {"available": true, "loaded": 6, "issues": 0},
   "overall_status": "WARNING",
   "components": [
     {"id": "samba", "status": "OK", "severity": "INFO"},
@@ -138,3 +140,5 @@ Ejemplo reducido:
 ```
 
 La salida JSON se construye desde el mismo `StatusReport` que la consola. No consulta Frankie físico, no ejecuta comandos externos y no escribe ficheros.
+
+Las fichas estructuradas son complementarias. Si no están disponibles, Status mantiene el cálculo documental existente y marca `structured_evidence.available` como `false`.

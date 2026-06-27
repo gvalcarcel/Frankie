@@ -13,11 +13,15 @@ Ciclo de desarrollo `0.7.0-dev` iniciado tras la publicación de `v0.6.0`.
 - Salida JSON ampliada para `python -m frankie audit --verbose --json`.
 - Contrato JSON `1.0` basado en los mismos modelos internos que la salida de consola.
 - Documentación pedagógica inicial sobre JSON en Frankie Core.
+- Modelo inicial de evidencias estructuradas con seis fichas JSON saneadas.
+- Loader offline y tolerante para evidencias estructuradas.
+- Esquema documental `frankie_evidence.schema.json`.
 
 ### Changed
 
 - Ayuda CLI actualizada con las opciones JSON soportadas.
 - Versión de desarrollo actualizada a `0.7.0-dev`.
+- `status --json` y `audit --json` informan de la disponibilidad de evidencias estructuradas.
 
 ### Security
 

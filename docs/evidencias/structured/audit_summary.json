@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "audit-summary-current",
+  "evidence_type": "audit_summary",
+  "component": {"id": "frankie_audit", "name": "Frankie Audit Engine"},
+  "status": "WARN",
+  "severity": "LOW",
+  "mode": "offline",
+  "data_source": "documented_evidence",
+  "summary": "The documented audit result is WARN because Portainer remains a known warning.",
+  "details": {"checks_total": 7, "pass": 6, "warn": 1, "fail": 0},
+  "references": ["docs/frankie-core/audit.md", "docs/evidencias/frankie-core-v0.7.0/json_output_implementation_audit.md"],
+  "server_impact": {
+    "touches_physical_server": false,
+    "requires_live_connection": false,
+    "changes_configuration": false
+  },
+  "security": {
+    "contains_secrets": false,
+    "contains_credentials": false,
+    "contains_internal_ips": false
+  },
+  "recommendation": "Keep the warning visible until the future LIVE review is completed."
+}

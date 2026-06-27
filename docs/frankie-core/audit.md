@@ -239,6 +239,8 @@ Ejemplo reducido:
   "command": "audit",
   "frankie_core_version": "0.7.0-dev",
   "mode": "offline",
+  "data_source": "structured_and_documented_evidence",
+  "structured_evidence": {"available": true, "loaded": 6, "issues": 0},
   "overall_result": "WARN",
   "counts": {"total": 7, "pass": 6, "warn": 1},
   "checks": [
@@ -251,3 +253,5 @@ Ejemplo reducido:
 `--verbose --json` conserva JSON puro y añade `category`, `description` y `limitation` a cada check. No mezcla encabezados ni mensajes de consola con el documento JSON.
 
 Ambas variantes serializan el mismo `AuditReport` que la salida humana. No ejecutan comandos live, no usan credenciales y no escriben ficheros.
+
+Las fichas estructuradas son complementarias. Audit Engine conserva sus checks Markdown actuales y no depende exclusivamente de JSON.

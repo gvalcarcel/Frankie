@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gvalcarcel/Frankie/docs/schemas/frankie_evidence.schema.json",
+  "title": "Frankie structured evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "evidence_id", "evidence_type", "component", "status",
+    "severity", "mode", "data_source", "summary", "references",
+    "server_impact", "security", "recommendation"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "evidence_id": {"type": "string", "minLength": 1},
+    "evidence_type": {"type": "string", "minLength": 1},
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1}
+      }
+    },
+    "status": {"type": "string", "minLength": 1},
+    "severity": {"enum": ["INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL"]},
+    "mode": {"const": "offline"},
+    "data_source": {"const": "documented_evidence"},
+    "summary": {"type": "string", "minLength": 1},
+    "details": {"type": "object"},
+    "references": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "server_impact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["touches_physical_server", "requires_live_connection", "changes_configuration"],
+      "properties": {
+        "touches_physical_server": {"const": false},
+        "requires_live_connection": {"const": false},
+        "changes_configuration": {"const": false}
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contains_secrets", "contains_credentials", "contains_internal_ips"],
+      "properties": {
+        "contains_secrets": {"const": false},
+        "contains_credentials": {"const": false},
+        "contains_internal_ips": {"const": false}
+      }
+    },
+    "recommendation": {"type": "string", "minLength": 1}
+  }
+}

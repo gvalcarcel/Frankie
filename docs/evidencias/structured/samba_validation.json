@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "samba-validation-current",
+  "evidence_type": "service_validation",
+  "component": {"id": "samba", "name": "Samba / SMB"},
+  "status": "OK",
+  "severity": "INFO",
+  "mode": "offline",
+  "data_source": "documented_evidence",
+  "summary": "SMB validation is documented as OK based on pre-release evidence.",
+  "details": {"validation": "OK", "historical_status": "PENDING", "current_documented_status": "validated"},
+  "references": ["docs/evidencias/frankie-core-v0.6.0/pre_release_live_evidence_check.md", "docs/evidencias/frankie-core-v0.6.0/smb_evidence_sync_audit.md", "docs/evidencias/frankie-core-v0.6.0/smb_evidence_sync_architecture_review.md"],
+  "server_impact": {
+    "touches_physical_server": false,
+    "requires_live_connection": false,
+    "changes_configuration": false
+  },
+  "security": {
+    "contains_secrets": false,
+    "contains_credentials": false,
+    "contains_internal_ips": false
+  },
+  "recommendation": "No action required for SMB. Keep historical traceability."
+}
