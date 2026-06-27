@@ -8,6 +8,13 @@ Su objetivo es proporcionar una base común para futuras capacidades de consulta
 
 Frankie Core no es todavía una herramienta de administración remota. En `v0.6.0 - Frankie Core / CLI Foundation` solo ofrece una base modular y una CLI mínima de solo lectura.
 
+`v0.6.0` está publicada oficialmente. La planificación de `v0.7.0` mantiene el modo OFFLINE y de solo lectura, y se centra en datos estructurados, evidencias verificables y valor pedagógico.
+
+Documentos de planificación:
+
+- [Plan técnico y pedagógico de v0.7.0](../roadmap/v0.7.0-planning.md).
+- [Estrategia OFFLINE / LIVE](../roadmap/offline-live-strategy.md).
+
 ## Por qué existe el paquete raíz `frankie/`
 
 La decisión arquitectónica actual es construir Frankie como plataforma, no solo como CLI.

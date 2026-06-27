@@ -1,6 +1,10 @@
 # Roadmap
 
-Versión base actual: `v0.6.0 Frankie Core / CLI Foundation` preparada localmente para publicación.
+Versión base actual: `v0.6.0 Frankie Core / CLI Foundation`, publicada oficialmente.
+
+Planificación activa: [`v0.7.0 - datos estructurados y comprensión pedagógica`](docs/roadmap/v0.7.0-planning.md).
+
+Estrategia operativa: [OFFLINE por defecto y LIVE solo con autorización expresa](docs/roadmap/offline-live-strategy.md).
 
 ## Fase 1 - Infraestructura Base
 
@@ -237,3 +241,28 @@ Release preparada localmente. Pendiente de auditoría final, tag y publicación 
 - Revisar si la carpeta histórica `cli/` debe mantenerse o documentarse.
 - Preparar dashboard futuro.
 - Preparar integración IA futura sobre documentación y evidencias.
+
+## v0.7.0 - Datos estructurados y comprensión pedagógica
+
+### Objetivos propuestos
+
+- Añadir salida JSON estable para `status` y `audit`.
+- Introducir un modelo inicial de evidencias estructuradas.
+- Mejorar Doctor como herramienta de diagnóstico y aprendizaje.
+- Crear documentación didáctica inicial para FP Básica.
+- Diseñar Live Mode sin implementar conexión real.
+
+### Estado
+
+Planificación preparada para revisión. No se ha cambiado la versión ni se ha implementado funcionalidad.
+
+### Límites
+
+- OFFLINE y solo lectura por defecto.
+- Sin Live Mode real ni Repair Mode.
+- Sin cambios sobre Frankie, sus VMs o servicios.
+- Portainer puerto `8000` queda pendiente de una Work Order LIVE.
+
+### Plan detallado
+
+Ver [docs/roadmap/v0.7.0-planning.md](docs/roadmap/v0.7.0-planning.md).
