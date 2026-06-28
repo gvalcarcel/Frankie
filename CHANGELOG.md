@@ -6,9 +6,20 @@ Este proyecto sigue Semantic Versioning.
 
 Cambios posteriores a la preparación de `v0.7.0`.
 
+### Added
+
+- Sistema operativo de 24 agentes reutilizables para futuras Work Orders.
+- Índice, guía de uso y matriz de selección de agentes.
+- Plantillas VS Code/Codex para WOs generales, OFFLINE, LIVE, release y pedagogía.
+
+### Changed
+
+- Documentación general sincronizada con la publicación oficial de `v0.7.0`.
+- `.gitignore` permite versionar exclusivamente las plantillas Markdown de `.vscode/prompts/`.
+
 ## [v0.7.0] - 2026-06-28
 
-Release preparada y validada localmente. Pendiente de tag y publicación en GitHub.
+Release publicada oficialmente en GitHub.
 
 ### Added
 

@@ -89,7 +89,7 @@ Infraestructura de referencia actualmente documentada:
 
 ## Estado actual
 
-Estado de producto: `v0.7.0` preparada y validada, pendiente de tag y publicación. La última release publicada sigue siendo `v0.6.0`.
+Estado de producto: `v0.7.0` publicada oficialmente. El desarrollo posterior continúa en `Unreleased`.
 
 El repositorio contiene:
 
@@ -102,11 +102,13 @@ El repositorio contiene:
 - checklists de validación,
 - CLI offline con salida JSON y consulta de evidencias estructuradas,
 - guías didácticas y actividades para FP Básica,
-- diseño seguro de Live Mode, sin implementación real.
+- diseño seguro de Live Mode, sin implementación real,
+- sistema operativo de 24 agentes reutilizables,
+- matriz de selección y plantillas de Work Orders para VS Code/Codex.
 
 Pendientes destacados:
 
-- publicar la release preparada `v0.7.0`,
+- planificar el siguiente ciclo funcional tras `v0.7.0`,
 - revisión del puerto `8000` de Portainer,
 - reservas DHCP o estrategia de nombres estable,
 - prueba formal de restauración,
@@ -115,6 +117,8 @@ Pendientes destacados:
 - consolidacion de knowledge base.
 
 Material docente: [docs/aula/README.md](docs/aula/README.md).
+
+Sistema de agentes: [docs/agents/README.md](docs/agents/README.md). Las plantillas de `.vscode/prompts/` ayudan a construir Work Orders generales, OFFLINE, LIVE, de release y pedagógicas.
 
 Live Mode y Repair Mode no están implementados. Las futuras tareas LIVE solo se ejecutarán cuando el usuario lo indique y autorice mediante una Work Order específica.
 
@@ -138,6 +142,7 @@ Fases previstas:
 ```text
 Frankie/
 ├── docs/
+│   └── agents/
 ├── governance/
 ├── knowledge/
 ├── scripts/
@@ -148,7 +153,8 @@ Frankie/
 ├── backups/
 ├── checklists/
 ├── env/
-└── .github/
+├── .github/
+└── .vscode/prompts/
 ```
 
 ## Como colaborar

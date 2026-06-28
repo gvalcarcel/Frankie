@@ -8,7 +8,7 @@ Su objetivo es proporcionar una base común para futuras capacidades de consulta
 
 Frankie Core no es todavía una herramienta de administración remota. En `v0.6.0 - Frankie Core / CLI Foundation` solo ofrece una base modular y una CLI mínima de solo lectura.
 
-`v0.6.0` está publicada oficialmente. `v0.7.0` queda preparada y mantiene el modo OFFLINE y de solo lectura, con datos estructurados, evidencias verificables y valor pedagógico.
+`v0.7.0` está publicada oficialmente y mantiene el modo OFFLINE y de solo lectura, con datos estructurados, evidencias verificables y valor pedagógico.
 
 Documentos de planificación:
 
@@ -17,6 +17,7 @@ Documentos de planificación:
 - [Diseño seguro de Live Mode](live-mode-design.md).
 - [Work Orders LIVE futuras](../roadmap/live-workorders.md).
 - [Material didáctico de aula](../aula/README.md).
+- [Sistema de agentes reutilizables](../agents/README.md).
 
 ## Por qué existe el paquete raíz `frankie/`
 
@@ -206,6 +207,6 @@ python -m unittest discover -s tests
 
 ## Estado
 
-Frankie Core queda preparado como `v0.7.0`. El alcance CLI offline y la documentación didáctica han superado la revisión de cierre; quedan pendientes el tag y la publicación de la release.
+Frankie Core `v0.7.0` está publicado. El trabajo posterior se registra en `Unreleased`, incluido el sistema de agentes y plantillas para construir futuras Work Orders.
 
 Live Mode y Repair Mode no están implementados. Las tareas LIVE se ejecutarán únicamente cuando el usuario lo indique mediante una Work Order autorizada.

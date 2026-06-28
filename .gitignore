@@ -60,7 +60,9 @@ dist/
 # Sistemas operativos y editores
 .DS_Store
 Thumbs.db
-.vscode/
+.vscode/*
+!.vscode/prompts/
+!.vscode/prompts/*.md
 .idea/
 
 # Permitir plantillas

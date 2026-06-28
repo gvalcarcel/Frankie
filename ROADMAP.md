@@ -6,6 +6,8 @@ Planificación activa: [`v0.7.0 - datos estructurados y comprensión pedagógica
 
 Estrategia operativa: [OFFLINE por defecto y LIVE solo con autorización expresa](docs/roadmap/offline-live-strategy.md).
 
+Sistema operativo de trabajo: [agentes reutilizables y plantillas de Work Orders](docs/agents/README.md).
+
 ## Fase 1 - Infraestructura Base
 
 ### Objetivos
@@ -254,7 +256,7 @@ Release preparada localmente. Pendiente de auditoría final, tag y publicación 
 
 ### Estado
 
-Preparada como `v0.7.0`, pendiente de tag y publicación en GitHub.
+Publicada oficialmente como `v0.7.0`.
 
 Bloques implementados:
 
@@ -280,3 +282,13 @@ Diseño y ejecución futura:
 
 - [Diseño seguro de Live Mode](docs/frankie-core/live-mode-design.md).
 - [Work Orders LIVE propuestas](docs/roadmap/live-workorders.md).
+
+## Sistema de agentes reutilizables
+
+Estado: incorporado después de `v0.7.0` dentro de `Unreleased`.
+
+- 24 perfiles clasificados en hardware, software y transversales.
+- índice, guía de uso y matriz de selección.
+- seis plantillas de Work Orders para VS Code/Codex.
+- selección explícita por tipo de tarea y riesgo.
+- estrategia OFFLINE/LIVE integrada en todos los perfiles.
