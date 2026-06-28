@@ -78,8 +78,8 @@ JSON aporta contrato, disponibilidad y datos reutilizables.
 
 ## Estado conocido
 
-- Frankie Core: `0.7.0`.
-- Release estable: `v0.6.0`.
+- Frankie Core: `0.8.0-dev`.
+- Release estable: `v0.7.0`.
 - SMB: `OK / PASS / INFO`.
 - Portainer puerto `8000`: `WARNING / WARN / LOW`.
 - Modo predeterminado: OFFLINE.

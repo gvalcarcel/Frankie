@@ -60,7 +60,7 @@ Si una evidencia historica documenta una validacion pendiente y una evidencia po
 
 ```text
 Frankie Status
-Version: 0.7.0
+Version: 0.8.0-dev
 Mode: read-only foundation
 
 Physical server:
@@ -127,7 +127,7 @@ Ejemplo reducido:
 {
   "schema_version": "1.0",
   "command": "status",
-  "frankie_core_version": "0.7.0",
+  "frankie_core_version": "0.8.0-dev",
   "mode": "offline",
   "data_source": "structured_and_documented_evidence",
   "structured_evidence": {"available": true, "loaded": 6, "issues": 0},

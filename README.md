@@ -89,7 +89,7 @@ Infraestructura de referencia actualmente documentada:
 
 ## Estado actual
 
-Estado de producto: `v0.7.0` publicada oficialmente. El desarrollo posterior continúa en `Unreleased`.
+Estado de producto: `v0.8.0-dev` abierto sobre la release estable `v0.7.0`.
 
 El repositorio contiene:
 
@@ -108,7 +108,7 @@ El repositorio contiene:
 
 Pendientes destacados:
 
-- planificar el siguiente ciclo funcional tras `v0.7.0`,
+- ejecutar el backlog priorizado de `v0.8.0-dev`,
 - revisión del puerto `8000` de Portainer,
 - reservas DHCP o estrategia de nombres estable,
 - prueba formal de restauración,
@@ -196,10 +196,16 @@ Primera release estable:
 v0.6.0 Frankie Core / CLI Foundation
 ```
 
-Versión preparada:
+Versión estable publicada:
 
 ```text
 v0.7.0
+```
+
+Versión actual de desarrollo:
+
+```text
+v0.8.0-dev
 ```
 
 El ciclo actual añade datos estructurados sin abandonar el modo seguro. Están disponibles:

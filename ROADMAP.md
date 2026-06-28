@@ -2,7 +2,7 @@
 
 Versión base actual: `v0.6.0 Frankie Core / CLI Foundation`, publicada oficialmente.
 
-Planificación activa: [`v0.7.0 - datos estructurados y comprensión pedagógica`](docs/roadmap/v0.7.0-planning.md).
+Planificación activa: [`v0.8.0 - evidencias, exportación y preparación LIVE segura`](docs/roadmap/v0.8.0-planning.md).
 
 Estrategia operativa: [OFFLINE por defecto y LIVE solo con autorización expresa](docs/roadmap/offline-live-strategy.md).
 
@@ -292,3 +292,30 @@ Estado: incorporado después de `v0.7.0` dentro de `Unreleased`.
 - seis plantillas de Work Orders para VS Code/Codex.
 - selección explícita por tipo de tarea y riesgo.
 - estrategia OFFLINE/LIVE integrada en todos los perfiles.
+
+## v0.8.0 - Evidencias, exportación y preparación LIVE segura
+
+### Estado
+
+Ciclo abierto como `0.8.0-dev`.
+
+### Prioridad
+
+- mejorar evidencias y exportación de informes;
+- preparar Live Mode con interfaces, simuladores y gate desactivado;
+- realizar limpieza técnica y consistencia documental;
+- mantener las intervenciones reales en WOs LIVE separadas.
+
+### Límites
+
+- sin Live Mode real activo;
+- sin Repair Mode;
+- sin dashboard o API funcional;
+- sin conexión con Frankie durante tareas OFFLINE;
+- sin corrección del puerto 8000 fuera de una WO LIVE autorizada.
+
+### Documentos
+
+- [Planificación v0.8.0](docs/roadmap/v0.8.0-planning.md).
+- [Plan OFFLINE / LIVE](docs/roadmap/v0.8.0-offline-live-plan.md).
+- [Backlog de Work Orders](docs/roadmap/v0.8.0-workorders.md).

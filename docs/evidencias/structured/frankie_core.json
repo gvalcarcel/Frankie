@@ -7,8 +7,8 @@
   "severity": "INFO",
   "mode": "offline",
   "data_source": "documented_evidence",
-  "summary": "Frankie Core v0.7.0 is prepared for release in offline read-only mode.",
-  "details": {"current_version": "0.7.0", "published_stable_release": "v0.6.0", "read_only": true},
+  "summary": "Frankie Core is in the 0.8.0-dev cycle in offline read-only mode.",
+  "details": {"current_version": "0.8.0-dev", "published_stable_release": "v0.7.0", "read_only": true},
   "references": ["CHANGELOG.md", "ROADMAP.md", "docs/frankie-core/README.md"],
   "server_impact": {
     "touches_physical_server": false,
@@ -20,5 +20,5 @@
     "contains_credentials": false,
     "contains_internal_ips": false
   },
-  "recommendation": "Publish v0.7.0 only after the dedicated tag and GitHub Release Work Order."
+  "recommendation": "Develop v0.8.0 through scoped OFFLINE and explicitly authorized LIVE Work Orders."
 }

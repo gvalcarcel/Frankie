@@ -113,7 +113,7 @@ Salida orientativa:
 
 ```text
 Frankie Inventory
-Version: 0.7.0
+Version: 0.8.0-dev
 Mode: read-only foundation
 
 Physical server:
