@@ -27,10 +27,11 @@ FORBIDDEN_ATTRS = {
     "write_text",
     "write_bytes",
 }
+REPORT_WRITER = PACKAGE_ROOT / "reports" / "writer.py"
 
 
 class ReadOnlyFoundationTests(unittest.TestCase):
-    def test_foundation_has_no_write_or_subprocess_operations(self) -> None:
+    def test_foundation_has_no_unapproved_write_or_subprocess_operations(self) -> None:
         for path in PACKAGE_ROOT.rglob("*.py"):
             tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
             for node in ast.walk(tree):
@@ -42,4 +43,6 @@ class ReadOnlyFoundationTests(unittest.TestCase):
         if isinstance(func, ast.Name):
             self.assertNotIn(func.id, FORBIDDEN_CALLS, f"{path} uses {func.id}()")
         if isinstance(func, ast.Attribute):
+            if path == REPORT_WRITER and func.attr == "write_text":
+                return
             self.assertNotIn(func.attr, FORBIDDEN_ATTRS, f"{path} uses .{func.attr}()")

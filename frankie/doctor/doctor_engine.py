@@ -2,13 +2,17 @@ from __future__ import annotations
 
 from frankie.audit.audit_engine import run_audit
 from frankie.core.models import DoctorReport, InventoryItem
+from frankie.core.paths import FrankiePaths
 from frankie.doctor.advice import build_doctor_findings
 from frankie.evidence.loader import load_structured_evidence
 from frankie.evidence.models import EvidenceLoadResult
 
 
-def run_doctor(structured: EvidenceLoadResult | None = None) -> DoctorReport:
-    audit_report = run_audit()
+def run_doctor(
+    structured: EvidenceLoadResult | None = None,
+    paths: FrankiePaths | None = None,
+) -> DoctorReport:
+    audit_report = run_audit(paths)
     evidence_result = structured or load_structured_evidence()
     findings = build_doctor_findings(audit_report.findings)
     return DoctorReport(

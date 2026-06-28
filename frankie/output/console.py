@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from frankie.core.models import AuditReport, DoctorReport, InventoryReport, StatusReport
-from frankie.evidence.models import EvidenceLoadResult, StructuredEvidence
+from frankie.evidence.models import EvidenceLoadResult, EvidenceSummary, StructuredEvidence
 
 
 def render_status(report: StatusReport) -> str:
@@ -210,6 +210,29 @@ def render_evidence_validation(result: EvidenceLoadResult) -> str:
     return "\n".join(lines)
 
 
+def render_evidence_summary(summary: EvidenceSummary) -> str:
+    lines = [
+        "Structured evidence summary",
+        f"Total: {summary.total}",
+        f"Invalid: {summary.invalid}",
+    ]
+    for title, counts in (
+        ("Status", summary.by_status),
+        ("Severity", summary.by_severity),
+        ("Component", summary.by_component),
+        ("Evidence type", summary.by_evidence_type),
+        ("Data source", summary.by_data_source),
+        ("Mode", summary.by_mode),
+    ):
+        lines.append(f"{title}:")
+        if not counts:
+            lines.append("  none")
+        else:
+            for name, count in counts.items():
+                lines.append(f"  {name}: {count}")
+    return "\n".join(lines)
+
+
 def render_evidence(evidence: StructuredEvidence) -> str:
     lines = [
         "Structured evidence",
@@ -219,12 +242,20 @@ def render_evidence(evidence: StructuredEvidence) -> str:
         f"Status: {evidence.status}",
         f"Severity: {evidence.severity}",
         f"Mode: {evidence.mode}",
+        f"Created at: {evidence.created_at or 'not provided'}",
+        f"Updated at: {evidence.updated_at or 'not provided'}",
         f"Summary: {evidence.summary}",
         f"Recommendation: {evidence.recommendation}",
         "References:",
     ]
     for reference in evidence.references:
         lines.append(f"- {reference}")
+    if evidence.source_files:
+        lines.append("Source files:")
+        lines.extend(f"- {source}" for source in evidence.source_files)
+    if evidence.related_checks:
+        lines.append("Related checks:")
+        lines.extend(f"- {check}" for check in evidence.related_checks)
     return "\n".join(lines)
 
 

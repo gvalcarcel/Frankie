@@ -4,7 +4,7 @@ import json
 import re
 
 from frankie.core.models import AuditReport, DoctorReport, InventoryReport, StatusReport
-from frankie.evidence.models import EvidenceLoadResult, StructuredEvidence
+from frankie.evidence.models import EvidenceLoadResult, EvidenceSummary, StructuredEvidence
 
 
 SCHEMA_VERSION = "1.0"
@@ -37,6 +37,10 @@ def render_doctor_json(
 
 def render_evidence_json(evidence: StructuredEvidence) -> str:
     return _render_json(evidence_payload(evidence))
+
+
+def render_evidence_summary_json(summary: EvidenceSummary) -> str:
+    return _render_json(evidence_summary_payload(summary))
 
 
 def status_payload(
@@ -201,6 +205,26 @@ def evidence_payload(evidence: StructuredEvidence) -> dict[str, object]:
         "server_impact": evidence.server_impact,
         "security": evidence.security,
         "recommendation": evidence.recommendation,
+        "created_at": evidence.created_at,
+        "updated_at": evidence.updated_at,
+        "source_files": list(evidence.source_files),
+        "related_checks": list(evidence.related_checks),
+    }
+
+
+def evidence_summary_payload(summary: EvidenceSummary) -> dict[str, object]:
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "command": "evidence summary",
+        "mode": "offline",
+        "total": summary.total,
+        "invalid": summary.invalid,
+        "by_status": summary.by_status,
+        "by_severity": summary.by_severity,
+        "by_component": summary.by_component,
+        "by_evidence_type": summary.by_evidence_type,
+        "by_data_source": summary.by_data_source,
+        "by_mode": summary.by_mode,
     }
 
 

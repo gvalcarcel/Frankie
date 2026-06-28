@@ -16,7 +16,9 @@ Frankie CLI `0.8.0-dev` conserva las capacidades publicadas en `v0.7.0`. Consult
 | `python -m frankie doctor` | Explicar incidencias y pasos seguros | `--json` |
 | `python -m frankie evidence list` | Enumerar evidencias estructuradas | No |
 | `python -m frankie evidence validate` | Validar las evidencias cargadas | No |
+| `python -m frankie evidence summary` | Resumir las evidencias cargadas | `--json` |
 | `python -m frankie evidence show <id>` | Mostrar una evidencia | `--json` |
+| `python -m frankie report` | Generar un informe consolidado en Markdown | `--json` |
 
 `audit` y `doctor` admiten `--verbose`. La combinación `doctor --verbose --json` conserva el contexto pedagógico y añade detalles técnicos.
 
@@ -27,6 +29,12 @@ Frankie CLI `0.8.0-dev` conserva las capacidades publicadas en `v0.7.0`. Consult
 - `2`: uso incorrecto de la CLI, comando desconocido o argumentos incompatibles.
 
 Los errores se escriben en la salida de error y no generan trazas internas para fallos de uso esperables.
+
+## Exportación de informes
+
+`report` admite `--markdown`, `--json`, `--output <ruta>` y `--force`. La escritura queda limitada a `docs/evidencias/` y no sobrescribe sin confirmación explícita mediante `--force`.
+
+Referencia: [reports.md](reports.md).
 
 ## Garantías de seguridad
 

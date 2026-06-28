@@ -113,6 +113,73 @@ class StructuredEvidenceLoaderTests(unittest.TestCase):
         self.assertEqual(len(result.issues), 1)
         self.assertIn("sensitive data", result.issues[0].message)
 
+    def test_duplicate_evidence_id_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            directory = root / STRUCTURED_EVIDENCE_DIRECTORY
+            directory.mkdir(parents=True)
+            payload = valid_payload("duplicate-id")
+            (directory / "first.json").write_text(json.dumps(payload), encoding="utf-8")
+            (directory / "second.json").write_text(json.dumps(payload), encoding="utf-8")
+
+            result = load_structured_evidence(FrankiePaths(root))
+
+        self.assertEqual(len(result.evidence), 1)
+        self.assertEqual(len(result.issues), 1)
+        self.assertIn("duplicate evidence_id: duplicate-id", result.issues[0].message)
+
+    def test_unrecognized_vocabulary_and_empty_references_are_reported(self) -> None:
+        cases = (("status", "BROKEN"), ("severity", "TRIVIAL"), ("mode", "remote"), ("references", []))
+        for field, value in cases:
+            with self.subTest(field=field), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                directory = root / STRUCTURED_EVIDENCE_DIRECTORY
+                directory.mkdir(parents=True)
+                payload = valid_payload()
+                payload[field] = value
+                (directory / "invalid.json").write_text(json.dumps(payload), encoding="utf-8")
+
+                result = load_structured_evidence(FrankiePaths(root))
+
+            self.assertEqual(len(result.issues), 1)
+            self.assertIn(field, result.issues[0].message)
+
+    def test_possible_sensitive_value_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            directory = root / STRUCTURED_EVIDENCE_DIRECTORY
+            directory.mkdir(parents=True)
+            payload = valid_payload()
+            payload["details"] = {"example": "password=not-a-real-password"}
+            (directory / "unsafe-value.json").write_text(json.dumps(payload), encoding="utf-8")
+
+            result = load_structured_evidence(FrankiePaths(root))
+
+        self.assertEqual(len(result.issues), 1)
+        self.assertIn("possible sensitive data", result.issues[0].message)
+
+    def test_optional_metadata_is_loaded(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            directory = root / STRUCTURED_EVIDENCE_DIRECTORY
+            directory.mkdir(parents=True)
+            payload = valid_payload()
+            payload.update(
+                {
+                    "created_at": "2026-06-28T10:00:00+02:00",
+                    "source_files": ["docs/source.md"],
+                    "related_checks": ["AUD-TEST-001"],
+                }
+            )
+            (directory / "metadata.json").write_text(json.dumps(payload), encoding="utf-8")
+
+            result = load_structured_evidence(FrankiePaths(root))
+
+        self.assertEqual(result.issues, ())
+        self.assertEqual(result.evidence[0].created_at, "2026-06-28T10:00:00+02:00")
+        self.assertEqual(result.evidence[0].source_files, ("docs/source.md",))
+        self.assertEqual(result.evidence[0].related_checks, ("AUD-TEST-001",))
+
 
 class StructuredEvidenceDocumentTests(unittest.TestCase):
     def test_all_evidence_files_are_valid_public_json(self) -> None:

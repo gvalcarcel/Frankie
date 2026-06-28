@@ -41,6 +41,25 @@ class EvidenceCommandTests(unittest.TestCase):
         self.assertIn("Invalid: 0", result.stdout)
         self.assertIn("Result: PASS", result.stdout)
 
+    def test_evidence_summary_text(self) -> None:
+        result = run_frankie("evidence", "summary")
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("Structured evidence summary", result.stdout)
+        self.assertIn("Total: 6", result.stdout)
+        self.assertIn("Status:", result.stdout)
+        self.assertIn("Mode:", result.stdout)
+
+    def test_evidence_summary_json(self) -> None:
+        result = run_frankie("evidence", "summary", "--json")
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertEqual(payload["command"], "evidence summary")
+        self.assertEqual(payload["total"], 6)
+        self.assertEqual(payload["by_mode"], {"offline": 6})
+        self.assertIn("Samba / SMB", payload["by_component"])
+
     def test_evidence_validate_reports_unavailable_directory(self) -> None:
         unavailable = EvidenceLoadResult(False, "docs/evidencias/structured", (), ())
 
@@ -107,7 +126,9 @@ class CliErrorTests(unittest.TestCase):
             "frankie doctor [--verbose] [--json]",
             "frankie evidence list",
             "frankie evidence validate",
+            "frankie evidence summary [--json]",
             "frankie evidence show <evidence_id> [--json]",
+            "frankie report [--markdown | --json] [--output <path>] [--force]",
             "All commands run offline.",
             "No command connects to the Frankie physical server.",
         ):

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -34,6 +36,27 @@ REQUIRED_SECURITY_FIELDS = (
     "contains_credentials",
     "contains_internal_ips",
 )
+ALLOWED_STATUSES = {
+    "ACTIVE",
+    "ERROR",
+    "FAIL",
+    "OK",
+    "PASS",
+    "PENDING",
+    "RELEASED",
+    "UNKNOWN",
+    "WARN",
+    "WARNING",
+}
+ALLOWED_SEVERITIES = {"INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL"}
+ALLOWED_MODES = {"offline", "live"}
+SENSITIVE_VALUE_PATTERNS = (
+    re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----", re.IGNORECASE),
+    re.compile(r"\b(?:password|secret|token|client_secret|smtp_password|private_key|credential)\s*[:=]\s*\S+", re.IGNORECASE),
+    re.compile(r"\b10(?:\.\d{1,3}){3}\b"),
+    re.compile(r"\b192\.168(?:\.\d{1,3}){2}\b"),
+    re.compile(r"\b172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2}\b"),
+)
 
 
 def load_structured_evidence(paths: FrankiePaths | None = None) -> EvidenceLoadResult:
@@ -44,10 +67,22 @@ def load_structured_evidence(paths: FrankiePaths | None = None) -> EvidenceLoadR
 
     evidence: list[StructuredEvidence] = []
     issues: list[EvidenceLoadIssue] = []
+    evidence_paths: dict[str, str] = {}
     for path in sorted(directory.glob("*.json")):
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
-            evidence.append(_parse_evidence(payload))
+            parsed = _parse_evidence(payload)
+            relative_path = _relative_path(path, repository)
+            if parsed.evidence_id in evidence_paths:
+                issues.append(
+                    EvidenceLoadIssue(
+                        relative_path,
+                        f"duplicate evidence_id: {parsed.evidence_id} (first seen in {evidence_paths[parsed.evidence_id]})",
+                    )
+                )
+                continue
+            evidence_paths[parsed.evidence_id] = relative_path
+            evidence.append(parsed)
         except (json.JSONDecodeError, OSError, TypeError, ValueError) as exc:
             issues.append(EvidenceLoadIssue(_relative_path(path, repository), str(exc)))
 
@@ -70,13 +105,31 @@ def _parse_evidence(payload: Any) -> StructuredEvidence:
     component_id = _required_string(component, "id")
     component_name = _required_string(component, "name")
     references = payload["references"]
-    if not isinstance(references, list) or not all(isinstance(item, str) and item for item in references):
-        raise ValueError("references must be a list of non-empty strings")
+    if not isinstance(references, list) or not references or not all(isinstance(item, str) and item for item in references):
+        raise ValueError("references must be a non-empty list of non-empty strings")
 
     server_impact = _required_boolean_map(payload, "server_impact", REQUIRED_SERVER_IMPACT_FIELDS)
     security = _required_boolean_map(payload, "security", REQUIRED_SECURITY_FIELDS)
     if any(security.values()):
         raise ValueError("public structured evidence must not contain sensitive data")
+
+    status = _required_string(payload, "status")
+    if status not in ALLOWED_STATUSES:
+        raise ValueError(f"unsupported status: {status}")
+    severity = _required_string(payload, "severity")
+    if severity not in ALLOWED_SEVERITIES:
+        raise ValueError(f"unsupported severity: {severity}")
+    mode = _required_string(payload, "mode")
+    if mode not in ALLOWED_MODES:
+        raise ValueError(f"unsupported mode: {mode}")
+
+    created_at = _optional_timestamp(payload, "created_at")
+    updated_at = _optional_timestamp(payload, "updated_at")
+    source_files = _optional_string_list(payload, "source_files")
+    related_checks = _optional_string_list(payload, "related_checks")
+
+    if _contains_sensitive_value(payload):
+        raise ValueError("possible sensitive data detected in evidence values")
 
     details = payload.get("details", {})
     if not isinstance(details, dict):
@@ -88,9 +141,9 @@ def _parse_evidence(payload: Any) -> StructuredEvidence:
         evidence_type=_required_string(payload, "evidence_type"),
         component_id=component_id,
         component_name=component_name,
-        status=_required_string(payload, "status"),
-        severity=_required_string(payload, "severity"),
-        mode=_required_string(payload, "mode"),
+        status=status,
+        severity=severity,
+        mode=mode,
         data_source=_required_string(payload, "data_source"),
         summary=_required_string(payload, "summary"),
         details=details,
@@ -98,6 +151,10 @@ def _parse_evidence(payload: Any) -> StructuredEvidence:
         server_impact=server_impact,
         security=security,
         recommendation=_required_string(payload, "recommendation"),
+        created_at=created_at,
+        updated_at=updated_at,
+        source_files=source_files,
+        related_checks=related_checks,
     )
 
 
@@ -125,6 +182,37 @@ def _required_boolean_map(
     if not all(isinstance(value[name], bool) for name in required_fields):
         raise ValueError(f"{field} fields must be boolean")
     return {name: value[name] for name in required_fields}
+
+
+def _optional_string_list(payload: dict[str, Any], field: str) -> tuple[str, ...]:
+    value = payload.get(field, [])
+    if not isinstance(value, list) or not all(isinstance(item, str) and item for item in value):
+        raise ValueError(f"{field} must be a list of non-empty strings")
+    return tuple(value)
+
+
+def _optional_timestamp(payload: dict[str, Any], field: str) -> str | None:
+    value = payload.get(field)
+    if value is None:
+        return None
+    if not isinstance(value, str) or not value:
+        raise ValueError(f"{field} must be a non-empty ISO 8601 string")
+    try:
+        normalized = f"{value[:-1]}+00:00" if value.endswith("Z") else value
+        datetime.fromisoformat(normalized)
+    except ValueError as exc:
+        raise ValueError(f"{field} must be an ISO 8601 timestamp") from exc
+    return value
+
+
+def _contains_sensitive_value(value: Any) -> bool:
+    if isinstance(value, dict):
+        return any(_contains_sensitive_value(item) for item in value.values())
+    if isinstance(value, list):
+        return any(_contains_sensitive_value(item) for item in value)
+    if not isinstance(value, str):
+        return False
+    return any(pattern.search(value) for pattern in SENSITIVE_VALUE_PATTERNS)
 
 
 def _relative_path(path: Path, repository: FrankiePaths) -> str:

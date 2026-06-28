@@ -99,6 +99,12 @@ Las fichas conviven con Markdown y son complementarias: si faltan, Status y Audi
 
 Documentación técnica: [evidence.md](evidence.md).
 
+## Informes consolidados
+
+`report` reúne Status, Inventory, Audit, Doctor y Evidence en Markdown o JSON. Por defecto solo imprime; `--output` escribe exclusivamente dentro de `docs/evidencias/` y protege ficheros existentes.
+
+Documentación técnica: [reports.md](reports.md).
+
 ## Doctor pedagógico
 
 Doctor transforma los hallazgos no resueltos de Audit Engine en diagnósticos comprensibles y accionables.
@@ -181,7 +187,7 @@ La versión `v0.7.0`:
 - No instala paquetes.
 - No reinicia servicios.
 - No borra archivos.
-- No escribe ficheros.
+- No escribe ficheros por defecto; solo `report --output` exporta de forma explícita dentro de `docs/evidencias/`.
 - No se conecta por SSH.
 - No usa credenciales.
 - No accede a servicios externos.

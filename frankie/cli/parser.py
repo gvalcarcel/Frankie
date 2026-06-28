@@ -19,5 +19,13 @@ def build_parser() -> argparse.ArgumentParser:
         dest="json_output",
         help="Return structured JSON for supported commands.",
     )
+    parser.add_argument(
+        "--markdown",
+        action="store_true",
+        dest="markdown_output",
+        help="Return Markdown for the report command.",
+    )
+    parser.add_argument("--output", dest="output_path", help="Write report output inside docs/evidencias/.")
+    parser.add_argument("--force", action="store_true", help="Allow report output to replace an existing file.")
     parser.add_argument("-h", "--help", action="store_const", const="help", dest="command")
     return parser

@@ -12,12 +12,17 @@ Ciclo de desarrollo `0.8.0-dev` abierto tras la publicación de `v0.7.0`.
 - Índice, guía de uso y matriz de selección de agentes.
 - Plantillas VS Code/Codex para WOs generales, OFFLINE, LIVE, release y pedagogía.
 - Planificación priorizada, plan OFFLINE/LIVE y backlog inicial de `v0.8.0`.
+- `evidence summary` con salida de texto y JSON.
+- Informe consolidado `report` en Markdown y JSON.
+- Exportación segura de informes dentro de `docs/evidencias/` con protección de sobrescritura.
+- Metadatos opcionales de evidencia para timestamps, fuentes y checks relacionados.
 
 ### Changed
 
 - Documentación general sincronizada con la publicación oficial de `v0.7.0`.
 - `.gitignore` permite versionar exclusivamente las plantillas Markdown de `.vscode/prompts/`.
 - Versión de desarrollo actualizada a `0.8.0-dev` sin cambios funcionales.
+- Validación de evidencias ampliada con duplicados, vocabularios, referencias y posibles datos sensibles.
 
 ## [v0.7.0] - 2026-06-28
 

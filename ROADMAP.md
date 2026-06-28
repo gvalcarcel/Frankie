@@ -319,3 +319,7 @@ Ciclo abierto como `0.8.0-dev`.
 - [Planificación v0.8.0](docs/roadmap/v0.8.0-planning.md).
 - [Plan OFFLINE / LIVE](docs/roadmap/v0.8.0-offline-live-plan.md).
 - [Backlog de Work Orders](docs/roadmap/v0.8.0-workorders.md).
+
+### Avance registrado
+
+- `WO-0018`: resumen de evidencias, validación reforzada e informes Markdown/JSON con exportación segura.

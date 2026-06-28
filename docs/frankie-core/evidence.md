@@ -30,6 +30,7 @@ Módulos:
 - `frankie/evidence/models.py`: modelos inmutables de evidencia, incidencias y resultado de carga;
 - `frankie/evidence/loader.py`: localización, lectura JSON y validación mínima;
 - `frankie/output/json_output.py`: exposición de metadatos de disponibilidad.
+- `frankie/evidence/summary.py`: resumen por estado, severidad, componente, tipo, fuente y modo.
 
 ## Comportamiento del loader
 
@@ -42,6 +43,9 @@ El loader:
 - conserva las fichas válidas aunque otra sea inválida;
 - devuelve incidencias controladas con ruta y mensaje;
 - rechaza fichas que declaren secretos, credenciales o IPs internas;
+- detecta identificadores duplicados, vocabularios no reconocidos y posibles valores sensibles;
+- exige al menos una referencia no vacía;
+- valida timestamps ISO 8601 cuando existen;
 - no escribe ficheros;
 - no ejecuta comandos;
 - no lee `.env`;
@@ -99,11 +103,23 @@ JSON aporta contrato, disponibilidad y datos reutilizables.
 ```bash
 python -m frankie evidence list
 python -m frankie evidence validate
+python -m frankie evidence summary
+python -m frankie evidence summary --json
 python -m frankie evidence show samba-validation-current
 python -m frankie evidence show samba-validation-current --json
 ```
 
-`list` enumera las fichas cargadas, `validate` resume su validez y estados, y `show` presenta una ficha concreta. Todos son comandos offline y de solo lectura.
+`list` enumera las fichas cargadas, `validate` informa de su validez, `summary` agrupa sus datos y `show` presenta una ficha concreta. Todos son comandos offline y de solo lectura.
+
+## Metadatos compatibles
+
+Las fichas v1 siguen siendo válidas. Además, pueden incluir:
+
+- `created_at` y `updated_at` en ISO 8601;
+- `source_files` para declarar fuentes directas;
+- `related_checks` para vincular checks de auditoría.
+
+El schema admite evidencias `offline` y `live`, pero una ficha LIVE no activa Live Mode. Solo describe el origen de una evidencia ya recogida y saneada.
 
 ## Uso didáctico
 

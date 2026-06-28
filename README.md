@@ -105,6 +105,7 @@ El repositorio contiene:
 - diseño seguro de Live Mode, sin implementación real,
 - sistema operativo de 24 agentes reutilizables,
 - matriz de selección y plantillas de Work Orders para VS Code/Codex.
+- resumen avanzado de evidencias e informes consolidados Markdown/JSON.
 
 Pendientes destacados:
 
@@ -117,6 +118,8 @@ Pendientes destacados:
 - consolidacion de knowledge base.
 
 Material docente: [docs/aula/README.md](docs/aula/README.md).
+
+Informes consolidados: [docs/frankie-core/reports.md](docs/frankie-core/reports.md).
 
 Sistema de agentes: [docs/agents/README.md](docs/agents/README.md). Las plantillas de `.vscode/prompts/` ayudan a construir Work Orders generales, OFFLINE, LIVE, de release y pedagógicas.
 
