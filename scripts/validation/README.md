@@ -53,3 +53,11 @@ python scripts/validation/validate_evidence_flow.py \
 ```
 
 Para una validación previa a release se recomienda partir de un árbol limpio y añadir `--require-clean`.
+
+## Guardas de Live Mode
+
+```bash
+python scripts/validation/validate_live_mode_guards.py
+```
+
+Comprueba las ocho variantes LIVE, sus contratos JSON y la ausencia de imports o llamadas capaces de conectar, ejecutar procesos o escribir.

@@ -106,6 +106,7 @@ El repositorio contiene:
 - sistema operativo de 24 agentes reutilizables,
 - matriz de selección y plantillas de Work Orders para VS Code/Codex.
 - resumen avanzado de evidencias e informes consolidados Markdown/JSON.
+- arquitectura de Live Mode preparada, simulable y desactivada sin transporte real.
 
 Pendientes destacados:
 

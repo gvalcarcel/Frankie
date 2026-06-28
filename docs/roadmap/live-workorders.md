@@ -83,3 +83,14 @@ Estas propuestas no autorizan ni ejecutan acciones. Cada Work Order necesitará 
 5. Aprobar protección antes de cualquier cambio.
 
 Cada intervención termina al completar su propio objetivo. Una Work Order LIVE de lectura nunca se convierte automáticamente en una Work Order de cambio.
+
+## Contrato operativo detallado tras WO-0021
+
+| WO | Agentes | Precondiciones | Consultas de solo lectura | Evidencia esperada | Riesgos | Rollback | Cierre |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `WO-LIVE-0001` | LIVE Controller, Hardware Architect, Proxmox, Service, Network, Security, Auditor, Evidence | autorización, tres targets verificados, allowlist, timeout, raw privado | versión, identidad saneada, estado, recursos e inventario VM | timestamp, target lógico, diferencias y saneamiento | target erróneo, exceso de salida | detener sesión y descartar raw inseguro | tres targets contrastados, cero cambios |
+| `WO-LIVE-0002` | LIVE Controller, Service, Network, Security, Auditor, Evidence | acceso read-only, alcance Portainer, configuración protegida | contenedores, puertos, redes, firewall y configuración saneada | propósito, exposición y dependencias del puerto `8000` | variables sensibles, confundir observación con retirada | cualquier cambio exige otra WO con backup | decisión mantener, restringir o planificar cambio |
+| `WO-LIVE-0003` | LIVE Controller, Service, Network, Security, Auditor, Evidence | cuentas fuera de Git, matriz esperada, cliente supervisado | configuración, usuarios/grupos, permisos y puertos | matriz por recurso y saneamiento | alterar material, exponer usuarios | retirar solo artefacto temporal autorizado | permisos contrastados y recursos intactos |
+| `WO-LIVE-0004` | LIVE Controller, Backup Admin, Service, Security, Auditor, Evidence | rutas allowlist, solo metadatos, límites de tiempo | nombres saneados, fechas, tamaños, logs y planificador | cobertura, antigüedad y límites de restaurabilidad | falsa confianza, exposición, carga excesiva | detener consulta; no lanzar ni borrar backups | cobertura y desviaciones documentadas |
+
+Una desviación se documenta; nunca activa Repair Mode ni amplía el alcance automáticamente.

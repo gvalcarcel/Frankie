@@ -14,6 +14,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("evidence_id", nargs="?")
     parser.add_argument("--verbose", action="store_true")
     parser.add_argument(
+        "--simulate",
+        action="store_true",
+        help="Use fictitious offline Live Mode data; never contacts Frankie.",
+    )
+    parser.add_argument(
         "--json",
         action="store_true",
         dest="json_output",

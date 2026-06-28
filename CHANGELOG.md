@@ -18,6 +18,8 @@ Ciclo de desarrollo `0.8.0-dev` abierto tras la publicación de `v0.7.0`.
 - Metadatos opcionales de evidencia para timestamps, fuentes y checks relacionados.
 - Evidencia estructurada y artefactos reproducibles de la validación operativa `WO-0019`.
 - Flujo automatizado OFFLINE para tests, regresión CLI, evidencias e informes de `WO-0020`.
+- Comandos `live-status` y `live-audit` bloqueados, con JSON y simulación OFFLINE explícita.
+- Modelos, guardas y candidatos simulados para un futuro Live Mode de solo lectura.
 
 ### Changed
 
@@ -27,6 +29,7 @@ Ciclo de desarrollo `0.8.0-dev` abierto tras la publicación de `v0.7.0`.
 - Validación de evidencias ampliada con duplicados, vocabularios, referencias y posibles datos sensibles.
 - Flujo de evidencias e informes validado de extremo a extremo en modo OFFLINE, incluidos controles de ruta, formato y sobrescritura.
 - Validación operativa convertida en un comando repetible con timeouts, hashes, protección de salida y control de delta Git.
+- Live Mode preparado internamente sin transporte, credenciales, red, subprocess, escritura o Repair Mode.
 
 ## [v0.7.0] - 2026-06-28
 

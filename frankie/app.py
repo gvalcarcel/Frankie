@@ -4,7 +4,7 @@ import sys
 from collections.abc import Sequence
 
 from frankie.cli.parser import build_parser
-from frankie.commands import audit, doctor, evidence, help, inventory, report, status, version
+from frankie.commands import audit, doctor, evidence, help, inventory, live, report, status, version
 from frankie.reports.writer import ReportOutputError
 
 
@@ -17,6 +17,8 @@ COMMANDS = {
     "doctor": doctor.run,
     "evidence": None,
     "report": None,
+    "live-status": None,
+    "live-audit": None,
 }
 
 
@@ -39,7 +41,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"Verbose output is not available for command: {command}", file=sys.stderr)
         return 2
 
-    if args.json_output and command not in {"status", "inventory", "audit", "doctor", "evidence", "report"}:
+    if args.json_output and command not in {
+        "status", "inventory", "audit", "doctor", "evidence", "report", "live-status", "live-audit"
+    }:
         print(f"JSON output is not available for command: {command}", file=sys.stderr)
         return 2
 
@@ -54,6 +58,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 2
     if args.force and not args.output_path:
         print("--force requires --output.", file=sys.stderr)
+        return 2
+    if args.simulate and command not in {"live-status", "live-audit"}:
+        print(f"Simulation is not available for command: {command}", file=sys.stderr)
         return 2
 
     if command == "evidence":
@@ -72,6 +79,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         except ReportOutputError as exc:
             print(f"Report output error: {exc}", file=sys.stderr)
             return 2
+        return 0
+
+    if command in {"live-status", "live-audit"}:
+        print(live.dispatch(command, simulated=args.simulate, json_output=args.json_output))
         return 0
 
     handler = COMMANDS[command]

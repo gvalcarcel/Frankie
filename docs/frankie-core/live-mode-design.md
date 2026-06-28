@@ -165,3 +165,9 @@ Faltan decisiones que deben probarse de forma controlada: transporte, perfiles, 
 ## Relación con Repair Mode
 
 Repair Mode queda fuera de este diseño. Cualquier capacidad de cambio necesitaría otra arquitectura, confirmaciones reforzadas, snapshot o backup, rollback probado y una Work Order independiente.
+
+## Implementación preparada en WO-0021
+
+Los comandos `live-status` y `live-audit` existen, pero permanecen bloqueados. `frankie/live/` contiene contratos, guardas, simulación, renderizado y engine sin módulo de transporte.
+
+`--simulate` usa valores ficticios y conserva `enabled=false`, `server_contacted=false` y candidatos `publishable=false`. No activa este diseño ni genera evidencia real.

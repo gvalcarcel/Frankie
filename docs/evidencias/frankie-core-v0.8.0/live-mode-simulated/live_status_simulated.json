@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "command": "live-status",
+  "frankie_core_version": "0.8.0-dev",
+  "mode": "simulation",
+  "enabled": false,
+  "simulated": true,
+  "connected": false,
+  "server_contacted": false,
+  "status": "SIMULATED",
+  "severity": "INFO",
+  "reason": "Offline simulation requested",
+  "message": "No server has been contacted.",
+  "check_id": "SIM-LIVE-STATUS-001",
+  "component": "simulated-infrastructure",
+  "summary": "Offline simulation completed. This result does not represent Frankie state.",
+  "details": {
+    "scenario": "offline-format-simulation",
+    "checks": ["guard-state", "output-contract"],
+    "observations": ["No target address exists in this simulation.", "No service state was observed.", "All displayed values are fictitious and sanitized."]
+  },
+  "evidence_candidate": {
+    "candidate_id": "simulated-live-status-candidate",
+    "evidence_type": "simulated_live_candidate",
+    "simulated": true,
+    "publishable": false,
+    "summary": "Fictitious candidate for contract testing only; it is not real infrastructure evidence."
+  },
+  "risks": ["Simulated output could be mistaken for real evidence if its disclaimer is removed."],
+  "next_steps": ["Use a future authorized LIVE Work Order before implementing any real transport."]
+}

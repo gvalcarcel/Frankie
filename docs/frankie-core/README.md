@@ -225,3 +225,5 @@ python -m unittest discover -s tests
 Frankie Core `v0.7.0` está publicado y cerrado. Frankie Core `0.8.0-dev` queda abierto y planificado mediante el sistema de agentes reutilizables.
 
 Live Mode y Repair Mode no están implementados. Las tareas LIVE se ejecutarán únicamente cuando el usuario lo indique mediante una Work Order autorizada.
+
+La arquitectura interna y el simulador de Live Mode están preparados, pero cualquier conexión real continúa sin implementar. Consulta [Live Mode preparado y desactivado](live-mode.md).

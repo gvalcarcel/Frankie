@@ -61,3 +61,12 @@ Consulta el [diseño seguro de Live Mode](live-mode-design.md).
 - [Doctor](doctor.md)
 - [Evidencias estructuradas](evidence.md)
 - [Material didáctico](../aula/README.md)
+
+## Comandos Live preparados y bloqueados
+
+```bash
+python -m frankie live-status [--json] [--simulate]
+python -m frankie live-audit [--json] [--simulate]
+```
+
+Sin simulación devuelven `BLOCKED`. Con `--simulate` prueban el contrato mediante datos ficticios. Ambos caminos mantienen `enabled=false` y `server_contacted=false`.

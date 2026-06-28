@@ -325,3 +325,4 @@ Ciclo abierto como `0.8.0-dev`.
 - `WO-0018`: resumen de evidencias, validación reforzada e informes Markdown/JSON con exportación segura.
 - `WO-0019`: validación operativa OFFLINE del registro, consulta, resumen y exportación de evidencias; siete fichas válidas y artefactos Markdown/JSON verificables.
 - `WO-0020`: automatización OFFLINE del flujo de validación; 90 tests, 14 comandos de regresión y evidencia de ejecución saneada.
+- `WO-0021`: arquitectura Live de solo lectura preparada con guardas cerradas, comandos bloqueados y simulador OFFLINE.
