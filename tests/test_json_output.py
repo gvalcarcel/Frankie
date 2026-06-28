@@ -33,7 +33,7 @@ class StatusJsonTests(unittest.TestCase):
         self.assertEqual(payload["mode"], "offline")
         self.assertEqual(payload["data_source"], "structured_and_documented_evidence")
         self.assertTrue(payload["structured_evidence"]["available"])
-        self.assertEqual(payload["structured_evidence"]["loaded"], 6)
+        self.assertEqual(payload["structured_evidence"]["loaded"], 7)
         self.assertEqual(payload["overall_status"], "WARNING")
         self.assertIsInstance(payload["components"], list)
 
@@ -67,7 +67,7 @@ class AuditJsonTests(unittest.TestCase):
         self.assertEqual(payload["mode"], "offline")
         self.assertEqual(payload["data_source"], "structured_and_documented_evidence")
         self.assertTrue(payload["structured_evidence"]["available"])
-        self.assertEqual(payload["structured_evidence"]["loaded"], 6)
+        self.assertEqual(payload["structured_evidence"]["loaded"], 7)
         self.assertEqual(payload["overall_result"], "WARN")
         self.assertEqual(payload["counts"]["total"], 7)
         self.assertEqual(payload["counts"]["pass"], 6)

@@ -323,3 +323,4 @@ Ciclo abierto como `0.8.0-dev`.
 ### Avance registrado
 
 - `WO-0018`: resumen de evidencias, validación reforzada e informes Markdown/JSON con exportación segura.
+- `WO-0019`: validación operativa OFFLINE del registro, consulta, resumen y exportación de evidencias; siete fichas válidas y artefactos Markdown/JSON verificables.

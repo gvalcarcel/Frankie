@@ -77,7 +77,7 @@ class DoctorCommandTests(unittest.TestCase):
         self.assertIn("Why no automatic repair:", result.stdout)
         self.assertIn("Status and severity:", result.stdout)
         self.assertIn("Structured evidence", result.stdout)
-        self.assertIn("6 loaded", result.stdout)
+        self.assertIn("7 loaded", result.stdout)
         self.assertIn("Resolved checks not requiring action:", result.stdout)
         self.assertIn("AUD-SAMBA-001 (PASS; no active action)", result.stdout)
         self.assertNotIn("Issue: AUD-SAMBA-001", result.stdout)

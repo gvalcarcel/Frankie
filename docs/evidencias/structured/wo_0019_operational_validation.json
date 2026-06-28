@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "wo-0019-evidence-report-validation",
+  "evidence_type": "operational_validation",
+  "component": {
+    "id": "frankie-core-evidence-reports",
+    "name": "Frankie Core Evidence and Reports"
+  },
+  "status": "PASS",
+  "severity": "INFO",
+  "mode": "offline",
+  "data_source": "operational_cli_validation",
+  "summary": "WO-0019 validated the structured evidence workflow and consolidated report export in an offline repository scenario.",
+  "details": {
+    "work_order": "WO-0019",
+    "baseline_valid_evidence": 6,
+    "scenario": "register, validate, summarize, export and verify",
+    "report_formats": [
+      "markdown",
+      "json"
+    ],
+    "result": "PASS"
+  },
+  "references": [
+    "docs/evidencias/frankie-core-v0.8.0/evidence_and_reports_audit.md",
+    "docs/evidencias/frankie-core-v0.8.0/wo-0019/operational_validation_report.md",
+    "docs/evidencias/frankie-core-v0.8.0/wo-0019/consolidated_report.md",
+    "docs/evidencias/frankie-core-v0.8.0/wo-0019/consolidated_report.json"
+  ],
+  "created_at": "2026-06-28T11:41:34+02:00",
+  "updated_at": "2026-06-28T11:41:34+02:00",
+  "source_files": [
+    "docs/evidencias/structured/wo_0019_operational_validation.json"
+  ],
+  "related_checks": [
+    "WO-0019-EVIDENCE-001",
+    "WO-0019-REPORT-MD-001",
+    "WO-0019-REPORT-JSON-001",
+    "WO-0019-OUTPUT-SAFETY-001"
+  ],
+  "server_impact": {
+    "touches_physical_server": false,
+    "requires_live_connection": false,
+    "changes_configuration": false
+  },
+  "security": {
+    "contains_secrets": false,
+    "contains_credentials": false,
+    "contains_internal_ips": false
+  },
+  "recommendation": "Keep this scenario as an offline regression check and define a separate authorized Work Order for future live evidence capture."
+}

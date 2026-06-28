@@ -37,7 +37,7 @@ class EvidenceCommandTests(unittest.TestCase):
         result = run_frankie("evidence", "validate")
 
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("Valid: 6", result.stdout)
+        self.assertIn("Valid: 7", result.stdout)
         self.assertIn("Invalid: 0", result.stdout)
         self.assertIn("Result: PASS", result.stdout)
 
@@ -46,7 +46,7 @@ class EvidenceCommandTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("Structured evidence summary", result.stdout)
-        self.assertIn("Total: 6", result.stdout)
+        self.assertIn("Total: 7", result.stdout)
         self.assertIn("Status:", result.stdout)
         self.assertIn("Mode:", result.stdout)
 
@@ -56,8 +56,8 @@ class EvidenceCommandTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         payload = json.loads(result.stdout)
         self.assertEqual(payload["command"], "evidence summary")
-        self.assertEqual(payload["total"], 6)
-        self.assertEqual(payload["by_mode"], {"offline": 6})
+        self.assertEqual(payload["total"], 7)
+        self.assertEqual(payload["by_mode"], {"offline": 7})
         self.assertIn("Samba / SMB", payload["by_component"])
 
     def test_evidence_validate_reports_unavailable_directory(self) -> None:

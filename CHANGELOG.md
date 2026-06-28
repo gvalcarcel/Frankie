@@ -16,6 +16,7 @@ Ciclo de desarrollo `0.8.0-dev` abierto tras la publicación de `v0.7.0`.
 - Informe consolidado `report` en Markdown y JSON.
 - Exportación segura de informes dentro de `docs/evidencias/` con protección de sobrescritura.
 - Metadatos opcionales de evidencia para timestamps, fuentes y checks relacionados.
+- Evidencia estructurada y artefactos reproducibles de la validación operativa `WO-0019`.
 
 ### Changed
 
@@ -23,6 +24,7 @@ Ciclo de desarrollo `0.8.0-dev` abierto tras la publicación de `v0.7.0`.
 - `.gitignore` permite versionar exclusivamente las plantillas Markdown de `.vscode/prompts/`.
 - Versión de desarrollo actualizada a `0.8.0-dev` sin cambios funcionales.
 - Validación de evidencias ampliada con duplicados, vocabularios, referencias y posibles datos sensibles.
+- Flujo de evidencias e informes validado de extremo a extremo en modo OFFLINE, incluidos controles de ruta, formato y sobrescritura.
 
 ## [v0.7.0] - 2026-06-28
 

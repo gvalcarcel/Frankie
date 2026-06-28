@@ -45,7 +45,7 @@ class StructuredEvidenceLoaderTests(unittest.TestCase):
         result = load_structured_evidence(FrankiePaths(REPO_ROOT))
 
         self.assertTrue(result.available)
-        self.assertEqual(len(result.evidence), 6)
+        self.assertEqual(len(result.evidence), 7)
         self.assertEqual(result.issues, ())
         self.assertEqual(
             {item.evidence_id for item in result.evidence},
@@ -56,6 +56,7 @@ class StructuredEvidenceLoaderTests(unittest.TestCase):
                 "audit-summary-current",
                 "release-v0.6.0-published",
                 "offline-live-strategy-current",
+                "wo-0019-evidence-report-validation",
             },
         )
 

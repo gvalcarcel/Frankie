@@ -27,6 +27,7 @@ Durante esta transición, JSON es una fuente complementaria. Status y Audit cons
 | `audit_summary.json` | Resumen actual de Audit Engine. |
 | `release_v0.6.0.json` | Estado de la primera release estable. |
 | `offline_live_strategy.json` | Política OFFLINE por defecto y LIVE explícito. |
+| `wo_0019_operational_validation.json` | Validación operativa OFFLINE del ciclo de evidencias e informes. |
 
 ## Contrato
 
