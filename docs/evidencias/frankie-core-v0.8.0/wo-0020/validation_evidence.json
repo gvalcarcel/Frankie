@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "automated-validation-2026-06-28T122440-0200",
+  "evidence_type": "automated_operational_validation",
+  "component": {
+    "id": "frankie-core-validation-flow",
+    "name": "Frankie Core Validation Flow"
+  },
+  "status": "PASS",
+  "severity": "INFO",
+  "mode": "offline",
+  "data_source": "automated_local_validation",
+  "summary": "Automated tests, CLI regression, evidence checks and report exports completed successfully.",
+  "details": {
+    "tests_passed": 90,
+    "cli_commands_passed": 14,
+    "structured_evidence_valid": 7,
+    "structured_evidence_invalid": 0,
+    "git_baseline_clean": false,
+    "report_sha256": {
+      "consolidated_report.md": "416A0BD8698AC11DAC38BB14B6F6C491A1DE6B718100BD77BDDD84234A51B772",
+      "consolidated_report.json": "C1822E9539C6A54A8C8F51684E64265350533FD8D5AD5C4D0181BCB000E450F2"
+    }
+  },
+  "references": [
+    "docs/evidencias/frankie-core-v0.8.0/wo-0020/validation_summary.md",
+    "docs/evidencias/frankie-core-v0.8.0/wo-0020/consolidated_report.md",
+    "docs/evidencias/frankie-core-v0.8.0/wo-0020/consolidated_report.json"
+  ],
+  "created_at": "2026-06-28T12:24:40+02:00",
+  "updated_at": "2026-06-28T12:24:40+02:00",
+  "source_files": [
+    "scripts/validation/validate_evidence_flow.py"
+  ],
+  "related_checks": [
+    "WO-0020-TESTS-001",
+    "WO-0020-CLI-001",
+    "WO-0020-EVIDENCE-001",
+    "WO-0020-REPORTS-001",
+    "WO-0020-GIT-001"
+  ],
+  "server_impact": {
+    "touches_physical_server": false,
+    "requires_live_connection": false,
+    "changes_configuration": false
+  },
+  "security": {
+    "contains_secrets": false,
+    "contains_credentials": false,
+    "contains_internal_ips": false
+  },
+  "recommendation": "Reuse this offline flow before future releases and keep LIVE validation in separate authorized Work Orders."
+}

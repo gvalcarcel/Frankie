@@ -8,6 +8,16 @@ Revisar siempre antes de ejecutar en producción. Los scripts están preparados 
 
 No deben contener contraseñas, tokens ni secretos reales.
 
+## Validación OFFLINE de Frankie Core
+
+El flujo local de tests, regresión CLI, evidencias e informes se ejecuta con:
+
+```bash
+python scripts/validation/validate_evidence_flow.py
+```
+
+No actúa sobre servidores. Consulta [scripts/validation/README.md](validation/README.md) antes de usar `--force` o `--require-clean`.
+
 ## Uso de dry-run
 
 Todos los scripts aceptan:

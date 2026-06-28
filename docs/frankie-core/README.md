@@ -105,6 +105,12 @@ Documentación técnica: [evidence.md](evidence.md).
 
 Documentación técnica: [reports.md](reports.md).
 
+## Validación automatizada
+
+El flujo OFFLINE de tests, regresión CLI, evidencias e informes puede ejecutarse con un único script seguro y sin dependencias nuevas.
+
+Documentación técnica: [automated-validation.md](automated-validation.md).
+
 ## Doctor pedagógico
 
 Doctor transforma los hallazgos no resueltos de Audit Engine en diagnósticos comprensibles y accionables.

@@ -1,0 +1,571 @@
+{
+  "schema_version": "1.0",
+  "command": "report",
+  "title": "Frankie Core Consolidated Report",
+  "frankie_core_version": "0.8.0-dev",
+  "mode": "offline",
+  "generated_at": "2026-06-28T12:24:51+02:00",
+  "data_source": "documented_evidence",
+  "executive_summary": "Frankie Core consolidated documented evidence with overall status WARNING and audit result WARN.",
+  "overall_status": "WARNING",
+  "status": {
+    "schema_version": "1.0",
+    "command": "status",
+    "frankie_core_version": "0.8.0-dev",
+    "mode": "offline",
+    "data_source": "structured_and_documented_evidence",
+    "structured_evidence": {
+      "available": true,
+      "path": "docs/evidencias/structured",
+      "loaded": 7,
+      "issues": 0
+    },
+    "overall_status": "WARNING",
+    "summary": "Frankie documented status is WARNING.",
+    "components": [
+      {
+        "id": "frankie",
+        "section": "physical_server",
+        "name": "Frankie",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for Frankie: OK."
+      },
+      {
+        "id": "srv_servicios",
+        "section": "virtual_machines",
+        "name": "srv-servicios",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for srv-servicios: OK."
+      },
+      {
+        "id": "srv_recursos",
+        "section": "virtual_machines",
+        "name": "srv-recursos",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for srv-recursos: OK."
+      },
+      {
+        "id": "docker",
+        "section": "core_services",
+        "name": "Docker",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for Docker: OK."
+      },
+      {
+        "id": "portainer",
+        "section": "core_services",
+        "name": "Portainer",
+        "status": "WARNING",
+        "severity": "LOW",
+        "message": "Documented status for Portainer: WARNING."
+      },
+      {
+        "id": "postgresql",
+        "section": "core_services",
+        "name": "PostgreSQL",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for PostgreSQL: OK."
+      },
+      {
+        "id": "n8n",
+        "section": "core_services",
+        "name": "n8n",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for n8n: OK."
+      },
+      {
+        "id": "samba",
+        "section": "core_services",
+        "name": "Samba",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for Samba: OK."
+      },
+      {
+        "id": "ufw",
+        "section": "security",
+        "name": "UFW",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for UFW: OK."
+      },
+      {
+        "id": "fail2ban",
+        "section": "security",
+        "name": "Fail2ban",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for Fail2ban: OK."
+      },
+      {
+        "id": "postgresql_exposure",
+        "section": "security",
+        "name": "PostgreSQL exposure",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for PostgreSQL exposure: OK."
+      },
+      {
+        "id": "srv_servicios_backups",
+        "section": "backups",
+        "name": "srv-servicios backups",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for srv-servicios backups: OK."
+      },
+      {
+        "id": "srv_recursos_backups",
+        "section": "backups",
+        "name": "srv-recursos backups",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for srv-recursos backups: OK."
+      },
+      {
+        "id": "srv_servicios_audit",
+        "section": "evidence",
+        "name": "srv-servicios audit",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for srv-servicios audit: OK."
+      },
+      {
+        "id": "srv_recursos_audit",
+        "section": "evidence",
+        "name": "srv-recursos audit",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for srv-recursos audit: OK."
+      },
+      {
+        "id": "audit_report",
+        "section": "evidence",
+        "name": "Audit report",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for Audit report: OK."
+      },
+      {
+        "id": "windows_smb_validation",
+        "section": "evidence",
+        "name": "Windows/SMB validation",
+        "status": "OK",
+        "severity": "INFO",
+        "message": "Documented status for Windows/SMB validation: OK."
+      }
+    ]
+  },
+  "inventory": {
+    "schema_version": "1.0",
+    "command": "inventory",
+    "frankie_core_version": "0.8.0-dev",
+    "mode": "offline",
+    "data_source": "structured_and_documented_evidence",
+    "structured_evidence": {
+      "available": true,
+      "path": "docs/evidencias/structured",
+      "loaded": 7,
+      "issues": 0
+    },
+    "items": [
+      {
+        "id": "physical_server_name",
+        "section": "physical_server",
+        "name": "Name",
+        "value": "Frankie",
+        "state": "KNOWN"
+      },
+      {
+        "id": "physical_server_role",
+        "section": "physical_server",
+        "name": "Role",
+        "value": "Educational physical server",
+        "state": "KNOWN"
+      },
+      {
+        "id": "physical_server_hypervisor",
+        "section": "physical_server",
+        "name": "Hypervisor",
+        "value": "Proxmox",
+        "state": "KNOWN"
+      },
+      {
+        "id": "physical_server_purpose",
+        "section": "physical_server",
+        "name": "Purpose",
+        "value": "Educational lab infrastructure",
+        "state": "KNOWN"
+      },
+      {
+        "id": "frankie_core_role",
+        "section": "frankie_core",
+        "name": "Role",
+        "value": "Read-only software tool",
+        "state": "KNOWN"
+      },
+      {
+        "id": "frankie_core_purpose",
+        "section": "frankie_core",
+        "name": "Purpose",
+        "value": "Consult, audit, inventory and document known infrastructure",
+        "state": "KNOWN"
+      },
+      {
+        "id": "frankie_core_repository",
+        "section": "frankie_core",
+        "name": "Repository",
+        "value": "Documentation, scripts, evidence and source code",
+        "state": "KNOWN"
+      },
+      {
+        "id": "virtual_machines_vm100",
+        "section": "virtual_machines",
+        "name": "VM100",
+        "value": "srv-servicios",
+        "state": "KNOWN"
+      },
+      {
+        "id": "virtual_machines_vm100_role",
+        "section": "virtual_machines",
+        "name": "VM100 role",
+        "value": "Services server",
+        "state": "KNOWN"
+      },
+      {
+        "id": "virtual_machines_vm100_known_services",
+        "section": "virtual_machines",
+        "name": "VM100 known services",
+        "value": "Docker, Portainer, PostgreSQL, n8n, backups, UFW, Fail2ban",
+        "state": "KNOWN"
+      },
+      {
+        "id": "virtual_machines_vm101",
+        "section": "virtual_machines",
+        "name": "VM101",
+        "value": "srv-recursos",
+        "state": "KNOWN"
+      },
+      {
+        "id": "virtual_machines_vm101_role",
+        "section": "virtual_machines",
+        "name": "VM101 role",
+        "value": "Resources server",
+        "state": "KNOWN"
+      },
+      {
+        "id": "virtual_machines_vm101_known_services",
+        "section": "virtual_machines",
+        "name": "VM101 known services",
+        "value": "Samba, shared classroom resources, alumnado/profesorado access model",
+        "state": "KNOWN"
+      },
+      {
+        "id": "docker_network",
+        "section": "docker",
+        "name": "Network",
+        "value": "aula-network",
+        "state": "KNOWN"
+      },
+      {
+        "id": "docker_containers",
+        "section": "docker",
+        "name": "Containers",
+        "value": "Portainer, PostgreSQL, n8n",
+        "state": "KNOWN"
+      },
+      {
+        "id": "resources_root_path",
+        "section": "resources",
+        "name": "Root path",
+        "value": "/srv/recursos",
+        "state": "KNOWN"
+      },
+      {
+        "id": "resources_shares",
+        "section": "resources",
+        "name": "Shares",
+        "value": "recursos, instalables, isos, material, plantillas, practicas, profesorado",
+        "state": "KNOWN"
+      },
+      {
+        "id": "security_firewall",
+        "section": "security",
+        "name": "Firewall",
+        "value": "UFW",
+        "state": "KNOWN"
+      },
+      {
+        "id": "security_intrusion_prevention",
+        "section": "security",
+        "name": "Intrusion prevention",
+        "value": "Fail2ban",
+        "state": "KNOWN"
+      },
+      {
+        "id": "security_postgresql_exposure",
+        "section": "security",
+        "name": "PostgreSQL exposure",
+        "value": "not exposed on host port 5432",
+        "state": "KNOWN"
+      },
+      {
+        "id": "backups_srv_servicios_backup_evidence",
+        "section": "backups",
+        "name": "srv-servicios backup evidence",
+        "value": "known",
+        "state": "KNOWN"
+      },
+      {
+        "id": "backups_srv_recursos_backup_evidence",
+        "section": "backups",
+        "name": "srv-recursos backup evidence",
+        "value": "known",
+        "state": "KNOWN"
+      },
+      {
+        "id": "evidence_source",
+        "section": "evidence",
+        "name": "Source",
+        "value": "repository documentation and audit evidence",
+        "state": "KNOWN"
+      },
+      {
+        "id": "evidence_live_connection",
+        "section": "evidence",
+        "name": "Live connection",
+        "value": "no",
+        "state": "KNOWN"
+      },
+      {
+        "id": "evidence_available_sources",
+        "section": "evidence",
+        "name": "Available sources",
+        "value": "15 of 15",
+        "state": "KNOWN"
+      },
+      {
+        "id": "evidence_missing_sources",
+        "section": "evidence",
+        "name": "Missing sources",
+        "value": "none",
+        "state": "KNOWN"
+      }
+    ]
+  },
+  "audit": {
+    "schema_version": "1.0",
+    "command": "audit",
+    "frankie_core_version": "0.8.0-dev",
+    "mode": "offline",
+    "data_source": "structured_and_documented_evidence",
+    "structured_evidence": {
+      "available": true,
+      "path": "docs/evidencias/structured",
+      "loaded": 7,
+      "issues": 0
+    },
+    "overall_result": "WARN",
+    "counts": {
+      "total": 7,
+      "pass": 6,
+      "warn": 1,
+      "pending": 0,
+      "fail": 0,
+      "unknown": 0,
+      "missing_evidence": 0
+    },
+    "checks": [
+      {
+        "id": "AUD-EVIDENCE-001",
+        "status": "PASS",
+        "severity": "INFO",
+        "title": "Evidence files available",
+        "message": "Required step 5 audit evidence files are available.",
+        "evidence": [
+          "docs/evidencias/paso-5-auditorias/auditoria_srv-servicios.txt",
+          "docs/evidencias/paso-5-auditorias/auditoria_srv-recursos.txt",
+          "docs/evidencias/paso-5-auditorias/informe_auditoria.md"
+        ],
+        "recommendation": "Keep evidence files versioned only when they do not contain sensitive data."
+      },
+      {
+        "id": "AUD-REPORT-001",
+        "status": "PASS",
+        "severity": "INFO",
+        "title": "Audit report dry-run decision",
+        "message": "The audit report indicates that the environment is apt for dry-run.",
+        "evidence": [
+          "docs/evidencias/paso-5-auditorias/informe_auditoria.md"
+        ],
+        "recommendation": "Continue using dry-run validation before any real execution."
+      },
+      {
+        "id": "AUD-SERVICES-PORTAINER-001",
+        "status": "WARN",
+        "severity": "LOW",
+        "title": "Known Portainer port deviation",
+        "message": "Portainer publishes port 8000 although it is documented as not allowed by UFW.",
+        "evidence": [
+          "docs/evidencias/paso-5-auditorias/informe_auditoria.md"
+        ],
+        "recommendation": "Revisar si el puerto 8000 debe mantenerse publicado o eliminarse del compose si no es necesario."
+      },
+      {
+        "id": "AUD-SAMBA-001",
+        "status": "PASS",
+        "severity": "INFO",
+        "title": "SMB Windows client validation",
+        "message": "Historical SMB validation was pending, but pre-release evidence validates SMB from a real client.",
+        "evidence": [
+          "docs/evidencias/paso-5-auditorias/informe_auditoria.md",
+          "docs/evidencias/frankie-core-v0.6.0/pre_release_live_evidence_check.md"
+        ],
+        "recommendation": "Keep the historical pending evidence for traceability and use the pre-release validation as the current documented state."
+      },
+      {
+        "id": "AUD-POSTGRES-001",
+        "status": "PASS",
+        "severity": "INFO",
+        "title": "PostgreSQL external exposure",
+        "message": "Evidence indicates PostgreSQL is not exposed on host port 5432.",
+        "evidence": [
+          "docs/evidencias/paso-5-auditorias/auditoria_srv-servicios.txt",
+          "docs/evidencias/paso-5-auditorias/informe_auditoria.md"
+        ],
+        "recommendation": "Keep PostgreSQL reachable only through the internal Docker network unless requirements change."
+      },
+      {
+        "id": "AUD-CORE-READONLY-001",
+        "status": "PASS",
+        "severity": "INFO",
+        "title": "Frankie Core read-only mode",
+        "message": "Frankie Core read-only behavior is documented.",
+        "evidence": [
+          "docs/frankie-core/status.md",
+          "docs/frankie-core/inventory.md"
+        ],
+        "recommendation": "Keep read-only guarantees explicit in every command document."
+      },
+      {
+        "id": "AUD-CONCEPTS-001",
+        "status": "PASS",
+        "severity": "INFO",
+        "title": "Frankie concepts distinction",
+        "message": "Documentation distinguishes Frankie, Frankie Core and the Frankie repository.",
+        "evidence": [
+          "docs/frankie-core/inventory.md",
+          "docs/evidencias/frankie-core-v0.6.0/inventory_mvp_architecture_review.md"
+        ],
+        "recommendation": "Maintain the distinction between physical server, software tool and repository in future docs."
+      }
+    ]
+  },
+  "doctor": {
+    "schema_version": "1.0",
+    "command": "doctor",
+    "frankie_core_version": "0.8.0-dev",
+    "mode": "offline",
+    "data_source": "structured_and_documented_evidence",
+    "structured_evidence": {
+      "available": true,
+      "path": "docs/evidencias/structured",
+      "loaded": 7,
+      "issues": 0
+    },
+    "overall_diagnosis": "ACTIONS_RECOMMENDED",
+    "audit_result": "WARN",
+    "issues_reviewed": 1,
+    "issues": [
+      {
+        "issue_id": "AUD-SERVICES-PORTAINER-001",
+        "title": "Portainer port 8000 remains published",
+        "status": "WARN",
+        "severity": "LOW",
+        "urgency": "LOW",
+        "impact": "Portainer is documented as exposing port 8000 in addition to its main access port.",
+        "why_it_matters": "Published ports increase the surface that should be reviewed, even when the documented risk is low.",
+        "recommended_action": "Review the port exposure in a future explicitly authorized LIVE Work Order.",
+        "safe_next_steps": [
+          "Confirm the current Docker port mapping in a read-only LIVE check.",
+          "Review the documented UFW and firewall rules before changing anything.",
+          "Document the decision to keep or close the port, including rollback steps."
+        ],
+        "do_not": [
+          "Do not stop or restart Portainer from an offline Work Order.",
+          "Do not remove Docker port mappings without a backup and rollback plan.",
+          "Do not change firewall rules without explicit authorization."
+        ],
+        "student_explanation": "It is like finding an extra open door in a computer room. It may be intentional, but we should check why it is open before changing it.",
+        "evidence": [
+          "docs/evidencias/paso-5-auditorias/informe_auditoria.md"
+        ]
+      }
+    ]
+  },
+  "evidence": {
+    "schema_version": "1.0",
+    "command": "evidence summary",
+    "mode": "offline",
+    "total": 7,
+    "invalid": 0,
+    "by_status": {
+      "ACTIVE": 1,
+      "OK": 2,
+      "PASS": 1,
+      "RELEASED": 1,
+      "WARN": 1,
+      "WARNING": 1
+    },
+    "by_severity": {
+      "INFO": 5,
+      "LOW": 2
+    },
+    "by_component": {
+      "Frankie Audit Engine": 1,
+      "Frankie Core": 1,
+      "Frankie Core Evidence and Reports": 1,
+      "Frankie Core Release": 1,
+      "OFFLINE / LIVE Strategy": 1,
+      "Portainer": 1,
+      "Samba / SMB": 1
+    },
+    "by_evidence_type": {
+      "audit_summary": 1,
+      "known_warning": 1,
+      "operating_policy": 1,
+      "operational_validation": 1,
+      "release_status": 1,
+      "service_validation": 1,
+      "software_status": 1
+    },
+    "by_data_source": {
+      "documented_evidence": 6,
+      "operational_cli_validation": 1
+    },
+    "by_mode": {
+      "offline": 7
+    }
+  },
+  "known_state": {
+    "smb": "OK / PASS / INFO",
+    "portainer": "WARNING / WARN / LOW"
+  },
+  "known_risks": [
+    "AUD-SERVICES-PORTAINER-001: Known Portainer port deviation (WARN / LOW)"
+  ],
+  "limitations": [
+    "Frankie physical server was not consulted.",
+    "The report is based on documented repository evidence.",
+    "Live Mode is not implemented.",
+    "Repair Mode is not implemented."
+  ],
+  "recommended_next_steps": [
+    "Revisar si el puerto 8000 debe mantenerse publicado o eliminarse del compose si no es necesario."
+  ]
+}
