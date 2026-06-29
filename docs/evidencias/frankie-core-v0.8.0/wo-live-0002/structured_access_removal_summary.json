@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "wo-live-0002-temporary-access-removal",
+  "evidence_type": "live_access_cleanup",
+  "captured_at": "2026-06-29",
+  "mode": "live-controlled",
+  "server_contacted": true,
+  "changes_made": true,
+  "change_type": "temporary_access_removed",
+  "components": [
+    {
+      "name": "Proxmox",
+      "temporary_key_removed": true,
+      "ssh_config_validated": true
+    },
+    {
+      "name": "VM100",
+      "sudoers_file_removed": true,
+      "sudoers_validated": true
+    },
+    {
+      "name": "VM101",
+      "sudoers_file_removed": true,
+      "sudoers_validated": true
+    }
+  ],
+  "sanitization": {
+    "internal_ips_removed": true,
+    "usernames_removed": true,
+    "secrets_removed": true,
+    "raw_outputs_committed": false
+  },
+  "result": "temporary_live_access_removed"
+}
