@@ -20,6 +20,9 @@ Ciclo de desarrollo `0.8.0-dev` abierto tras la publicación de `v0.7.0`.
 - Flujo automatizado OFFLINE para tests, regresión CLI, evidencias e informes de `WO-0020`.
 - Comandos `live-status` y `live-audit` bloqueados, con JSON y simulación OFFLINE explícita.
 - Modelos, guardas y candidatos simulados para un futuro Live Mode de solo lectura.
+- Integración de las evidencias saneadas de WO-LIVE-0001 y WO-LIVE-0002 en `evidence summary` y `report`.
+- Validador OFFLINE específico para la integración de evidencias LIVE públicas.
+- Material de aula sobre captura, saneamiento y retirada de accesos temporales.
 
 ### Changed
 
@@ -30,6 +33,8 @@ Ciclo de desarrollo `0.8.0-dev` abierto tras la publicación de `v0.7.0`.
 - Flujo de evidencias e informes validado de extremo a extremo en modo OFFLINE, incluidos controles de ruta, formato y sobrescritura.
 - Validación operativa convertida en un comando repetible con timeouts, hashes, protección de salida y control de delta Git.
 - Live Mode preparado internamente sin transporte, credenciales, red, subprocess, escritura o Repair Mode.
+- Loader ampliado para descubrir fichas `wo-live-*`, distinguir `live-readonly` y `live-controlled` y rechazar contenido sensible.
+- Informes ampliados con estado LIVE histórico, alcance del cambio y confirmación explícita de ausencia de nueva conexión.
 
 ## [v0.7.0] - 2026-06-28
 

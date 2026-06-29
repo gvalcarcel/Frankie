@@ -126,3 +126,18 @@ El schema admite evidencias `offline` y `live`, pero una ficha LIVE no activa Li
 La guía [Evidencias estructuradas](../aula/evidencias-estructuradas.md) propone una práctica guiada para listar, validar e interpretar fichas sin conectarse a Frankie.
 
 Una futura captura LIVE deberá conservar la evidencia raw fuera del repositorio hasta completar su saneamiento. El diseño se describe en [Live Mode](live-mode-design.md).
+
+## Evidencias LIVE saneadas
+
+El loader también descubre fichas `structured*.json` dentro de `docs/evidencias/frankie-core-v0.8.0/wo-live-*`. Solo admite los contratos LIVE conocidos y exige que declaren el saneamiento de direcciones internas, usuarios y secretos, además de confirmar que no se publicaron salidas brutas.
+
+Los modos quedan diferenciados de forma explícita:
+
+- `offline`: evidencia producida o consolidada sin conexión;
+- `documented-evidence`: evidencia documental compatible;
+- `live-readonly`: observación real sin cambios durante la captura;
+- `live-controlled`: intervención LIVE limitada y autorizada.
+
+WO-LIVE-0001 aporta una captura real de solo lectura. WO-LIVE-0002 documenta la retirada posterior del acceso temporal. El valor `changes_made=true` de esta última se refiere exclusivamente a esa retirada, no a cambios en servicios.
+
+`evidence validate` informa del total, distribución por modo, válidas, inválidas y advertencias. Rechaza material criptográfico, credenciales con valor, direcciones privadas, MACs y evidencias que indiquen la publicación de salidas brutas.

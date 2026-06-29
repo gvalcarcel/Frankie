@@ -227,3 +227,9 @@ Frankie Core `v0.7.0` está publicado y cerrado. Frankie Core `0.8.0-dev` queda 
 Live Mode y Repair Mode no están implementados. Las tareas LIVE se ejecutarán únicamente cuando el usuario lo indique mediante una Work Order autorizada.
 
 La arquitectura interna y el simulador de Live Mode están preparados, pero cualquier conexión real continúa sin implementar. Consulta [Live Mode preparado y desactivado](live-mode.md).
+
+## Evidencias LIVE saneadas
+
+Frankie Core integra las evidencias públicas de WO-LIVE-0001 y WO-LIVE-0002 en `evidence summary` y `report`. Distingue captura `live-readonly` de retirada de acceso `live-controlled`, rechaza datos sensibles y no realiza nuevas conexiones.
+
+Consulta [Evidencias estructuradas](evidence.md), [Live Mode preparado y desactivado](live-mode.md) y la [guía de aula](../aula/evidencias-live-saneadas.md).

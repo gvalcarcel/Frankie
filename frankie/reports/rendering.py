@@ -28,6 +28,7 @@ def render_report_json(report: ConsolidatedReport) -> str:
         "audit": audit_payload(report.audit, report.evidence),
         "doctor": doctor_payload(report.doctor, report.evidence),
         "evidence": evidence_summary_payload(report.evidence_summary),
+        "live_evidence": _live_evidence_payload(report),
         "known_state": {"smb": report.smb_state, "portainer": report.portainer_state},
         "known_risks": list(report.known_risks),
         "limitations": list(report.limitations),
@@ -91,6 +92,16 @@ def render_report_markdown(report: ConsolidatedReport) -> str:
             f"- By severity: {_inline_counts(summary.by_severity)}",
             f"- By mode: {_inline_counts(summary.by_mode)}",
             "",
+            "## Live evidence status",
+            "",
+            f"- Sanitized LIVE evidence: `{report.live_evidence.total}`",
+            f"- Read-only captures: `{report.live_evidence.readonly_captures}`",
+            f"- Access cleanup records: `{report.live_evidence.access_cleanup}`",
+            "- The LIVE capture was sanitized and made no changes.",
+            "- The temporary access used for capture was removed afterwards.",
+            "- No active temporary LIVE access is documented.",
+            "- This report generation did not reconnect to Frankie.",
+            "",
             "## Known state",
             "",
             f"- SMB: `{report.smb_state}`",
@@ -112,3 +123,21 @@ def _inline_counts(counts: dict[str, int]) -> str:
     if not counts:
         return "none"
     return ", ".join(f"`{key}: {value}`" for key, value in counts.items())
+
+
+def _live_evidence_payload(report: ConsolidatedReport) -> dict[str, object]:
+    live = report.live_evidence
+    return {
+        "total": live.total,
+        "readonly_captures": live.readonly_captures,
+        "access_cleanup": live.access_cleanup,
+        "server_contacted": live.server_contacted,
+        "changes_made": live.changes_made,
+        "changes_scope": "temporary_access_removal_only" if live.changes_made else "none",
+        "capture_changes_made": False,
+        "capture_sanitized": live.readonly_captures > 0,
+        "temporary_access_removed": live.temporary_access_removed,
+        "temporary_access_active_documented": False,
+        "new_live_connection": False,
+        "evidence_ids": list(live.evidence_ids),
+    }

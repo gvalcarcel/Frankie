@@ -37,7 +37,10 @@ class EvidenceCommandTests(unittest.TestCase):
         result = run_frankie("evidence", "validate")
 
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("Valid: 7", result.stdout)
+        self.assertIn("Valid: 9", result.stdout)
+        self.assertIn("Offline evidences: 7", result.stdout)
+        self.assertIn("Live read-only evidences: 1", result.stdout)
+        self.assertIn("Live controlled evidences: 1", result.stdout)
         self.assertIn("Invalid: 0", result.stdout)
         self.assertIn("Result: PASS", result.stdout)
 
@@ -46,7 +49,9 @@ class EvidenceCommandTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("Structured evidence summary", result.stdout)
-        self.assertIn("Total: 7", result.stdout)
+        self.assertIn("Total: 9", result.stdout)
+        self.assertIn("LIVE evidence:", result.stdout)
+        self.assertIn("Temporary access removed: yes", result.stdout)
         self.assertIn("Status:", result.stdout)
         self.assertIn("Mode:", result.stdout)
 
@@ -56,8 +61,9 @@ class EvidenceCommandTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         payload = json.loads(result.stdout)
         self.assertEqual(payload["command"], "evidence summary")
-        self.assertEqual(payload["total"], 7)
-        self.assertEqual(payload["by_mode"], {"offline": 7})
+        self.assertEqual(payload["total"], 9)
+        self.assertEqual(payload["live_evidence"]["total"], 2)
+        self.assertEqual(payload["by_mode"], {"live-controlled": 1, "live-readonly": 1, "offline": 7})
         self.assertIn("Samba / SMB", payload["by_component"])
 
     def test_evidence_validate_reports_unavailable_directory(self) -> None:

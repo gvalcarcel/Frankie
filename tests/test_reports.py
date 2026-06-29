@@ -41,8 +41,10 @@ class ReportCommandTests(unittest.TestCase):
         for heading in ("Overall status", "Inventory summary", "Audit findings", "Doctor diagnosis", "Evidence summary"):
             self.assertIn(heading, result.stdout)
         self.assertIn("Mode: `offline`", result.stdout)
-        self.assertIn("Frankie physical server was not consulted.", result.stdout)
-        self.assertIn("Live Mode is not implemented.", result.stdout)
+        self.assertIn("Frankie physical server was not consulted during this report generation.", result.stdout)
+        self.assertIn("Live evidence status", result.stdout)
+        self.assertIn("No active temporary LIVE access is documented.", result.stdout)
+        self.assertIn("This report generation did not reconnect to Frankie.", result.stdout)
         self.assertIn("Repair Mode is not implemented.", result.stdout)
 
     def test_report_markdown_is_explicit(self) -> None:
@@ -63,6 +65,12 @@ class ReportCommandTests(unittest.TestCase):
         self.assertEqual(payload["mode"], "offline")
         self.assertEqual(payload["known_state"]["smb"], "OK / PASS / INFO")
         self.assertEqual(payload["known_state"]["portainer"], "WARNING / WARN / LOW")
+        self.assertEqual(payload["live_evidence"]["total"], 2)
+        self.assertEqual(payload["live_evidence"]["readonly_captures"], 1)
+        self.assertEqual(payload["live_evidence"]["access_cleanup"], 1)
+        self.assertTrue(payload["live_evidence"]["temporary_access_removed"])
+        self.assertFalse(payload["live_evidence"]["new_live_connection"])
+        self.assertEqual(payload["live_evidence"]["changes_scope"], "temporary_access_removal_only")
         for section in ("status", "inventory", "audit", "doctor", "evidence"):
             self.assertIn(section, payload)
 
@@ -98,6 +106,34 @@ class ReportCommandTests(unittest.TestCase):
                     self.assertNotIn(node.func.id, forbidden_names, f"{path} uses {node.func.id}()")
                 if isinstance(node.func, ast.Attribute):
                     self.assertNotIn(node.func.attr, forbidden_attrs, f"{path} uses .{node.func.attr}()")
+
+    def test_live_evidence_runtime_has_no_forbidden_imports(self) -> None:
+        runtime_files = (
+            REPO_ROOT / "frankie" / "evidence" / "loader.py",
+            REPO_ROOT / "frankie" / "evidence" / "summary.py",
+            REPO_ROOT / "frankie" / "commands" / "evidence.py",
+        )
+        forbidden = {"subprocess", "socket", "requests", "paramiko"}
+        for path in runtime_files:
+            tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+            imported = {
+                alias.name.split(".")[0]
+                for node in ast.walk(tree)
+                if isinstance(node, (ast.Import, ast.ImportFrom))
+                for alias in (node.names if isinstance(node, ast.Import) else [ast.alias(node.module or "")])
+            }
+            self.assertTrue(imported.isdisjoint(forbidden), f"{path} imports a forbidden runtime module")
+
+    def test_evidence_summary_json_includes_live_contract(self) -> None:
+        result = run_frankie("evidence", "summary", "--json")
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertEqual(payload["total"], 9)
+        self.assertEqual(payload["by_mode"]["live-readonly"], 1)
+        self.assertEqual(payload["by_mode"]["live-controlled"], 1)
+        self.assertEqual(payload["live_evidence"]["total"], 2)
+        self.assertTrue(payload["live_evidence"]["temporary_access_removed"])
 
 
 class ReportWriterTests(unittest.TestCase):

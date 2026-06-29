@@ -213,6 +213,7 @@ def evidence_payload(evidence: StructuredEvidence) -> dict[str, object]:
 
 
 def evidence_summary_payload(summary: EvidenceSummary) -> dict[str, object]:
+    live = summary.live_evidence
     return {
         "schema_version": SCHEMA_VERSION,
         "command": "evidence summary",
@@ -225,6 +226,15 @@ def evidence_summary_payload(summary: EvidenceSummary) -> dict[str, object]:
         "by_evidence_type": summary.by_evidence_type,
         "by_data_source": summary.by_data_source,
         "by_mode": summary.by_mode,
+        "live_evidence": {
+            "total": live.total,
+            "readonly_captures": live.readonly_captures,
+            "access_cleanup": live.access_cleanup,
+            "server_contacted": live.server_contacted,
+            "changes_made": live.changes_made,
+            "temporary_access_removed": live.temporary_access_removed,
+            "evidence_ids": list(live.evidence_ids),
+        },
     }
 
 

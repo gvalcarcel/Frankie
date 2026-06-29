@@ -40,3 +40,9 @@ No existe adaptador de red, SSH, Docker, Samba, Proxmox o shell.
 Una futura WO LIVE deberá definir autorización, targets, allowlist, mínimo privilegio, timeouts, evidencia raw privada, saneamiento y criterios de parada. Esta arquitectura no acepta configuración de activación.
 
 Consulta el [diseño detallado](live-mode-design.md) y las [Work Orders LIVE](../roadmap/live-workorders.md).
+
+## Evidencia histórica frente a Live Mode
+
+Frankie Core puede leer evidencias LIVE saneadas ya versionadas sin activar Live Mode. Esta lectura es OFFLINE: no abre conexiones, no usa credenciales y no consulta el estado actual de los servidores.
+
+La captura de WO-LIVE-0001 y la retirada de acceso de WO-LIVE-0002 son hechos históricos documentados. No habilitan transporte LIVE ni contradicen el gate desactivado de `live-status` y `live-audit`.

@@ -89,6 +89,8 @@ Infraestructura de referencia actualmente documentada:
 
 ## Estado actual
 
+Frankie Core `0.8.0-dev` integra las evidencias LIVE saneadas de WO-LIVE-0001 y WO-LIVE-0002 en sus resúmenes e informes. La captura real fue de solo lectura, el acceso temporal quedó retirado y la consulta actual permanece completamente OFFLINE.
+
 Estado de producto: `v0.8.0-dev` abierto sobre la release estable `v0.7.0`.
 
 El repositorio contiene:

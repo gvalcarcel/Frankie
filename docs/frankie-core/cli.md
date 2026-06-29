@@ -70,3 +70,15 @@ python -m frankie live-audit [--json] [--simulate]
 ```
 
 Sin simulación devuelven `BLOCKED`. Con `--simulate` prueban el contrato mediante datos ficticios. Ambos caminos mantienen `enabled=false` y `server_contacted=false`.
+
+## Consulta de evidencias LIVE saneadas
+
+```bash
+python -m frankie evidence validate
+python -m frankie evidence summary
+python -m frankie evidence summary --json
+python -m frankie report
+python -m frankie report --json
+```
+
+Estos comandos detectan las fichas públicas `wo-live-*` del repositorio. La consulta continúa siendo OFFLINE y no implica una nueva conexión con Frankie.

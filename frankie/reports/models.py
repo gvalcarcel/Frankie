@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from frankie.core.models import AuditReport, DoctorReport, InventoryReport, StatusReport
-from frankie.evidence.models import EvidenceLoadResult, EvidenceSummary
+from frankie.evidence.models import EvidenceLoadResult, EvidenceSummary, LiveEvidenceSummary
 
 
 @dataclass(frozen=True)
@@ -19,6 +19,7 @@ class ConsolidatedReport:
     doctor: DoctorReport
     evidence: EvidenceLoadResult
     evidence_summary: EvidenceSummary
+    live_evidence: LiveEvidenceSummary
     smb_state: str
     portainer_state: str
     known_risks: tuple[str, ...]

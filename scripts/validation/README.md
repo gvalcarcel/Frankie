@@ -61,3 +61,11 @@ python scripts/validation/validate_live_mode_guards.py
 ```
 
 Comprueba las ocho variantes LIVE, sus contratos JSON y la ausencia de imports o llamadas capaces de conectar, ejecutar procesos o escribir.
+
+## Integración de evidencias LIVE saneadas
+
+```bash
+python scripts/validation/validate_live_evidence_integration.py
+```
+
+Comprueba el descubrimiento de las dos evidencias LIVE públicas, su saneamiento, los contratos JSON de `evidence summary` y `report`, y la ausencia de módulos de conexión en el runtime implicado. No contacta con Frankie ni modifica servidores.

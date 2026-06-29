@@ -81,3 +81,17 @@ La raíz incluye:
 - Live Mode no está implementado.
 - Repair Mode no está implementado.
 - Exportar no convierte una evidencia offline en una captura real.
+
+## Estado de evidencias LIVE
+
+Los informes incluyen `Live evidence status` en Markdown y `live_evidence` en JSON. El bloque resume las capturas saneadas, la retirada de accesos y si existe alguna conexión nueva asociada a la generación del informe.
+
+En el estado actual:
+
+- existe una captura LIVE saneada y de solo lectura;
+- no se hicieron cambios durante esa captura;
+- el acceso temporal fue retirado mediante una intervención controlada posterior;
+- no hay acceso temporal activo documentado;
+- generar el informe no conecta de nuevo con Frankie.
+
+El campo `changes_scope` evita confundir la retirada del acceso con una modificación de Docker, Samba, Proxmox u otros servicios.

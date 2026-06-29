@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 
 from frankie.core.paths import FrankiePaths
-from frankie.evidence.loader import STRUCTURED_EVIDENCE_DIRECTORY, load_structured_evidence
+from frankie.evidence.loader import LIVE_EVIDENCE_GLOB, STRUCTURED_EVIDENCE_DIRECTORY, load_structured_evidence
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -40,12 +40,38 @@ def valid_payload(evidence_id: str = "test-evidence") -> dict[str, object]:
     }
 
 
+def valid_live_payload(evidence_id: str = "test-live") -> dict[str, object]:
+    return {
+        "schema_version": "1.0",
+        "evidence_id": evidence_id,
+        "evidence_type": "live_readonly_capture",
+        "captured_at": "2026-06-29T10:00:00+02:00",
+        "mode": "live-readonly",
+        "server_contacted": True,
+        "changes_made": False,
+        "components": [],
+        "findings": [],
+        "sanitization": {
+            "internal_ips_removed": True,
+            "usernames_removed": True,
+            "secrets_removed": True,
+            "raw_outputs_committed": False,
+        },
+    }
+
+
+def write_live_payload(root: Path, payload: dict[str, object]) -> None:
+    directory = root / "docs" / "evidencias" / "frankie-core-v0.8.0" / "wo-live-test"
+    directory.mkdir(parents=True)
+    (directory / "structured_test.json").write_text(json.dumps(payload), encoding="utf-8")
+
+
 class StructuredEvidenceLoaderTests(unittest.TestCase):
     def test_loader_reads_repository_evidence(self) -> None:
         result = load_structured_evidence(FrankiePaths(REPO_ROOT))
 
         self.assertTrue(result.available)
-        self.assertEqual(len(result.evidence), 7)
+        self.assertEqual(len(result.evidence), 9)
         self.assertEqual(result.issues, ())
         self.assertEqual(
             {item.evidence_id for item in result.evidence},
@@ -57,8 +83,11 @@ class StructuredEvidenceLoaderTests(unittest.TestCase):
                 "release-v0.6.0-published",
                 "offline-live-strategy-current",
                 "wo-0019-evidence-report-validation",
+                "wo-live-0001-real-state-capture",
+                "wo-live-0002-temporary-access-removal",
             },
         )
+        self.assertEqual(result.warnings, ())
 
     def test_missing_directory_returns_controlled_empty_result(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -180,6 +209,64 @@ class StructuredEvidenceLoaderTests(unittest.TestCase):
         self.assertEqual(result.evidence[0].created_at, "2026-06-28T10:00:00+02:00")
         self.assertEqual(result.evidence[0].source_files, ("docs/source.md",))
         self.assertEqual(result.evidence[0].related_checks, ("AUD-TEST-001",))
+
+    def test_loader_detects_sanitized_live_evidence(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_live_payload(root, valid_live_payload())
+
+            result = load_structured_evidence(FrankiePaths(root))
+
+        self.assertTrue(result.available)
+        self.assertEqual(result.issues, ())
+        self.assertEqual(result.evidence[0].mode, "live-readonly")
+        self.assertEqual(result.evidence[0].data_source, "sanitized_live_evidence")
+        self.assertFalse(result.evidence[0].details["changes_made"])
+
+    def test_loader_rejects_sensitive_live_values(self) -> None:
+        unsafe_values = (
+            "password=" + "real-value",
+            "ssh-" + "ed25519 AAAAC3NzaC1lZDI1NTE5AAAAITestMaterial",
+            "10" + ".0.0.1",
+            "00" + ":11:22:33:44:55",
+            "teacher" + "@example.invalid",
+        )
+        for unsafe in unsafe_values:
+            with self.subTest(unsafe=unsafe), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                payload = valid_live_payload()
+                payload["components"] = [{"summary": unsafe}]
+                write_live_payload(root, payload)
+
+                result = load_structured_evidence(FrankiePaths(root))
+
+            self.assertEqual(len(result.evidence), 0)
+            self.assertEqual(len(result.issues), 1)
+            self.assertIn("sensitive data", result.issues[0].message)
+
+    def test_loader_rejects_live_identity_fields(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            payload = valid_live_payload()
+            payload["username"] = "example-account"
+            write_live_payload(root, payload)
+
+            result = load_structured_evidence(FrankiePaths(root))
+
+        self.assertEqual(len(result.issues), 1)
+        self.assertIn("sensitive data", result.issues[0].message)
+
+    def test_loader_rejects_live_raw_output_flag(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            payload = valid_live_payload()
+            payload["sanitization"]["raw_outputs_committed"] = True  # type: ignore[index]
+            write_live_payload(root, payload)
+
+            result = load_structured_evidence(FrankiePaths(root))
+
+        self.assertEqual(len(result.issues), 1)
+        self.assertIn("raw outputs", result.issues[0].message)
 
 
 class StructuredEvidenceDocumentTests(unittest.TestCase):

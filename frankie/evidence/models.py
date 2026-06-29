@@ -34,11 +34,18 @@ class EvidenceLoadIssue:
 
 
 @dataclass(frozen=True)
+class EvidenceLoadWarning:
+    path: str
+    message: str
+
+
+@dataclass(frozen=True)
 class EvidenceLoadResult:
     directory_available: bool
     directory: str
     evidence: tuple[StructuredEvidence, ...]
     issues: tuple[EvidenceLoadIssue, ...]
+    warnings: tuple[EvidenceLoadWarning, ...] = ()
 
     @property
     def available(self) -> bool:
@@ -55,3 +62,15 @@ class EvidenceSummary:
     by_evidence_type: dict[str, int]
     by_data_source: dict[str, int]
     by_mode: dict[str, int]
+    live_evidence: "LiveEvidenceSummary"
+
+
+@dataclass(frozen=True)
+class LiveEvidenceSummary:
+    total: int
+    readonly_captures: int
+    access_cleanup: int
+    server_contacted: bool
+    changes_made: bool
+    temporary_access_removed: bool
+    evidence_ids: tuple[str, ...]

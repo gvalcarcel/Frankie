@@ -192,6 +192,8 @@ def render_evidence_list(result: EvidenceLoadResult) -> str:
 def render_evidence_validation(result: EvidenceLoadResult) -> str:
     valid = len(result.evidence)
     invalid = len(result.issues)
+    warnings = len(result.warnings)
+    modes = _evidence_mode_counts(result)
     if not result.directory_available or (valid == 0 and invalid == 0):
         validation_result = "WARN"
     elif invalid:
@@ -201,12 +203,19 @@ def render_evidence_validation(result: EvidenceLoadResult) -> str:
 
     lines = [
         "Structured evidence validation",
+        f"Total evidences: {valid + invalid}",
+        f"Offline evidences: {modes.get('offline', 0) + modes.get('documented-evidence', 0)}",
+        f"Live read-only evidences: {modes.get('live-readonly', 0)}",
+        f"Live controlled evidences: {modes.get('live-controlled', 0)}",
         f"Valid: {valid}",
         f"Invalid: {invalid}",
+        f"Warnings: {warnings}",
         f"Result: {validation_result}",
     ]
     for issue in result.issues:
         lines.append(f"- {issue.path}: {issue.message}")
+    for warning in result.warnings:
+        lines.append(f"- WARNING {warning.path}: {warning.message}")
     return "\n".join(lines)
 
 
@@ -230,6 +239,24 @@ def render_evidence_summary(summary: EvidenceSummary) -> str:
         else:
             for name, count in counts.items():
                 lines.append(f"  {name}: {count}")
+    live = summary.live_evidence
+    lines.extend(
+        [
+            "LIVE evidence:",
+            f"  Total: {live.total}",
+            f"  Read-only captures: {live.readonly_captures}",
+            f"  Access cleanup: {live.access_cleanup}",
+            f"  Server contacted: {'yes' if live.server_contacted else 'no'}",
+            f"  Changes made: {'yes' if live.changes_made else 'no'}",
+            f"  Temporary access removed: {'yes' if live.temporary_access_removed else 'no'}",
+        ]
+    )
+    for evidence_id in live.evidence_ids:
+        description = {
+            "wo-live-0001-real-state-capture": "real read-only capture",
+            "wo-live-0002-temporary-access-removal": "temporary access removed",
+        }.get(evidence_id, "sanitized LIVE evidence")
+        lines.append(f"  - {evidence_id}: {description}")
     return "\n".join(lines)
 
 
@@ -272,3 +299,10 @@ def _format_item(name: str, state: str) -> str:
         return f"{name} {state}"
     dots = "." * (width - len(name))
     return f"{name}{dots} {state}"
+
+
+def _evidence_mode_counts(result: EvidenceLoadResult) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for evidence in result.evidence:
+        counts[evidence.mode] = counts.get(evidence.mode, 0) + 1
+    return counts
