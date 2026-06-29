@@ -23,6 +23,8 @@ Ciclo de desarrollo `0.8.0-dev` abierto tras la publicación de `v0.7.0`.
 - Integración de las evidencias saneadas de WO-LIVE-0001 y WO-LIVE-0002 en `evidence summary` y `report`.
 - Validador OFFLINE específico para la integración de evidencias LIVE públicas.
 - Material de aula sobre captura, saneamiento y retirada de accesos temporales.
+- Decisión técnica sobre Portainer `8000`, con opciones, criterio de cierre y recomendación de revisión LIVE controlada.
+- Material de aula sobre puertos publicados, firewall y evaluación prudente del riesgo.
 
 ### Changed
 
@@ -35,6 +37,7 @@ Ciclo de desarrollo `0.8.0-dev` abierto tras la publicación de `v0.7.0`.
 - Live Mode preparado internamente sin transporte, credenciales, red, subprocess, escritura o Repair Mode.
 - Loader ampliado para descubrir fichas `wo-live-*`, distinguir `live-readonly` y `live-controlled` y rechazar contenido sensible.
 - Informes ampliados con estado LIVE histórico, alcance del cambio y confirmación explícita de ausencia de nueva conexión.
+- Roadmap LIVE reconciliado con las intervenciones ya completadas y futura revisión de Portainer numerada como `WO-LIVE-0003`.
 
 ## [v0.7.0] - 2026-06-28
 

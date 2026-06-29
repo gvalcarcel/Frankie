@@ -19,6 +19,7 @@ Las prácticas son **offline**. Leen información guardada en el repositorio. No
 9. [Actividades Frankie Core](actividades-frankie-core.md).
 10. [Informes en Frankie Core](informes-en-frankie-core.md).
 11. [Evidencias LIVE saneadas](evidencias-live-saneadas.md).
+12. [Puertos y riesgos](puertos-y-riesgos.md).
 
 ## Ideas importantes
 
