@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "wo-live-0001-real-state-capture",
+  "evidence_type": "live_readonly_capture",
+  "captured_at": "2026-06-29T13:24:16+02:00",
+  "mode": "live-readonly",
+  "server_contacted": true,
+  "changes_made": false,
+  "components": [
+    {"id": "proxmox", "status": "OK", "summary": "Proxmox 9.2.3 active; VM100 and VM101 running; storage active."},
+    {"id": "vm100-services", "status": "WARNING", "summary": "Core containers active; Portainer 8000 warning confirmed; PostgreSQL not externally exposed."},
+    {"id": "vm101-resources", "status": "OK", "summary": "Samba active with expected teaching shares; nmbd inactive."},
+    {"id": "storage", "status": "OK", "summary": "Low utilization observed; disk health and backup recoverability not tested."},
+    {"id": "backups", "status": "UNKNOWN", "summary": "Backup existence and freshness were outside the command allowlist."}
+  ],
+  "findings": [
+    {"id": "LIVE-PORTAINER-8000", "severity": "LOW", "status": "WARNING", "summary": "Portainer 8000 is published and listening but not allowed by UFW."},
+    {"id": "LIVE-SAMBA-SCOPE", "severity": "MEDIUM", "status": "REVIEW", "summary": "Samba firewall rules accept any reachable source; intended network scope needs confirmation."},
+    {"id": "LIVE-BACKUPS-MISSING", "severity": "MEDIUM", "status": "UNKNOWN", "summary": "Current backup existence, freshness and restoreability were not verified."}
+  ],
+  "risks": [
+    "Offline documentation can become stale without periodic controlled capture.",
+    "Published service ports require scope review even when host firewall blocks one of them.",
+    "Backup existence must not be inferred from storage availability."
+  ],
+  "sanitization": {
+    "internal_ips_removed": true,
+    "macs_removed": true,
+    "usernames_removed": true,
+    "secrets_removed": true,
+    "raw_outputs_committed": false
+  }
+}
