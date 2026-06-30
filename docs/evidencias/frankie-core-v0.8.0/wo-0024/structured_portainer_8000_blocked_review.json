@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "wo-0024-portainer-8000-review-blocked",
+  "evidence_type": "blocked_live_review",
+  "mode": "offline",
+  "server_contacted": false,
+  "changes_made": false,
+  "component": {
+    "name": "Portainer",
+    "host": "VM100",
+    "finding": "port_8000"
+  },
+  "blocked_workorders": [
+    "WO-LIVE-0003",
+    "WO-LIVE-0003A"
+  ],
+  "reason": "Minimum safe read-only permissions could not be guaranteed.",
+  "current_status": "OPEN_WARN_LOW",
+  "recommendation": "Use an already authorized administrative path or postpone to a controlled maintenance window.",
+  "sanitization": {
+    "internal_ips_removed": true,
+    "usernames_removed": true,
+    "secrets_removed": true,
+    "raw_outputs_committed": false
+  }
+}

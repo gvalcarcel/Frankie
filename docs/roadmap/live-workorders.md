@@ -30,6 +30,8 @@ Las entradas completadas conservan trazabilidad histórica. Las propuestas futur
 
 ## WO-LIVE-0003 — Revisión controlada de Portainer puerto 8000
 
+**Estado:** bloqueada; pendiente de replanificación segura según WO-0024.
+
 **Objetivo:** determinar por qué se publica el puerto `8000`, si se usa y qué dependencia tendría retirarlo.
 
 **Precondiciones:** autorización expresa, identidad de VM100 confirmada, acceso temporal de mínimo privilegio, allowlist aprobada y timeout. No reutilizar accesos retirados.
@@ -47,6 +49,10 @@ Las entradas completadas conservan trazabilidad histórica. Las propuestas futur
 **Evidencias a recoger:** propósito documentado, proceso asociado, exposición observada, reglas de firewall y dependencias conocidas.
 
 **Criterio de cierre:** finalidad, origen del mapeo, exposición y dependencias quedan documentados; se elige mantener, planificar retirada o conservar el warning. No se cambia el servicio.
+
+**Intentos registrados:** WO-LIVE-0003 se detuvo al no disponer de lectura de Docker. WO-LIVE-0003A se detuvo antes de crear permisos porque no se podían garantizar todas las precondiciones de seguridad. No se creó `sudoers` temporal.
+
+**Vías seguras replanificadas:** cuenta administrativa existente con allowlist; consola presencial supervisada; ventana técnica posterior; o WO de cambio separada con snapshot/backup y rollback. No se insistirá con privilegios temporales no verificables.
 
 ## WO-LIVE-0004 — Validación avanzada Samba
 

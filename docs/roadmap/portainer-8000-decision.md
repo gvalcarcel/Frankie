@@ -62,6 +62,19 @@ Después de esa revisión:
 
 `WO-LIVE-0003 — Revisión controlada de Portainer puerto 8000`, definida en [Work Orders LIVE](live-workorders.md).
 
+## Estado de ejecución tras WO-0024
+
+WO-LIVE-0003 quedó bloqueada porque la cuenta autorizada podía entrar por SSH pero no consultar la API de Docker. WO-LIVE-0003A se detuvo antes de crear permisos porque no se podían confirmar todas las precondiciones de seguridad. No se creó `sudoers` adicional y no se ejecutaron consultas con privilegios improvisados.
+
+La recomendación se replantea mediante estas vías, por orden prudente:
+
+1. revisión manual con una cuenta administrativa ya autorizada y allowlist cerrada;
+2. revisión presencial supervisada desde la consola de VM100;
+3. aplazamiento hasta una ventana técnica con acceso y propietario definidos;
+4. snapshot o backup y WO-LIVE de cambio separada únicamente si posteriormente se decide retirar el puerto.
+
+No deben crearse permisos temporales adicionales cuando su alcance mínimo no pueda verificarse de forma inequívoca. Mientras no exista nueva evidencia, el hallazgo permanece `OPEN / WARN / LOW`.
+
 ## Criterio para cerrar el hallazgo
 
 El hallazgo solo podrá cerrarse cuando una evidencia LIVE posterior demuestre uno de estos resultados:

@@ -25,6 +25,7 @@ Ciclo de desarrollo `0.8.0-dev` abierto tras la publicación de `v0.7.0`.
 - Material de aula sobre captura, saneamiento y retirada de accesos temporales.
 - Decisión técnica sobre Portainer `8000`, con opciones, criterio de cierre y recomendación de revisión LIVE controlada.
 - Material de aula sobre puertos publicados, firewall y evaluación prudente del riesgo.
+- Evidencia OFFLINE del bloqueo seguro de la revisión LIVE de Portainer `8000` y sus alternativas operativas.
 
 ### Changed
 
@@ -38,6 +39,7 @@ Ciclo de desarrollo `0.8.0-dev` abierto tras la publicación de `v0.7.0`.
 - Loader ampliado para descubrir fichas `wo-live-*`, distinguir `live-readonly` y `live-controlled` y rechazar contenido sensible.
 - Informes ampliados con estado LIVE histórico, alcance del cambio y confirmación explícita de ausencia de nueva conexión.
 - Roadmap LIVE reconciliado con las intervenciones ya completadas y futura revisión de Portainer numerada como `WO-LIVE-0003`.
+- Revisión Portainer replanificada mediante acceso administrativo existente, consola presencial o ventana técnica, sin crear permisos temporales no verificables.
 
 ## [v0.7.0] - 2026-06-28
 

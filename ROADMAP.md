@@ -328,3 +328,4 @@ Ciclo abierto como `0.8.0-dev`.
 - `WO-0021`: arquitectura Live de solo lectura preparada con guardas cerradas, comandos bloqueados y simulador OFFLINE.
 - `WO-0022`: evidencias LIVE saneadas integradas en validación, resumen e informes sin nuevas conexiones; acceso temporal documentado como retirado.
 - `WO-0023`: decisión Portainer 8000 preparada en modo OFFLINE; warning LOW conservado y revisión controlada propuesta como `WO-LIVE-0003`.
+- `WO-0024`: bloqueos de `WO-LIVE-0003` y `WO-LIVE-0003A` documentados; Portainer 8000 sigue `WARN / LOW` y la revisión se replantea sin nuevos permisos improvisados.
